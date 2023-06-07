@@ -19,12 +19,14 @@ git clone
 
 ## Methods
 
+```sh
 1. Use with event or data binding
    `(Gunakan dengan pengikatan peristiwa atau data)`
 2. Data binding: method is executed for every 're-render' cycle of component
    `(Metode dieksekusi untuk setiap siklus 're-render' komponen)`
 3. Use for events / data that really needs to be re-evaluated all the time.
    `(Gunakan untuk peristiwa / data yang benar-benar perlu dievaluasi ulang sepanjang waktu.)`
+```
 
 ## Computed
 
