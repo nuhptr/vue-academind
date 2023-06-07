@@ -14,12 +14,7 @@ git clone
 
 `but the different between computed and methods is computed is cached and methods is not cached`
 
-## Computed vs Watch
-
-1. `Computed is change data dynamically and can be used to manipulate the multiple data`
-2. `Watch used by change only a data and not multiple data`
-
-## Methods vs Watch vs Computed
+# Methods vs Watch vs Computed
 
 ## Methods
 
