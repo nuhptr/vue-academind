@@ -21,28 +21,33 @@ git clone
 
 ```sh
 1. Use with event or data binding
-   `(Gunakan dengan pengikatan peristiwa atau data)`
+   `Gunakan dengan pengikatan peristiwa atau data`
 2. Data binding: method is executed for every 're-render' cycle of component
-   `(Metode dieksekusi untuk setiap siklus 're-render' komponen)`
+   `Metode dieksekusi untuk setiap siklus 're-render' komponen`
 3. Use for events / data that really needs to be re-evaluated all the time.
-   `(Gunakan untuk peristiwa / data yang benar-benar perlu dievaluasi ulang sepanjang waktu.)`
+   `Gunakan untuk peristiwa / data yang benar-benar perlu dievaluasi ulang sepanjang waktu.`
 ```
 
 ## Computed
 
-1. Use with data binding `(Gunakan dengan pengikatan data)`
+```sh
+1. Use with data binding
+   `Gunakan dengan pengikatan data`
 2. Data binding: computed property is only re-evaluated when one of its dependencies has changed
-   `(Pengikatan data: properti yang dihitung hanya dievaluasi ulang ketika salah satu dependensinya telah berubah)`
+   `Pengikatan data: properti yang dihitung hanya dievaluasi ulang ketika salah satu dependensinya telah berubah`
 3. use for data that depends on other data
-   `(Gunakan untuk data yang bergantung pada data lain)`
+   `Gunakan untuk data yang bergantung pada data lain`
+```
 
 ## Watch
 
-1. Not used directly in template `(Tidak digunakan secara langsung dalam template)`
+```sh
+1. Not used directly in template `Tidak digunakan secara langsung dalam template`
 2. Allows you to run any code in reaction to some changed data
-   `(Memungkinkan Anda menjalankan kode apa pun sebagai reaksi terhadap beberapa data yang berubah)`
+   `Memungkinkan Anda menjalankan kode apa pun sebagai reaksi terhadap beberapa data yang berubah`
 3. Use for any non-data update you want to make
-   `(Gunakan untuk pembaruan non-data apa pun yang ingin Anda buat)`
+   `Gunakan untuk pembaruan non-data apa pun yang ingin Anda buat`
+```
 
 ## Shorthands
 
@@ -53,6 +58,7 @@ git clone
 
 ## Conditional Content
 
+```sh
 1. v-if, v-else-if, v-else
    this approach is ideal when the condition is unlikely to change at runtime or you want to optimize for initial render cost. `(pendekatan ini ideal ketika kondisinya tidak mungkin berubah saat runtime atau Anda ingin mengoptimalkan biaya render awal.)`
 
@@ -60,9 +66,12 @@ git clone
       `memungkinkan Anda merender konten hanya jika kondisi tertentu terpenuhi`
    -  v-if can be combined with v-else and v-else-if (only on direct sibling elements)
       `v-if dapat digabungkan dengan v-else dan v-else-if (hanya pada elemen saudara langsung)`
+```
 
+```sh
 2. v-show
    this approach is ideal when the condition is more likely to change at runtime, or you want to maximize the render cost. `(pendekatan ini ideal ketika kondisinya lebih mungkin berubah saat runtime, atau Anda ingin memaksimalkan biaya render.)` because this method add `style display none` to the element
+```
 
 ## v-for Variations
 
