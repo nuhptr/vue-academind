@@ -75,6 +75,7 @@ git clone
 
 ## v-for Variations
 
+```sh
 1. v-for
    looping data in vuejs
    `(v-for="item in items")` `(v-for="(item, index) in items")` `(v-for="(value, key) in object")` `(v-for="(value, key, index) in object")`
@@ -82,3 +83,18 @@ git clone
    -  You can extract `values`, values and `indexes` or values, `keys` and indexes
    -  if you need v-for and v-if, `Don't use them on the same element`.
       Use a wrapper with v-if instead.
+```
+
+## Lists
+
+```sh
+   -  v-for can be used to render multiple elements dynamically
+   -  v-for can be used with arrays, objects and ranges (numbers)
+```
+
+## Keys
+
+```sh
+   - Vue `re-uses DOM Elements` to optimize performance -> This can
+   lead to bugs if elements contain state
+```
