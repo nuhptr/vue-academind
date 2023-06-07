@@ -97,4 +97,6 @@ git clone
 ```sh
    - Vue `re-uses DOM Elements` to optimize performance -> This can
    lead to bugs if elements contain state
+   - Bind the `key` attribute to a unique value to help Vue identify elements
+   that belong to list content
 ```
