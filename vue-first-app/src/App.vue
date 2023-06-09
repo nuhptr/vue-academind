@@ -3,7 +3,22 @@ import FriendContact from "./components/FriendContact.vue";
 
 export default {
    data() {
-      return {};
+      return {
+         friends: [
+            {
+               id: "manuel",
+               name: "Manuel Lorenz",
+               phone: "0123 45678 90",
+               email: "manuel@gmail.com",
+            },
+            {
+               id: "julie",
+               name: "Julie Jones",
+               phone: "0987 654 321",
+               email: "julie@gmail.com",
+            },
+         ],
+      };
    },
    components: {
       FriendContact,
@@ -18,15 +33,12 @@ export default {
       </header>
       <ul>
          <FriendContact
-            name="Manuel"
-            phone_number="08776464623"
-            emailAddress="manuel@gmail.com"
-            isFavorite="0" />
-         <FriendContact
-            name="Julie"
-            phone_number="08767654572"
-            emailAddress="julie@gmail.com"
-            isFavorite="0" />
+            v-for="(friend, index) in friends"
+            :key="index"
+            :name="friend.name"
+            :phoneNumber="friend.phone"
+            :emailAddress="friend.email"
+            :isFavorite="false" />
       </ul>
    </section>
 </template>

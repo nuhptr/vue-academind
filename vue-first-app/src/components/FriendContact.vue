@@ -5,7 +5,7 @@ export default {
          type: String,
          required: true,
       },
-      phone_number: {
+      phoneNumber: {
          type: String,
          required: true,
       },
@@ -14,24 +14,18 @@ export default {
          required: true,
       },
       isFavorite: {
-         type: String,
+         type: Boolean,
          required: true,
-         default: "0",
+         default: false,
          // Validating the value of isFavorite
          validator: function (value) {
-            return value === "0" || value === "1";
+            return value === true || value === false;
          },
       },
    },
    data() {
       return {
          detailsAreVisible: false,
-         friend: {
-            id: "manuel",
-            name: "Manuel Lorenz",
-            phone: "0123 45678 90",
-            email: "manuel@localhost.com",
-         },
          friendIsFavorite: this.isFavorite,
       };
    },
@@ -40,11 +34,7 @@ export default {
          this.detailsAreVisible = !this.detailsAreVisible;
       },
       toggleFavorite() {
-         if (this.friendIsFavorite === "1") {
-            this.friendIsFavorite = "0";
-         } else {
-            this.friendIsFavorite = "1";
-         }
+         this.friendIsFavorite = !this.friendIsFavorite;
       },
    },
 };
@@ -54,7 +44,7 @@ export default {
    <li>
       <h2>
          {{ name ? name : "No data" }}
-         {{ friendIsFavorite === "1" ? "(Favorite)" : "" }}
+         {{ friendIsFavorite ? "(Favorite)" : "" }}
       </h2>
       <button style="margin-right: 1rem" @click="toggleFavorite">
          Favorite?
@@ -63,7 +53,7 @@ export default {
       <ul v-if="detailsAreVisible">
          <li>
             <strong>Phone:</strong>
-            {{ phone_number ? phone_number : "No data" }}
+            {{ phoneNumber ? phoneNumber : "No data" }}
          </li>
          <li>
             <strong>Email:</strong>
