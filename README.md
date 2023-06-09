@@ -100,3 +100,17 @@ git clone
    - Bind the `key` attribute to a unique value to help Vue identify elements
    that belong to list content
 ```
+
+## Props
+
+```sh
+   - Props are used to pass data from parent to child components
+   - Props are `read-only` -> Cannot be modified by child component
+   - Props are `validated` -> Vue will warn in console if props are not
+   used as expected
+   ex. name { type: String, required: true, default: 'default name',
+   validator: function(value) { return value.length > 0 } }
+
+   - Supported types: 
+   String, Number, Boolean, Array, Object, Date, Function, Symbol
+```
