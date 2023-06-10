@@ -111,6 +111,26 @@ git clone
    ex. name { type: String, required: true, default: 'default name',
    validator: function(value) { return value.length > 0 } }
 
-   - Supported types: 
+   - Supported types:
    String, Number, Boolean, Array, Object, Date, Function, Symbol
+```
+
+-  Prop Fallthrough
+   You can set props (and listen to events) on a component which you haven't registered inside of that component.
+   BaseButton.vue
+
+```sh
+<template>
+  <button>
+    <slot></slot>
+  </button>
+</template>
+
+<script>export default {}</script>
+This button component (which might exist to set up a button with some default styling) has no special props that would be registered.
+
+Yet, you can use it like this:
+
+<base-button type="submit" @click="doSomething">Click me</base-button>
+Neither the type prop nor a custom click event are defined or used in the BaseButton component.
 ```

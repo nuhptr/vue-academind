@@ -1,6 +1,10 @@
 <script>
 export default {
    props: {
+      id: {
+         type: String,
+         required: true,
+      },
       name: {
          type: String,
          required: true,
@@ -23,10 +27,21 @@ export default {
          },
       },
    },
+   // defining and validating custom events
+   emits: {
+      "toggle-favorite": function (id) {
+         if (id) {
+            console.info("id " + id);
+            return true;
+         } else {
+            console.warn("No id provided for toggle-favorite event");
+            return false;
+         }
+      },
+   },
    data() {
       return {
          detailsAreVisible: false,
-         friendIsFavorite: this.isFavorite,
       };
    },
    methods: {
@@ -34,7 +49,7 @@ export default {
          this.detailsAreVisible = !this.detailsAreVisible;
       },
       toggleFavorite() {
-         this.friendIsFavorite = !this.friendIsFavorite;
+         this.$emit("toggle-favorite", this.id);
       },
    },
 };
@@ -44,7 +59,7 @@ export default {
    <li>
       <h2>
          {{ name ? name : "No data" }}
-         {{ friendIsFavorite ? "(Favorite)" : "" }}
+         {{ isFavorite ? "(Favorite)" : "" }}
       </h2>
       <button style="margin-right: 1rem" @click="toggleFavorite">
          Favorite?

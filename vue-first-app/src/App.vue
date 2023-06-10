@@ -10,18 +10,28 @@ export default {
                name: "Manuel Lorenz",
                phone: "0123 45678 90",
                email: "manuel@gmail.com",
+               isFavorite: true,
             },
             {
                id: "julie",
                name: "Julie Jones",
                phone: "0987 654 321",
                email: "julie@gmail.com",
+               isFavorite: false,
             },
          ],
       };
    },
    components: {
       FriendContact,
+   },
+   methods: {
+      toggleFavoriteStatus(friendId) {
+         const identifiedFriend = this.friends.find(
+            (friend) => friend.id === friendId
+         );
+         identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+      },
    },
 };
 </script>
@@ -33,12 +43,14 @@ export default {
       </header>
       <ul>
          <FriendContact
-            v-for="(friend, index) in friends"
-            :key="index"
+            v-for="friend in friends"
+            :key="friend.id"
+            :id="friend.id"
             :name="friend.name"
             :phoneNumber="friend.phone"
             :emailAddress="friend.email"
-            :isFavorite="false" />
+            :isFavorite="friend.isFavorite"
+            @toggle-favorite="toggleFavoriteStatus" />
       </ul>
    </section>
 </template>
