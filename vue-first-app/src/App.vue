@@ -1,3 +1,24 @@
+<template>
+   <section>
+      <header>
+         <h1>My Friend</h1>
+      </header>
+      <NewFriend @add-contact="addContact" />
+      <ul>
+         <FriendContact
+            v-for="friend in friends"
+            :key="friend.id"
+            :id="friend.id"
+            :name="friend.name"
+            :phoneNumber="friend.phone"
+            :emailAddress="friend.email"
+            :isFavorite="friend.isFavorite"
+            @toggle-favorite="toggleFavoriteStatus"
+            @delete="deleteContact" />
+      </ul>
+   </section>
+</template>
+
 <script>
 import FriendContact from "./components/FriendContact.vue";
 import NewFriend from "./components/NewFriend.vue";
@@ -34,29 +55,26 @@ export default {
          );
          identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
       },
+      addContact(name, phone, email) {
+         const newFriendContact = {
+            id: new Date().toISOString(),
+            name: name,
+            phone: phone,
+            email: email,
+            isFavorite: false,
+         };
+         console.log(newFriendContact);
+         this.friends.push(newFriendContact);
+      },
+      deleteContact(friendId) {
+         const identifiedFriendIndex = this.friends.filter(
+            (friend) => friend.id !== friendId
+         );
+         this.friends.splice(identifiedFriendIndex, 1);
+      },
    },
 };
 </script>
-
-<template>
-   <section>
-      <header>
-         <h1>My Friend</h1>
-      </header>
-      <NewFriend />
-      <ul>
-         <FriendContact
-            v-for="friend in friends"
-            :key="friend.id"
-            :id="friend.id"
-            :name="friend.name"
-            :phoneNumber="friend.phone"
-            :emailAddress="friend.email"
-            :isFavorite="friend.isFavorite"
-            @toggle-favorite="toggleFavoriteStatus" />
-      </ul>
-   </section>
-</template>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");

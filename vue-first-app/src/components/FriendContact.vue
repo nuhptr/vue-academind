@@ -1,3 +1,29 @@
+<template>
+   <li>
+      <h2>
+         {{ name ? name : "No data" }}
+         {{ isFavorite ? "(Favorite)" : "" }}
+      </h2>
+      <button style="margin-right: 1rem" @click="toggleFavorite">
+         Favorite?
+      </button>
+      <button style="margin-right: 1rem" @click="toggleDetails">
+         {{ detailsAreVisible ? "Hide" : "Show" }} Details
+      </button>
+      <ul v-if="detailsAreVisible">
+         <li>
+            <strong>Phone:</strong>
+            {{ phoneNumber ? phoneNumber : "No data" }}
+         </li>
+         <li>
+            <strong>Email:</strong>
+            {{ emailAddress ? emailAddress : "No data" }}
+         </li>
+      </ul>
+      <button @click="$emit('delete', id)">Delete Contact</button>
+   </li>
+</template>
+
 <script>
 export default {
    props: {
@@ -28,17 +54,18 @@ export default {
       },
    },
    // defining and validating custom events
-   emits: {
-      "toggle-favorite": function (id) {
-         if (id) {
-            console.info("id " + id);
-            return true;
-         } else {
-            console.warn("No id provided for toggle-favorite event");
-            return false;
-         }
-      },
-   },
+   emits: ["toggle-favorite", "delete"],
+   // emits: {
+   //    "toggle-favorite": function (id) {
+   //       if (id) {
+   //          console.info("id " + id);
+   //          return true;
+   //       } else {
+   //          console.warn("No id provided for toggle-favorite event");
+   //          return false;
+   //       }
+   //    },
+   // },
    data() {
       return {
          detailsAreVisible: false,
@@ -54,26 +81,3 @@ export default {
    },
 };
 </script>
-
-<template>
-   <li>
-      <h2>
-         {{ name ? name : "No data" }}
-         {{ isFavorite ? "(Favorite)" : "" }}
-      </h2>
-      <button style="margin-right: 1rem" @click="toggleFavorite">
-         Favorite?
-      </button>
-      <button @click="toggleDetails">Show Details</button>
-      <ul v-if="detailsAreVisible">
-         <li>
-            <strong>Phone:</strong>
-            {{ phoneNumber ? phoneNumber : "No data" }}
-         </li>
-         <li>
-            <strong>Email:</strong>
-            {{ emailAddress ? emailAddress : "No data" }}
-         </li>
-      </ul>
-   </li>
-</template>
