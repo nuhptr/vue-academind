@@ -1,30 +1,120 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+   <div>
+      <ActiveElement
+         :topicTitle="activeTopic && activeTopic.title"
+         :text="activeTopic && activeTopic.fullText" />
+      <KnowledgeBase />
+   </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script>
+import ActiveElement from "./components/ActiveElement.vue";
+import KnowledgeBase from "./components/KnowledgeBase.vue";
+
+export default {
+   data() {
+      return {
+         activeTopic: null,
+         topics: [
+            {
+               id: "basics",
+               title: "The Basics",
+               description: "Core Vue basics you have to know",
+               fullText:
+                  "Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!",
+            },
+            {
+               id: "components",
+               title: "Components",
+               description:
+                  "Components are a core concept for building Vue UIs and apps",
+               fullText:
+                  "With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.",
+            },
+         ],
+      };
+   },
+   //  provide to make the topics array available to all components
+   provide() {
+      return {
+         topics: this.topics,
+         selectTopic: this.activateTopic,
+      };
+   },
+   mounted() {
+      setTimeout(() => {
+         this.topics.push({
+            id: "events",
+            title: "events",
+            description: "events are important in vue",
+            fullText: "events allow you to trigger code in demand!",
+         });
+      }, 3000);
+   },
+   methods: {
+      activateTopic(topicId) {
+         this.activeTopic = this.topics.find((topic) => topic.id === topicId);
+      },
+   },
+   components: { ActiveElement, KnowledgeBase },
+};
+</script>
+
+<style>
+* {
+   box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+html {
+   font-family: sans-serif;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+body {
+   margin: 0;
+}
+section {
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+   margin: 2rem auto;
+   max-width: 40rem;
+   padding: 1rem;
+   border-radius: 12px;
+}
+
+ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+}
+
+li {
+   border-radius: 12px;
+   border: 1px solid #ccc;
+   padding: 1rem;
+   width: 15rem;
+   margin: 0 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+h2 {
+   margin: 0.75rem 0;
+   text-align: center;
+}
+
+button {
+   font: inherit;
+   border: 1px solid #c70053;
+   background-color: #c70053;
+   color: white;
+   padding: 0.75rem 2rem;
+   border-radius: 30px;
+   cursor: pointer;
+}
+
+button:hover,
+button:active {
+   background-color: #e24d8b;
+   border-color: #e24d8b;
 }
 </style>
