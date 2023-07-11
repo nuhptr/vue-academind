@@ -30,5 +30,3 @@ export default {
       <UserData @set-data="setUserData" />
    </div>
 </template>
-
-<style></style>
