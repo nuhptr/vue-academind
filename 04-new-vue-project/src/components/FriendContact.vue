@@ -1,27 +1,27 @@
 <template>
-   <li>
-      <h2>
-         {{ name ? name : "No data" }}
-         {{ isFavorite ? "(Favorite)" : "" }}
-      </h2>
-      <button style="margin-right: 1rem" @click="toggleFavorite">
-         Favorite?
-      </button>
-      <button style="margin-right: 1rem" @click="toggleDetails">
-         {{ detailsAreVisible ? "Hide" : "Show" }} Details
-      </button>
-      <ul v-if="detailsAreVisible">
-         <li>
-            <strong>Phone:</strong>
-            {{ phoneNumber ? phoneNumber : "No data" }}
-         </li>
-         <li>
-            <strong>Email:</strong>
-            {{ emailAddress ? emailAddress : "No data" }}
-         </li>
-      </ul>
-      <button @click="$emit('delete', id)">Delete Contact</button>
-   </li>
+   <ul>
+      <li>
+         <h2>
+            {{ name ? name : "No data" }}
+            {{ isFavorite ? "(Favorite)" : "" }}
+         </h2>
+         <button style="margin-right: 1rem" @click="toggleFavorite">Favorite?</button>
+         <button style="margin-right: 1rem" @click="toggleDetails">
+            {{ detailsAreVisible ? "Hide" : "Show" }} Details
+         </button>
+         <ul v-if="detailsAreVisible">
+            <li>
+               <strong>Phone:</strong>
+               {{ phoneNumber ? phoneNumber : "No data" }}
+            </li>
+            <li>
+               <strong>Email:</strong>
+               {{ emailAddress ? emailAddress : "No data" }}
+            </li>
+         </ul>
+         <button @click="$emit('delete', id)">Delete Contact</button>
+      </li>
+   </ul>
 </template>
 
 <script>
