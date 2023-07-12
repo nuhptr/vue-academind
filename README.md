@@ -202,3 +202,7 @@ With v-bind="person" you pass all key-value pairs inside of person as props to t
 
 This is purely optional but it's a little convenience feature that could be helpful.
 ```
+
+### Slots
+
+you can change v-slot: with #[name-slot]
