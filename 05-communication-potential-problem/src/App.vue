@@ -26,8 +26,7 @@ export default {
             {
                id: "components",
                title: "Components",
-               description:
-                  "Components are a core concept for building Vue UIs and apps",
+               description: "Components are a core concept for building Vue UIs and apps",
                fullText:
                   "With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.",
             },

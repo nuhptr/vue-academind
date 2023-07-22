@@ -10,10 +10,12 @@
          <h2>{{ slotProps.item }}</h2>
          <p>{{ slotProps["another-prop"] }}</p>
       </CourseGoals> -->
-      <button>Active Goals</button>
-      <button>Manage Goals</button>
-      <ActiveGoals></ActiveGoals>
-      <ManageGoals></ManageGoals>
+      <!-- Dynamic Comoponent -->
+      <button @click="setSelectedComponents('ActiveGoals')">Active Goals</button>
+      <button @click="setSelectedComponents('ManageGoals')">Manage Goals</button>
+      <!-- <ActiveGoals v-if="selectedComponent === 'ActiveGoals'"></ActiveGoals> -->
+      <!-- <ManageGoals v-if="selectedComponent === 'ManageGoals'"></ManageGoals> -->
+      <component :is="selectedComponent"></component>
    </div>
 </template>
 
@@ -28,12 +30,18 @@ import ManageGoals from "./components/ManageGoals.vue";
 export default {
    data() {
       return {
+         selectedComponent: "ActiveGoals", // 'manage-goals
          activeUser: {
             name: "Maximilian Schwarzmüller",
             description: "Site owner and admin",
             role: "admin",
          },
       };
+   },
+   methods: {
+      setSelectedComponents(cmp) {
+         this.selectedComponent = cmp;
+      },
    },
    components: {
       TheHeader,
