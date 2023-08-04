@@ -19,27 +19,27 @@
 </template>
 
 <script>
-import BaseBadge from "./BaseBadge.vue";
-import BaseCard from "./BaseCard.vue";
+   import BaseBadge from './BaseBadge.vue';
+   import BaseCard from './BaseCard.vue';
 
-export default {
-   components: { BaseBadge, BaseCard },
-};
+   export default {
+      components: { BaseBadge, BaseCard },
+   };
 </script>
 
 <style scoped>
-section h2 {
-   margin: 0.5rem 0;
-   color: #3a3a3a;
-}
-ul {
-   list-style: none;
-   margin: 0;
-   padding: 0;
-   display: flex;
-}
+   section h2 {
+      margin: 0.5rem 0;
+      color: #3a3a3a;
+   }
+   ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+   }
 
-li {
-   margin-right: 1rem;
-}
+   li {
+      margin-right: 1rem;
+   }
 </style>
