@@ -14,19 +14,20 @@
       <!-- Dynamic Comoponent -->
       <button @click="setSelectedComponents('ActiveGoals')">Active Goals</button>
       <button @click="setSelectedComponents('ManageGoals')">Manage Goals</button>
-      <!-- <ActiveGoals v-if="selectedComponent === 'ActiveGoals'"></ActiveGoals> -->
-      <!-- <ManageGoals v-if="selectedComponent === 'ManageGoals'"></ManageGoals> -->
-      <component :is="selectedComponent"></component>
+      <!-- state be saved -->
+      <keep-alive>
+         <component :is="selectedComponent"></component>
+      </keep-alive>
    </div>
 </template>
 
 <script>
-   import BadgeList from './components/BadgeList.vue';
+   import BadgeList from './components/slots/BadgeList.vue';
    import TheHeader from './components/TheHeader.vue';
-   import UserInfo from './components/UserInfo.vue';
-   import CourseGoals from './components/CourseGoals.vue';
-   import ActiveGoals from './components/ActiveGoals.vue';
-   import ManageGoals from './components/ManageGoals.vue';
+   import UserInfo from './components/slots/UserInfo.vue';
+   import CourseGoals from './components/dynamic-component/CourseGoals.vue';
+   import ActiveGoals from './components/dynamic-component/ActiveGoals.vue';
+   import ManageGoals from './components/dynamic-component/ManageGoals.vue';
 
    export default {
       data() {
