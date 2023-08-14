@@ -7,21 +7,21 @@
 </template>
 
 <script>
-export default {
-   data() {
-      return {
-         goals: ["Finish the course", "Learn Vue!", "Help other people"],
-      };
-   },
-};
+   export default {
+      data() {
+         return {
+            goals: ['Finish the course', 'Learn Vue!', 'Help other people'],
+         };
+      },
+   };
 </script>
 
 <style>
-html {
-   font-family: sans-serif;
-}
+   html {
+      font-family: sans-serif;
+   }
 
-body {
-   margin: 0;
-}
+   body {
+      margin: 0;
+   }
 </style>

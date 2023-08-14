@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import BaseBadge from "./BaseBadge.vue";
-import BaseCard from "./BaseCard.vue";
+import BaseBadge from "../UI/BaseBadge.vue";
+import BaseCard from "../UI/BaseCard.vue";
 
 export default {
    props: ["fullName", "infoText", "role"],

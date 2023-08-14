@@ -23,7 +23,7 @@
 
 <script>
    import BadgeList from './components/slots/BadgeList.vue';
-   import TheHeader from './components/TheHeader.vue';
+   import TheHeader from './components/layout/TheHeader.vue';
    import UserInfo from './components/slots/UserInfo.vue';
    import CourseGoals from './components/dynamic-component/CourseGoals.vue';
    import ActiveGoals from './components/dynamic-component/ActiveGoals.vue';
