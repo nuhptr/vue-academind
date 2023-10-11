@@ -1,4 +1,6 @@
-# Getting Started
+# Learn Vue From Udemy
+
+![Vue Image](https://github.com/nuhptr/vuejs-udemy/assets/50306963/f52d3f99-669b-4bf1-89a4-2ae4e1b39e87)
 
 1. Clone the repo
 
