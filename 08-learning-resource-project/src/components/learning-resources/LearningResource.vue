@@ -14,9 +14,7 @@
 </template>
 
 <script>
-   export default {
-      props: ['title', 'description', 'link'],
-   };
+   export default { props: ['title', 'description', 'link'] }
 </script>
 
 <style scoped>
