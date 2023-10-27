@@ -47,7 +47,7 @@ If you have this component: (UserData.vue)
 
 <script>
    export default {
-      props: ['firstname', 'lastname'],
+      props: ["firstname", "lastname"],
    }
 </script>
 ```
@@ -63,7 +63,7 @@ You could use it like this:
    export default {
       data() {
          return {
-            person: { firstname: 'Max', lastname: 'Schwarz' },
+            person: { firstname: "Max", lastname: "Schwarz" },
          }
       },
    }
@@ -81,7 +81,7 @@ But if you have an object which holds the props you want to set as properties, y
    export default {
       data() {
          return {
-            person: { firstname: 'Max', lastname: 'Schwarz' },
+            person: { firstname: "Max", lastname: "Schwarz" },
          }
       },
    }
