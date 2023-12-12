@@ -1,14 +1,16 @@
 # 08-components-communication
 
-This template should help get you started developing with Vue 3 in Vite.
+Taking note of how to communicate between components.
 
-## Recommended IDE Setup
+## Methods of Communication
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+-  [x] Using props
+-  [x] Using $emit("event-name", payload)
 
-## Customize configuration
+## Form
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+-  [x] Define variable in data and use v-model
+-  [ ]
 
 ## Project Setup
 
