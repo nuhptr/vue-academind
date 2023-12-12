@@ -48,3 +48,9 @@ E. Vue behind the scenes
 -  [x] vue lifecycle
 -  [x] working with refs
 -  [x] understanding templates
+
+F. Introduction to Components
+
+-  [x] Introducing components
+-  [x] The why?
+-  [x] Multiple vue apps vs multiple components
