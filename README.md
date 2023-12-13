@@ -52,7 +52,7 @@ F. Introduction to Components
 
 G. First Vue App
 
--  [x] Creating a new project
+-  [x](#first-vue-app) Creating a new project
 -  [x] Creating a new component `FriendsContact.vue`
 
 H. Component communication
@@ -137,3 +137,9 @@ D. Things to Know
 
 `but the different between computed and methods is computed is cached and methods is not cached`
 `tetapi perbedaan antara computed dan methods adalah computed di-cache dan methods tidak di-cache`
+
+### First Vue App
+
+1. Create `pnpm install vue@latest [project-name]`
+2. pnpm install
+3. pnpm run serve
