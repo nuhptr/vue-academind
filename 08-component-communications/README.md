@@ -10,11 +10,11 @@ Taking note of how to communicate between components.
 ## Form
 
 -  [x] Define variable in data and use v-model
--  [ ]
 
 ## Project Setup
 
 ```sh
+pnpm create vue@latest [project-name]
 pnpm install
 ```
 

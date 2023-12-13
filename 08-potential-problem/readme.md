@@ -7,3 +7,9 @@ This is a component communication problem. When you passing props to parent to o
 -  [Provide Inject](https://vuejs.org/v2/api/#provide-inject)
 -  [Vuex](https://vuex.vuejs.org/)
 -  [Event Bus](https://alligator.io/vuejs/global-event-bus/)
+
+## Create project
+
+```bash
+pnpm create vue@latest [project-name]
+```

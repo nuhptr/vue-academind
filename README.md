@@ -4,11 +4,6 @@ Learn Vue from basics to advanced concepts by creating 4 awesome interactive web
 
 ![Vue Image](https://github.com/nuhptr/vuejs-udemy/assets/50306963/f52d3f99-669b-4bf1-89a4-2ae4e1b39e87)
 
-## Shorthands
-
-1. `v-bind: => :anyAttribute`
-2. `v-on: => @anyEvent`
-
 ## Content
 
 A. Getting Started
@@ -18,9 +13,9 @@ A. Getting Started
 
 B. Basics & Core Concepts
 
--  [x] Basics Data Binding
+-  [x](#different-between-watch-computed-and-method) Basics Data Binding
 -  [x] Basics Dynamic Styling
--  [x] Basics Event Handling
+-  [x](#event) Basics Event Handling
 
 C. Conditional Rendering & Lists
 
@@ -54,3 +49,91 @@ F. Introduction to Components
 -  [x] Introducing components
 -  [x] The why?
 -  [x] Multiple vue apps vs multiple components
+
+G. First Vue App
+
+-  [x] Creating a new project
+-  [x] Creating a new component `FriendsContact.vue`
+
+H. Component communication
+
+-  [x] Props
+-  [x] Custom events
+-  [x] Provide & inject
+
+## Shorthands
+
+1. `v-bind: => :anyAttribute`
+2. `v-on: => @anyEvent`
+
+## Notes
+
+### Event
+
+An event is an action or occurrence recognized by software that may be handled by the software.
+
+A. [x] Event Handler
+
+1. Using `v-on` directive to listen to DOM events and run some JavaScript when they’re triggered.
+2. Using `v-on:submit.prevent` to prevent the default behavior of the event.
+3. Using `v-on:click.once` to trigger the event only once.
+4. Using `v-on:click.stop` to stop the propagation of the event.
+5. Using `v-on:keyup.enter` to trigger the event only when the `enter` key is pressed.
+
+B. [x] Call Function
+
+1. Using `v-on:click="functionName"` to call a function when the event is triggered.
+2. Using `v-on:click="functionName($event)"` to pass the event object to the function.
+3. Using `v-on:click="functionName($event, 'value')"` to pass the event object and a value to the function.
+
+C. [x] Form
+
+1. v-model is a directive that sets up two-way binding between the form input and the component state.
+2. Using `v-model="value"` to bind the input value to the component state.
+3. Using `v-model.number="value"` to convert the input value to a number.
+4. Using `v-model.trim="value"` to trim the input value.
+5. Using `v-model.lazy="value"` to update the value after the change event.
+
+D. [x] Computed Property
+
+1. Computed properties are cached based on their reactive dependencies.
+2. Using `computed` to create a computed property.
+3. Using `computed: { fullName() { return this.firstName + ' ' + this.lastName } }` to create a computed property.
+
+### Different between Watch, Computed, and Method
+
+A. Methods
+
+1. Use with event or data binding
+   -  `Gunakan dengan pengikatan peristiwa atau data`
+2. Data binding: method is executed for every 're-render' cycle of component
+   -  `Metode dieksekusi untuk setiap siklus 're-render' komponen`
+3. Use for events / data that really needs to be re-evaluated all the time.
+   -  `Gunakan untuk peristiwa / data yang benar-benar perlu dievaluasi ulang sepanjang waktu.`
+
+B. Computed
+
+1. Use with data binding
+   -  `Gunakan dengan pengikatan data`
+2. Data binding: computed property is only re-evaluated when one of its dependencies has changed
+   -  `Pengikatan data: properti yang dihitung hanya dievaluasi ulang ketika salah satu dependensinya telah berubah`
+3. use for data that depends on other data
+   -  `Gunakan untuk data yang bergantung pada data lain`
+
+C. Watch
+
+1. Not used directly in template
+   -  `Tidak digunakan secara langsung dalam template`
+2. Allows you to run any code in reaction to some changed data
+   -  `Memungkinkan Anda menjalankan kode apa pun sebagai reaksi terhadap beberapa data yang berubah`
+3. Use for any non-data update you want to make
+   -  `Gunakan untuk pembaruan non-data apa pun yang ingin Anda buat`
+
+D. Things to Know
+
+1. data is variable that holds the data from html
+2. computed is variable that holds the data from html and can be used to manipulate the data
+3. methods is variable that holds the function that can be used to manipulate the data
+
+`but the different between computed and methods is computed is cached and methods is not cached`
+`tetapi perbedaan antara computed dan methods adalah computed di-cache dan methods tidak di-cache`
