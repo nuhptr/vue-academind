@@ -1,47 +1,39 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+   import LearningResource from "./components/LearningResource.vue"
+
+   export default {
+      components: { LearningResource },
+      data() {
+         return {
+            storedResources: [
+               {
+                  id: "vue-mastery",
+                  title: "Learn Vue",
+                  description: "Learn Vue in 30 minutes",
+                  link: "https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance",
+               },
+               {
+                  id: "css-mastery",
+                  title: "Learn CSS",
+                  description: "Learn CSS in 30 minutes",
+                  link: "https://www.udemy.com/course/the-complete-css-mastery-course/",
+               },
+               {
+                  id: "html-mastery",
+                  title: "Learn HTML",
+                  description: "Learn HTML in 30 minutes",
+                  link: "https://www.udemy.com/course/html-and-css-basics-to-advance-with-real-website-designs/",
+               },
+            ],
+         }
+      },
+   }
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+   <ul>
+      <LearningResource v-for="response in storedResources" :key="response.id" :data="response" />
+   </ul>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<style></style>
