@@ -61,6 +61,11 @@ H. Component communication
 -  [x] Custom events
 -  [x] Provide & inject
 
+I. Advanced component usage
+
+-  [x](#dynamic-component) Dynamic components & keep-alive
+-  [x](#teleport) Teleport
+
 ## Shorthands
 
 1. `v-bind: => :anyAttribute`
@@ -143,3 +148,18 @@ D. Things to Know
 1. Create `pnpm install vue@latest [project-name]`
 2. pnpm install
 3. pnpm run serve
+
+### Dynamic Component
+
+1. Dynamic component is a component that can be changed dynamically
+2. Dynamic component can be used to change the component based on the data
+3. Dynamic component can be used to change the component based on the route
+
+### Keep Alive
+
+1. Keep alive is a component that can be used to cache the component
+2. Keep alive can be used to cache the component based on the data
+
+### Teleport
+
+1. Teleport is a component that can be used to move the component to another place

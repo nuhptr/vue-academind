@@ -33,7 +33,9 @@
       <!-- <ActiveGoals v-if="selectedComponent === 'ActiveGoals'" />
       <ManageGoals v-if="selectedComponent === 'ManageGoals'" /> -->
       <!-- * So we can simplified with dynamic component -->
-      <component :is="selectedComponent" />
+      <KeepAlive>
+         <component :is="selectedComponent" />
+      </KeepAlive>
    </div>
 </template>
 
