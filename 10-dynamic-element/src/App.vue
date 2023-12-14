@@ -7,15 +7,34 @@
    export default {
       components: { Header, ActiveGoals, ManageGoals },
       data() {
-         return {}
+         return {
+            selectedComponent: "ActiveGoals",
+            activeUser: {
+               name: "Max Maximiliam",
+               description: "I'm a software developer! Site owner and admin of this site.",
+               role: "admin",
+            },
+         }
+      },
+      methods: {
+         setSelectedComponent(component) {
+            this.selectedComponent = component
+         },
       },
    }
 </script>
 
 <template>
-   <Header />
-   <ActiveGoals />
-   <ManageGoals />
+   <div>
+      <Header />
+      <button @click="setSelectedComponent('ActiveGoals')">Active Goals</button>
+      <button @click="setSelectedComponent('ManageGoals')">Manage Goals</button>
+      <!-- * We repeat same process if we use conditional rendering -->
+      <!-- <ActiveGoals v-if="selectedComponent === 'ActiveGoals'" />
+      <ManageGoals v-if="selectedComponent === 'ManageGoals'" /> -->
+      <!-- * So we can simplified with dynamic component -->
+      <component :is="selectedComponent" />
+   </div>
 </template>
 
 <style>
