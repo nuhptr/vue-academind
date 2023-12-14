@@ -1,33 +1,34 @@
 <script>
    import BadgeBase from "./BadgeBase.vue"
+   import Card from "./Card.vue"
 
    export default {
-      components: { BadgeBase },
+      components: { BadgeBase, Card },
    }
 </script>
 
 <template>
    <section>
-      <h2>Available Badges</h2>
-      <ul>
-         <li>
-            <BadgeBase type="admin" caption="ADMIN" />
-         </li>
-         <li>
-            <BadgeBase type="author" caption="AUTHOR" />
-         </li>
-      </ul>
+      <Card>
+         <!-- <template v-slot:header>
+            <h2>Available Badges</h2>
+         </template> -->
+         <!-- * #header same as v-slot="header" -->
+         <template #default>
+            <ul>
+               <li>
+                  <BadgeBase type="admin" caption="ADMIN" />
+               </li>
+               <li>
+                  <BadgeBase type="author" caption="AUTHOR" />
+               </li>
+            </ul>
+         </template>
+      </Card>
    </section>
 </template>
 
 <style scoped>
-   section {
-      margin: 2rem auto;
-      max-width: 30rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-      padding: 1rem;
-   }
    section h2 {
       margin: 0.5rem 0;
       color: #3a3a3a;
