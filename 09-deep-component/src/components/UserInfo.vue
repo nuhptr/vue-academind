@@ -1,5 +1,5 @@
 <script>
-   import BadgeBase from "./BadgeBase.vue"
+   import BadgeBase from "./badge/BadgeBase.vue"
    import Card from "./Card.vue"
 
    export default {
@@ -22,5 +22,3 @@
       </Card>
    </section>
 </template>
-
-<style scoped></style>
