@@ -13,9 +13,9 @@ A. Getting Started
 
 B. Basics & Core Concepts
 
--  [x](#different-between-watch-computed-and-method) Basics Data Binding
+-  [x] [Link](#different-between-watch-computed-and-method) Basics Data Binding
 -  [x] Basics Dynamic Styling
--  [x](#event) Basics Event Handling
+-  [x] [Link](#event) Basics Event Handling
 
 C. Conditional Rendering & Lists
 
@@ -52,7 +52,7 @@ F. Introduction to Components
 
 G. First Vue App
 
--  [x](#first-vue-app) Creating a new project
+-  [x] [Link](#first-vue-app) Creating a new project
 -  [x] Creating a new component `FriendsContact.vue`
 
 H. Component communication
@@ -63,13 +63,13 @@ H. Component communication
 
 I. Advanced component usage
 
--  [x](#dynamic-component) Dynamic components & keep-alive
--  [x](#teleport) Teleport
+-  [x] [Link](#dynamic-component) Dynamic components & keep-alive
+-  [x] [Link](#teleport) Teleport
 
 ## Shorthands
 
-1. `v-bind: => :anyAttribute`
-2. `v-on: => @anyEvent`
+-  [x] `v-bind: => :anyAttribute`
+-  [x] `v-on: => @anyEvent`
 
 ## Notes
 
@@ -77,7 +77,7 @@ I. Advanced component usage
 
 An event is an action or occurrence recognized by software that may be handled by the software.
 
-A. [x] Event Handler
+A. Event Handler
 
 1. Using `v-on` directive to listen to DOM events and run some JavaScript when they’re triggered.
 2. Using `v-on:submit.prevent` to prevent the default behavior of the event.
@@ -85,13 +85,13 @@ A. [x] Event Handler
 4. Using `v-on:click.stop` to stop the propagation of the event.
 5. Using `v-on:keyup.enter` to trigger the event only when the `enter` key is pressed.
 
-B. [x] Call Function
+B. Call Function
 
 1. Using `v-on:click="functionName"` to call a function when the event is triggered.
 2. Using `v-on:click="functionName($event)"` to pass the event object to the function.
 3. Using `v-on:click="functionName($event, 'value')"` to pass the event object and a value to the function.
 
-C. [x] Form
+C. Form
 
 1. v-model is a directive that sets up two-way binding between the form input and the component state.
 2. Using `v-model="value"` to bind the input value to the component state.
@@ -99,7 +99,7 @@ C. [x] Form
 4. Using `v-model.trim="value"` to trim the input value.
 5. Using `v-model.lazy="value"` to update the value after the change event.
 
-D. [x] Computed Property
+D. Computed Property
 
 1. Computed properties are cached based on their reactive dependencies.
 2. Using `computed` to create a computed property.
@@ -136,30 +136,30 @@ C. Watch
 
 D. Things to Know
 
-1. data is variable that holds the data from html
-2. computed is variable that holds the data from html and can be used to manipulate the data
-3. methods is variable that holds the function that can be used to manipulate the data
+-  [x] data is variable that holds the data from html
+-  [x] computed is variable that holds the data from html and can be used to manipulate the data
+-  [x] methods is variable that holds the function that can be used to manipulate the data
 
 `but the different between computed and methods is computed is cached and methods is not cached`
 `tetapi perbedaan antara computed dan methods adalah computed di-cache dan methods tidak di-cache`
 
 ### First Vue App
 
-1. Create `pnpm install vue@latest [project-name]`
-2. pnpm install
-3. pnpm run serve
+-  [x] Create `pnpm install vue@latest [project-name]`
+-  [x] pnpm install
+-  [x] pnpm dev
 
 ### Dynamic Component
 
-1. Dynamic component is a component that can be changed dynamically
-2. Dynamic component can be used to change the component based on the data
-3. Dynamic component can be used to change the component based on the route
+-  [x] Dynamic component is a component that can be changed dynamically
+-  [x] Dynamic component can be used to change the component based on the data
+-  [x] Dynamic component can be used to change the component based on the route
 
 ### Keep Alive
 
-1. Keep alive is a component that can be used to cache the component
-2. Keep alive can be used to cache the component based on the data
+-  [x] Keep alive is a component that can be used to cache the component
+-  [x] Keep alive can be used to cache the component based on the data
 
 ### Teleport
 
-1. Teleport is a component that can be used to move the component to another place
+-  [x] Teleport is a component that can be used to move the component to another place
