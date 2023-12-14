@@ -1,10 +1,10 @@
 <script>
-   import TheHeader from "./components/TheHeader.vue"
+   import Header from "./components/Header.vue"
    import BadgeList from "./components/BadgeList.vue"
    import UserInfo from "./components/UserInfo.vue"
 
    export default {
-      components: { UserInfo, TheHeader, BadgeList, UserInfo },
+      components: { UserInfo, Header, BadgeList, UserInfo },
       data() {
          return {
             activeUser: {
@@ -19,7 +19,7 @@
 
 <template>
    <div>
-      <TheHeader />
+      <Header />
       <BadgeList />
       <UserInfo :fullName="activeUser.name" :infoText="activeUser.description" :role="activeUser.role" />
    </div>
