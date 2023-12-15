@@ -1,5 +1,8 @@
 <script>
+   import RatingControl from "./RatingControl.vue"
+
    export default {
+      components: { RatingControl },
       data() {
          return {
             userName: "",
@@ -7,6 +10,7 @@
             referrer: "",
             interest: [],
             how: null,
+            rating: null,
             confirm: false,
             userNameValidity: "pending",
          }
@@ -38,9 +42,10 @@
 
 <template>
    <form @submit.prevent="submitForm">
-      <div class="form-control">
+      <div class="form-control" :class="{ invalid: userNameValidity === 'invalid' }">
          <label for="user-name">Your Name</label>
          <input id="user-name" name="user-name" type="text" v-model.trim="userName" @blur="validateInput" />
+         <p v-if="userNameValidity === 'invalid'">Please enter a valid name!</p>
       </div>
       <div class="form-control">
          <label for="age">Your Age (Years)</label>
@@ -85,6 +90,9 @@
          </div>
       </div>
       <div class="form-control">
+         <RatingControl v-model="rating" />
+      </div>
+      <div class="form-control">
          <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm" />
          <label for="confirm-terms">Agree to terms of use?</label>
       </div>
@@ -105,6 +113,16 @@
    }
    .form-control {
       margin: 0.5rem 0;
+
+      &.invalid {
+         & input {
+            border-color: red;
+         }
+
+         & label {
+            color: red;
+         }
+      }
    }
    label {
       font-weight: bold;
