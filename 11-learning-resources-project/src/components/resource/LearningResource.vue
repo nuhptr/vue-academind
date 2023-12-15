@@ -5,15 +5,16 @@
    export default {
       components: { BaseCard, BaseButton },
       props: ["data"],
+      inject: ["removeResource"],
    }
 </script>
 
-<template>
+<template></template>
    <li>
       <BaseCard>
          <header>
             <h3>{{ data.title }}</h3>
-            <BaseButton mode="flat">Delete</BaseButton>
+            <BaseButton mode="flat" @click="removeResource(data.id)">Delete</BaseButton>
          </header>
          <p>{{ data.description }}</p>
          <nav>

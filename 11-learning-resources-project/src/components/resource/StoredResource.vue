@@ -8,8 +8,8 @@
 </script>
 
 <template>
-   <ul v-for="response in storedResources">
-      <LearningResource :key="response.id" :data="response" />
+   <ul v-for="data in storedResources">
+      <LearningResource :key="data.id" :data="data" />
    </ul>
 </template>
 

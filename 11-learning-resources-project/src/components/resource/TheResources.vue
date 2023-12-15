@@ -11,19 +11,19 @@
             selectedTab: "StoredResource",
             storedResources: [
                {
-                  id: "vue-mastery",
+                  id: 1,
                   title: "Learn Vue",
                   description: "Learn Vue in 30 minutes",
                   link: "https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance",
                },
                {
-                  id: "css-mastery",
+                  id: 2,
                   title: "Learn CSS",
                   description: "Learn CSS in 30 minutes",
                   link: "https://www.udemy.com/course/the-complete-css-mastery-course/",
                },
                {
-                  id: "html-mastery",
+                  id: 3,
                   title: "Learn HTML",
                   description: "Learn HTML in 30 minutes",
                   link: "https://www.udemy.com/course/html-and-css-basics-to-advance-with-real-website-designs/",
@@ -34,11 +34,29 @@
       provide() {
          return {
             storedResources: this.storedResources,
+            selectedTab: this.selectedTab,
+            // function
+            addResource: this.addResource,
+            removeResource: this.removeResource,
          }
       },
       methods: {
          setSelectTab(tab) {
             this.selectedTab = tab
+         },
+         addResource(title, description, url) {
+            const newResource = {
+               id: new Date().toISOString(),
+               title: title,
+               description: description,
+               link: url,
+            }
+            this.storedResources.unshift(newResource)
+            this.selectedTab = "StoredResource"
+         },
+         removeResource(id) {
+            this.storedResources = this.storedResources.filter((resource) => resource.id !== id)
+            console.log(this.storedResources)
          },
       },
       computed: {
@@ -59,5 +77,7 @@
       </BaseButton>
       <BaseButton @click="setSelectTab('AddResource')" :mode="addResButtonMode">Add Resources</BaseButton>
    </BaseCard>
-   <component :is="selectedTab" />
+   <KeepAlive>
+      <component :is="selectedTab" />
+   </KeepAlive>
 </template>
