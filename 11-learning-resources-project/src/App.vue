@@ -1,8 +1,9 @@
 <script>
-   import LearningResource from "./components/LearningResource.vue"
+   import StoredResource from "./components/resource/StoredResource.vue"
+   import Theheader from "./components/layout/TheHeader.vue"
 
    export default {
-      components: { LearningResource },
+      components: { StoredResource, Theheader },
       data() {
          return {
             storedResources: [
@@ -31,9 +32,20 @@
 </script>
 
 <template>
-   <ul>
-      <LearningResource v-for="response in storedResources" :key="response.id" :data="response" />
-   </ul>
+   <Theheader title="RememberMe" />
+   <StoredResource :key="storedResources.id" :resources="storedResources" />
 </template>
 
-<style></style>
+<style>
+   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+   * {
+      box-sizing: border-box;
+   }
+   html {
+      font-family: "Roboto", sans-serif;
+   }
+   body {
+      margin: 0;
+   }
+</style>
