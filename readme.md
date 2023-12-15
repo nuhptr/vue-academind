@@ -66,6 +66,11 @@ I. Advanced component usage
 -  [x] [Link](#dynamic-component) Dynamic components & keep-alive
 -  [x] [Link](#teleport) Teleport
 
+J. Form
+
+-  [x] [Link](#forms) v-model in depth
+-  [x] passing v-model to custom components
+
 ## Shorthands
 
 -  [x] `v-bind: => :anyAttribute`
