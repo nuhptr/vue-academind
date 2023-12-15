@@ -9,7 +9,7 @@
    }
 </script>
 
-<template></template>
+<template>
    <li>
       <BaseCard>
          <header>
