@@ -1,12 +1,10 @@
 <script>
+   import BaseButton from "../ui/BaseButton.vue"
    import BaseCard from "../ui/BaseCard.vue"
 
    export default {
-      components: { BaseCard },
+      components: { BaseCard, BaseButton },
       props: ["data"],
-      data() {
-         return {}
-      },
    }
 </script>
 
@@ -15,7 +13,7 @@
       <BaseCard>
          <header>
             <h3>{{ data.title }}</h3>
-            <button>Delete</button>
+            <BaseButton mode="flat">Delete</BaseButton>
          </header>
          <p>{{ data.description }}</p>
          <nav>
