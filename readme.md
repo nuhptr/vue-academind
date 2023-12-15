@@ -163,3 +163,9 @@ D. Things to Know
 ### Teleport
 
 -  [x] Teleport is a component that can be used to move the component to another place
+
+### Forms
+
+-  [x] `v-model.lazy` means that the input's value will be updated after the `change` event is triggered instead of `input` event.
+-  [x] `v-model.number` means that the input's value will be converted to a number type.
+-  [x] `v-model.trim` means that the input's value will be trimmed automatically.
