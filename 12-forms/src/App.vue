@@ -13,8 +13,6 @@
 <style scoped>
    * {
       box-sizing: border-box;
-   }
-   html {
       font-family: sans-serif;
    }
    body {
