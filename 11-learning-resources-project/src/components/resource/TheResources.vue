@@ -55,8 +55,8 @@
             this.selectedTab = "StoredResource"
          },
          removeResource(id) {
-            this.storedResources = this.storedResources.filter((resource) => resource.id !== id)
-            console.log(this.storedResources)
+            const resIndex = this.storedResources.findIndex((res) => res.id === id)
+            this.storedResources.splice(resIndex, 1)
          },
       },
       computed: {
