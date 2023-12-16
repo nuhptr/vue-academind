@@ -2,6 +2,8 @@
    import BaseButton from "../UI/BaseButton.vue"
    import BaseCard from "../UI/BaseCard.vue"
 
+   import axios from "axios"
+
    export default {
       components: { BaseCard, BaseButton },
       data() {
@@ -9,21 +11,35 @@
             enteredName: "",
             chosenRating: null,
             invalidInput: false,
+            error: null,
          }
       },
-      emits: ["surveySubmit"],
+      // emits: ["surveySubmit"],
       methods: {
-         submitSurvey() {
+         async submitSurvey() {
             if (this.enteredName === "" || !this.chosenRating) {
                this.invalidInput = true
                return
             }
             this.invalidInput = false
 
-            this.$emit("surveySubmit", {
-               userName: this.enteredName,
-               rating: this.chosenRating,
-            })
+            // this.$emit("surveySubmit", {
+            //    userName: this.enteredName,
+            //    rating: this.chosenRating,
+            // })
+
+            try {
+               await axios.post(
+                  "https://vue-http-e7d2b-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json",
+                  {
+                     name: this.enteredName,
+                     rating: this.chosenRating,
+                  }
+               )
+            } catch (error) {
+               console.error(error)
+               this.error = "Error getting data - please try again later."
+            }
 
             this.enteredName = ""
             this.chosenRating = null

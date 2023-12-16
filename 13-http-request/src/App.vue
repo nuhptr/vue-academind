@@ -4,28 +4,28 @@
 
    export default {
       components: { LearningSurvey, UserExperiences },
-      data() {
-         return {
-            savedSurveyResults: [],
-         }
-      },
-      methods: {
-         storeSurvey(surveyData) {
-            const surveyResult = {
-               id: new Date().toISOString(),
-               name: surveyData.userName,
-               rating: surveyData.rating,
-            }
-            this.savedSurveyResults.push(surveyResult)
-            console.log(surveyResult)
-         },
-      },
+      // data() {
+      //    return {
+      //       savedSurveyResults: [],
+      //    }
+      // },
+      // methods: {
+      //    storeSurvey(surveyData) {
+      //       const surveyResult = {
+      //          id: new Date().toISOString(),
+      //          name: surveyData.userName,
+      //          rating: surveyData.rating,
+      //       }
+      //       this.savedSurveyResults.push(surveyResult)
+      //       console.log(surveyResult)
+      //    },
+      // },
    }
 </script>
 
 <template>
-   <LearningSurvey @surveySubmit="storeSurvey" />
-   <UserExperiences :results="savedSurveyResults" />
+   <LearningSurvey />
+   <UserExperiences />
 </template>
 
 <style>
