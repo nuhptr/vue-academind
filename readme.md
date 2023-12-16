@@ -71,6 +71,11 @@ J. Form
 -  [x] [Link](#forms) v-model in depth
 -  [x] passing v-model to custom components
 
+K. HTTP Requests
+
+-  [x] [Link](https://firebase.google.com/?hl=id) Firebase as a backend
+-  [x] [Link](https://axios-http.com/docs/intro) Axios for HTTP requests
+
 ## Shorthands
 
 -  [x] `v-bind: => :anyAttribute`
