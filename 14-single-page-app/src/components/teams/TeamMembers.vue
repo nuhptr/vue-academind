@@ -10,19 +10,30 @@
             members: [],
          }
       },
+      methods: {
+         loadTeamMembers(route) {
+            const teamId = route.params.teamId
+            const selectedTeam = this.teams.find((team) => team.id === teamId)
+            const members = selectedTeam.members
+
+            const selectedMembers = []
+            for (const member of members) {
+               const user = this.users.find((user) => user.id === member)
+               selectedMembers.push(user)
+            }
+
+            this.members = selectedMembers
+            this.teamName = selectedTeam.name
+         },
+      },
       created() {
-         const teamId = this.$route.params.teamId
-         const selectedTeam = this.teams.find((team) => team.id === teamId)
-         const members = selectedTeam.members
-
-         const selectedMembers = []
-         for (const member of members) {
-            const user = this.users.find((user) => user.id === member)
-            selectedMembers.push(user)
-         }
-
-         this.members = selectedMembers
-         this.teamName = selectedTeam.name
+         //* this is for get the team id from the url
+         this.loadTeamMembers(this.$route)
+      },
+      watch: {
+         $route(newRoute) {
+            this.loadTeamMembers(newRoute)
+         },
       },
    }
 </script>
