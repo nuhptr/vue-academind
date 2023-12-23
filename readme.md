@@ -76,6 +76,10 @@ K. HTTP Requests
 -  [x] [Link](https://firebase.google.com/?hl=id) Firebase as a backend
 -  [x] [Link](https://axios-http.com/docs/intro) Axios for HTTP requests
 
+J. Single Page Application
+
+-  [x] [Link](https://router.vuejs.org/installation.html) - `pnpm add vue-router@4` to add router in vue
+
 ## Shorthands
 
 -  [x] `v-bind: => :anyAttribute`
@@ -156,6 +160,7 @@ D. Things to Know
 ### First Vue App
 
 -  [x] Create `pnpm install vue@latest [project-name]`
+-  [ ] then you can choose project setting do you want
 -  [x] pnpm install
 -  [x] pnpm dev
 
@@ -164,6 +169,14 @@ D. Things to Know
 -  [x] Dynamic component is a component that can be changed dynamically
 -  [x] Dynamic component can be used to change the component based on the data
 -  [x] Dynamic component can be used to change the component based on the route
+
+e.g:
+
+```javascript
+<main>
+      <component :is="activePage" />
+</main>
+```
 
 ### Keep Alive
 
