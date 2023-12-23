@@ -4,10 +4,17 @@
    export default {
       components: { UserItem },
       inject: ["users"],
+      methods: {
+         confirmInput() {
+            // do something
+            this.$router.push("/teams")
+         },
+      },
    }
 </script>
 
 <template>
+   <button @click="confirmInput">Confirm</button>
    <ul>
       <UserItem v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role" />
    </ul>

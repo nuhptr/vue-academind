@@ -1,6 +1,6 @@
 <script>
    export default {
-      props: ["name", "memberCount"],
+      props: ["id", "name", "memberCount"],
    }
 </script>
 
@@ -8,7 +8,7 @@
    <li>
       <h3>{{ name }}</h3>
       <div class="team-members">{{ memberCount }} members</div>
-      <a href="#">View Members</a>
+      <RouterLink :to="'/teams/' + id">View Details</RouterLink>
    </li>
 </template>
 

@@ -9,7 +9,12 @@
 
 <template>
    <ul>
-      <TeamsItem v-for="team in teams" :key="team.id" :name="team.name" :memberCount="team.members.length" />
+      <TeamsItem
+         v-for="team in teams"
+         :id="team.id"
+         :key="team.id"
+         :name="team.name"
+         :memberCount="team.members.length" />
    </ul>
 </template>
 
