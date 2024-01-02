@@ -18,5 +18,3 @@
       <button @click="selectTopic(id)">Learn More</button>
    </li>
 </template>
-
-<style></style>

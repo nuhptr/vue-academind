@@ -48,7 +48,6 @@
       list-style: none;
       margin: 0.5rem 0;
       padding: 0;
-      display: flex;
       gap: 1rem;
       justify-content: start;
       align-items: center;

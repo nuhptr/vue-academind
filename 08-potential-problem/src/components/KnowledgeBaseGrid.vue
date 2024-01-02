@@ -17,5 +17,3 @@
          :description="topic.description" />
    </ul>
 </template>
-
-<style></style>

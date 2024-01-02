@@ -2,7 +2,7 @@
    import KnowledgeBaseGrid from "./KnowledgeBaseGrid.vue"
 
    export default {
-      components: { KnowledgeGrid, KnowledgeBaseGrid },
+      components: { KnowledgeBaseGrid },
       data() {
          return {}
       },
@@ -15,5 +15,3 @@
       <KnowledgeBaseGrid />
    </section>
 </template>
-
-<style></style>

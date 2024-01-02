@@ -1,5 +1,3 @@
-<script></script>
-
 <template>
    <header>
       <h1>More on Vue Components</h1>

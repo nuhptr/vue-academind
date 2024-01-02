@@ -10,5 +10,3 @@
       <p>{{ text }}</p>
    </section>
 </template>
-
-<style></style>

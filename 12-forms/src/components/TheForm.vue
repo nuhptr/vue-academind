@@ -19,7 +19,6 @@
          submitForm() {
             if (!this.confirm) {
                alert("Please agree to the terms and conditions!")
-               return
             } else {
                //** Send the data to the server
                const formData = {

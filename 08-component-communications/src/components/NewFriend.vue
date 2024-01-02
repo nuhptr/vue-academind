@@ -38,5 +38,3 @@
       <button>Add Contact</button>
    </form>
 </template>
-
-<style></style>
