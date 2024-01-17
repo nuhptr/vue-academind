@@ -33,6 +33,7 @@ export default {
    watch: {
       $route(newRoute) {
          this.loadTeamMembers(newRoute)
+         console.log(this.$route.query)
       },
    },
 }

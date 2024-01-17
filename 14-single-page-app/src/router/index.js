@@ -4,6 +4,8 @@ import TeamsList from "@/components/teams/TeamsList.vue"
 import UserList from "@/components/users/UserList.vue"
 import TeamMembers from "@/components/teams/TeamMembers.vue"
 import NotFound from "@/components/nav/NotFound.vue"
+import TeamsFooter from "@/components/teams/TeamsFooter.vue"
+import UserFooter from "@/components/users/UserFooter.vue"
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,14 +17,18 @@ const router = createRouter({
          //* our-domain.com/teams => TeamsList
          name: "teams",
          path: "/teams",
-         component: TeamsList,
+         component: { default: TeamsList, footer: TeamsFooter },
          children: [
             //* Nested routes => our-domain.com/teams/t1
             // passing data and props is the way to pass data to a component
             { name: "team-members", path: ":teamId", component: TeamMembers, props: true },
          ],
       },
-      { path: "/users", name: "users", component: UserList },
+      {
+         path: "/users",
+         name: "users",
+         component: { default: UserList, footer: UserFooter },
+      },
       // catch all route (404)
       { path: "/:notFound(.*)", component: NotFound },
    ],

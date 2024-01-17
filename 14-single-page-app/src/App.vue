@@ -1,8 +1,9 @@
 <script>
+import { RouterView } from "vue-router";
 import TheNavigation from "./components/nav/TheNavigation.vue"
 
 export default {
-   components: { TheNavigation },
+   components: { TheNavigation, RouterView },
    data() {
       return {
          activePage: "teamsList",
@@ -40,6 +41,9 @@ export default {
    <main>
       <RouterView />
    </main>
+   <footer>
+      <RouterView name="footer" />
+   </footer>
 </template>
 
 <style>

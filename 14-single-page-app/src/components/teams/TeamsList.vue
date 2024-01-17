@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-   <RouterView></RouterView>
+   <RouterView />
    <ul>
       <TeamsItem v-for="team in teams" :id="team.id" :key="team.id" :name="team.name" :memberCount="team.members.length" />
    </ul>
