@@ -3,7 +3,12 @@ export default {
    props: ["id", "name", "memberCount"],
    computed: {
       teamMembersLink() {
-         return "/teams/" + this.id
+         // return "/teams/" + this.id
+         // return { path: "/teams" + this.id }
+         // using query params (http://localhost:8080/teams/1?sort=asc)
+         return {
+            name: "team-members", params: { teamId: this.id }, query: { sort: "asc" }
+         }
       },
    },
 }
