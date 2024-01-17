@@ -1,16 +1,16 @@
 <script>
-   import UserItem from "./UserItem.vue"
+import UserItem from "./UserItem.vue"
 
-   export default {
-      components: { UserItem },
-      inject: ["users"],
-      methods: {
-         confirmInput() {
-            // do something
-            this.$router.push("/teams")
-         },
+export default {
+   components: { UserItem },
+   inject: ["users"],
+   methods: {
+      confirmInput() {
+         // do something
+         this.$router.push("/teams")
       },
-   }
+   },
+}
 </script>
 
 <template>
@@ -21,10 +21,10 @@
 </template>
 
 <style>
-   ul {
-      list-style: none;
-      margin: 2rem auto;
-      max-width: 20rem;
-      padding: 0;
-   }
+ul {
+   list-style: none;
+   margin: 2rem auto;
+   max-width: 20rem;
+   padding: 0;
+}
 </style>
