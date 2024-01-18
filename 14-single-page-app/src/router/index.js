@@ -33,6 +33,14 @@ const router = createRouter({
       { path: "/:notFound(.*)", component: NotFound },
    ],
    linkActiveClass: "active",
+   // scroll behavior is used to scroll to the top of the page when we navigate to a new page
+   scrollBehavior(to, from, savedPosition) {
+      console.log(to, from, savedPosition)
+      if (savedPosition) {
+         return savedPosition
+      }
+      return { left: 0, top: 0 }
+   },
 })
 
 export default router
