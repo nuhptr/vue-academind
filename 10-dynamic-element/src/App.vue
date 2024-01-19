@@ -1,27 +1,27 @@
 <script>
-   import Header from "./components/Header.vue"
-   // import CourseGoals from "./components/CourseGoals.vue"
-   import ActiveGoals from "./components/ActiveGoals.vue"
-   import ManageGoals from "./components/ManageGoals.vue"
+import Header from "./components/Header.vue"
+// import CourseGoals from "./components/CourseGoals.vue"
+import ActiveGoals from "./components/ActiveGoals.vue"
+import ManageGoals from "./components/ManageGoals.vue"
 
-   export default {
-      components: { Header, ActiveGoals, ManageGoals },
-      data() {
-         return {
-            selectedComponent: "ActiveGoals",
-            activeUser: {
-               name: "Max Maximiliam",
-               description: "I'm a software developer! Site owner and admin of this site.",
-               role: "admin",
-            },
-         }
-      },
-      methods: {
-         setSelectedComponent(component) {
-            this.selectedComponent = component
+export default {
+   components: { Header, ActiveGoals, ManageGoals },
+   data() {
+      return {
+         selectedComponent: "ActiveGoals",
+         activeUser: {
+            name: "Max Maximiliam",
+            description: "I'm a software developer! Site owner and admin of this site.",
+            role: "admin",
          },
+      }
+   },
+   methods: {
+      setSelectedComponent(component) {
+         this.selectedComponent = component
       },
-   }
+   },
+}
 </script>
 
 <template>
@@ -40,10 +40,11 @@
 </template>
 
 <style>
-   html {
-      font-family: sans-serif;
-   }
-   body {
-      margin: 0;
-   }
+html {
+   font-family: sans-serif;
+}
+
+body {
+   margin: 0;
+}
 </style>
