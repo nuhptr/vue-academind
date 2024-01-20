@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import TeamsList from "@/components/teams/TeamsList.vue"
-import UserList from "@/components/users/UserList.vue"
+import TeamsList from "@/pages/TeamsList.vue"
+import UserList from "@/pages/UserList.vue"
 import TeamMembers from "@/components/teams/TeamMembers.vue"
-import NotFound from "@/components/nav/NotFound.vue"
-import TeamsFooter from "@/components/teams/TeamsFooter.vue"
-import UserFooter from "@/components/users/UserFooter.vue"
+import NotFound from "@/pages/NotFound.vue"
+import TeamsFooter from "@/pages/TeamsFooter.vue"
+import UserFooter from "@/pages/UserFooter.vue"
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +17,8 @@ const router = createRouter({
          //* our-domain.com/teams => TeamsList
          name: "teams",
          path: "/teams",
+         //* meta is used to add meta data to a route
+         meta: { needsAuth: true },
          component: { default: TeamsList, footer: TeamsFooter },
          children: [
             //* Nested routes => our-domain.com/teams/t1
@@ -51,6 +53,12 @@ const router = createRouter({
 router.beforeEach(function (to, from, next) {
    console.log("Global route beforeEach")
    console.log(to, from)
+   if (to.meta.needsAuth) {
+      console.log("Needs auth!")
+      next()
+   } else {
+      next()
+   }
    // if (to.name === "team-members") {
    //    next()
    // } else {
