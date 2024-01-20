@@ -30,6 +30,13 @@ export default {
       //* this is for get the team id from the url
       this.loadTeamMembers(this.$route)
    },
+   // navigation guards
+   beforeRouteUpdate(to, from, next) {
+      console.log("beforeRouteUpdate TeamMembers")
+      console.log(to, from)
+      // this.loadTeamMembers(to.params.teamId)
+      next()
+   },
    watch: {
       $route(newRoute) {
          this.loadTeamMembers(newRoute)

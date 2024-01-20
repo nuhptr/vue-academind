@@ -10,6 +10,15 @@ export default {
          this.$router.push("/teams")
       },
    },
+   // navigation guards
+   beforeRouteEnter(to, from, next) {
+      console.log("beforeRouteEnter UsersList")
+      console.log(to, from)
+      next()
+   },
+   unmounted() {
+      console.log("unmounted UsersList")
+   },
 }
 </script>
 
