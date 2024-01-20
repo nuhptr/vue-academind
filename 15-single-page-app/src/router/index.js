@@ -4,8 +4,8 @@ import TeamsList from "@/pages/TeamsList.vue"
 import UserList from "@/pages/UserList.vue"
 import TeamMembers from "@/components/teams/TeamMembers.vue"
 import NotFound from "@/pages/NotFound.vue"
-import TeamsFooter from "@/pages/TeamsFooter.vue"
-import UserFooter from "@/pages/UserFooter.vue"
+// import TeamsFooter from "@/pages/TeamsFooter.vue"
+// import UserFooter from "@/pages/UserFooter.vue"
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,7 +19,9 @@ const router = createRouter({
          path: "/teams",
          //* meta is used to add meta data to a route
          meta: { needsAuth: true },
-         component: { default: TeamsList, footer: TeamsFooter },
+         //* error if you use like this
+         // component: { default: TeamsList, footer: TeamsFooter },
+         component: TeamsList,
          children: [
             //* Nested routes => our-domain.com/teams/t1
             // passing data and props is the way to pass data to a component
@@ -29,7 +31,8 @@ const router = createRouter({
       {
          path: "/users",
          name: "users",
-         component: { default: UserList, footer: UserFooter },
+         // component: { default: UserList, footer: UserFooter },
+         components: UserList,
          beforeEnter(to, from, next) {
             console.log("users route scope beforeEnter")
             console.log(to, from)
