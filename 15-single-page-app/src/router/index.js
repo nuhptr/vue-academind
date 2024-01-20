@@ -28,19 +28,41 @@ const router = createRouter({
          path: "/users",
          name: "users",
          component: { default: UserList, footer: UserFooter },
+         beforeEnter(to, from, next) {
+            console.log("users route scope beforeEnter")
+            console.log(to, from)
+            next()
+         },
       },
       // catch all route (404)
       { path: "/:notFound(.*)", component: NotFound },
    ],
    linkActiveClass: "active",
    // scroll behavior is used to scroll to the top of the page when we navigate to a new page
-   scrollBehavior(to, from, savedPosition) {
-      console.log(to, from, savedPosition)
+   scrollBehavior(_, _2, savedPosition) {
+      // console.log(to, from, savedPosition)
       if (savedPosition) {
          return savedPosition
       }
       return { left: 0, top: 0 }
    },
+})
+
+router.beforeEach(function (to, from, next) {
+   console.log("Global route beforeEach")
+   console.log(to, from)
+   // if (to.name === "team-members") {
+   //    next()
+   // } else {
+   //    next({ name: "team-members", params: { teamId: "t2" } })
+   // }
+   next()
+})
+
+router.afterEach(function (to, from) {
+   // sending analytics data
+   console.log("Global route afterEach")
+   console.log(to, from)
 })
 
 export default router
