@@ -1,23 +1,23 @@
 <script>
-   export default {
-      data() {
-         return {
-            enteredName: "",
-            enteredPhone: "",
-            enteredEmail: "",
-         }
+export default {
+   data() {
+      return {
+         enteredName: "",
+         enteredPhone: "",
+         enteredEmail: "",
+      }
+   },
+   emits: ["addContact"],
+   methods: {
+      submitData() {
+         const contactData = { name: this.enteredName, phone: this.enteredPhone, email: this.enteredEmail }
+         this.$emit("addContact", contactData)
+         this.enteredName = ""
+         this.enteredPhone = ""
+         this.enteredEmail = ""
       },
-      emits: ["addContact"],
-      methods: {
-         submitData() {
-            const contactData = { name: this.enteredName, phone: this.enteredPhone, email: this.enteredEmail }
-            this.$emit("addContact", contactData)
-            this.enteredName = ""
-            this.enteredPhone = ""
-            this.enteredEmail = ""
-         },
-      },
-   }
+   },
+}
 </script>
 
 <template>
