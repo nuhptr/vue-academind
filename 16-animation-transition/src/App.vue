@@ -4,9 +4,42 @@ import BaseModal from './components/BaseModal.vue';
 export default {
     components: { BaseModal },
     data() {
-        return { dialogIsVisible: false };
+        return {
+            dialogIsVisible: false,
+            isAnimateBlock: false,
+            paragraphIsVisible: false,
+            usersAreVisible: false
+        };
     },
     methods: {
+        beforeEnter(element) {
+            console.log('beforeEnter');
+            console.log(element)
+        },
+        beforeLeave(element) {
+            console.log('beforeLeave');
+            console.log(element)
+        },
+        enter(element) {
+            console.log('enter');
+            console.log(element)
+        },
+        afterEnter(element) {
+            console.log('afterEnter');
+            console.log(element)
+        },
+        showUsers() {
+            this.usersAreVisible = true;
+        },
+        hideUsers() {
+            this.usersAreVisible = false;
+        },
+        animateBlock() {
+            this.isAnimateBlock = true;
+        },
+        toogleParagraph() {
+            this.paragraphIsVisible = !this.paragraphIsVisible;
+        },
         showDialog() {
             this.dialogIsVisible = true;
         },
@@ -20,12 +53,29 @@ export default {
 <template>
     <div class="container">
         <div class="block"></div>
-        <button>Animate</button>
+        <button @click="animateBlock" :class="{ animate: isAnimateBlock }">Animate</button>
     </div>
-    <BaseModal @close="hideDialog" v-if="dialogIsVisible">
+
+    <div class="container">
+        <transition name="para" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter"
+            @before-leave="beforeLeave">
+            <p v-if="paragraphIsVisible">This is only sometimes visible...</p>
+        </transition>
+        <button @click="toogleParagraph">Toogle Paragraph</button>
+    </div>
+
+    <div class="container">
+        <transition name="fade-button" mode="out-in">
+            <button @click="showUsers" v-if="!usersAreVisible">Show User</button>
+            <button @click="hideUsers" v-else>Hide User</button>
+        </transition>
+    </div>
+
+    <BaseModal @close="hideDialog" :open="dialogIsVisible">
         <p>This is a test dialog!</p>
         <button class="btn-close" @click="hideDialog">Close it!</button>
     </BaseModal>
+
     <div class="container">
         <button @click="showDialog">Show Dialog</button>
     </div>
@@ -69,6 +119,7 @@ button:active {
     height: 8rem;
     background-color: #290033;
     margin-bottom: 2rem;
+    /* transition: transform 0.3s ease-out; */
 }
 
 .container {
@@ -81,5 +132,74 @@ button:active {
     padding: 2rem;
     border: 2px solid #ccc;
     border-radius: 12px;
+}
+
+.animate {
+    /* transform: translateX(-150px); */
+    animation: slide-fade 0.3s ease-out forwards;
+}
+
+.fade-button-enter-from,
+.fade-button-leave-to {
+    opacity: 0;
+}
+
+.fade-button-enter-active {
+    transition: opacity 0.3s ease-out;
+}
+
+.fade-button-leave-active {
+    transition: opacity 0.3s ease-in;
+}
+
+.fade-button-enter-to,
+.fade-button-leave-from {
+    opacity: 1;
+}
+
+.para-enter-from {
+    /* opacity: 0; */
+    /* transform: translateY(-30px); */
+}
+
+.para-enter-active {
+    /* transition: all 0.3s ease-out; */
+    /* wihout forwards because auto remove */
+    animation: slide-scale 0.3s ease-out;
+}
+
+.para-leave-to {
+    /*
+    opacity: 1;
+    transform: translateY(0);
+     */
+}
+
+.para-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.para-leave-active {
+    transition: all 0.3s ease-in;
+}
+
+.para-leave-to {
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+@keyframes slide-scale {
+    0% {
+        transform: translateX(0) scale(1);
+    }
+
+    70% {
+        transform: translateX(-120px) scale(1.1);
+    }
+
+    100% {
+        transform: translateX(-150px) scale(1);
+    }
 }
 </style>
