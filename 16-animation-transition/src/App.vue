@@ -1,32 +1,62 @@
 <script>
 import BaseModal from './components/BaseModal.vue';
+import UserList from './components/UserList.vue';
 
 export default {
-    components: { BaseModal },
+    components: { BaseModal, UserList },
     data() {
         return {
             dialogIsVisible: false,
             isAnimateBlock: false,
             paragraphIsVisible: false,
-            usersAreVisible: false
+            usersAreVisible: false,
+            enterinterval: null,
+            leaveinterval: null,
         };
     },
     methods: {
+        enterCancelled(element) {
+            console.log(element)
+            clearInterval(this.enterInterval);
+        },
+        leaveCancelled(element) {
+            console.log(element)
+            clearInterval(this.leaveInterval);
+        },
         beforeEnter(element) {
             console.log('beforeEnter');
+            console.log(element)
+            element.style.opacity = 0;
+        },
+        enter(element, done) {
+            console.log('enter');
+            console.log(element)
+            let round = 1;
+            this.leaveInterval = setInterval(() => {
+                element.style.opacity = 1 - round * 0.01;
+                round++
+                if (round > 10) {
+                    clearInterval(this.leaveInterval);
+                    done()
+                }
+            }, 20);
+        },
+        afterEnter(element) {
+            console.log('afterEnter');
             console.log(element)
         },
         beforeLeave(element) {
             console.log('beforeLeave');
             console.log(element)
+            element.style.opacity = 1;
         },
-        enter(element) {
-            console.log('enter');
-            console.log(element)
+        leave(el) {
+            console.log('leave');
+            console.log(el)
         },
-        afterEnter(element) {
-            console.log('afterEnter');
-            console.log(element)
+        afterLeave(el) {
+            console.log('afterLeave');
+            console.log(el)
         },
         showUsers() {
             this.usersAreVisible = true;
@@ -51,20 +81,30 @@ export default {
 </script>
 
 <template>
+    <RouterView v-slot="slotProps">
+        <Transition name="route" mode="out-in">
+            <component :is="slotProps.Component"></component>
+        </Transition>
+    </RouterView>
+    <!-- <div class="container">
+        <UserList></UserList>
+    </div>
     <div class="container">
         <div class="block"></div>
         <button @click="animateBlock" :class="{ animate: isAnimateBlock }">Animate</button>
-    </div>
+    </div> -->
 
-    <div class="container">
-        <transition name="para" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter"
-            @before-leave="beforeLeave">
+    <!-- <div class="container">
+        // disable css animation :css="false"
+        <transition :css="false" name="para" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter"
+            @before-leave="beforeLeave" @leave="leave" @after-leave="afterLeave" @enter-cancelled="enterCancelled"
+            @leave-cancelled="leaveCancelled">
             <p v-if="paragraphIsVisible">This is only sometimes visible...</p>
         </transition>
         <button @click="toogleParagraph">Toogle Paragraph</button>
-    </div>
+    </div> -->
 
-    <div class="container">
+    <!-- <div class="container">
         <transition name="fade-button" mode="out-in">
             <button @click="showUsers" v-if="!usersAreVisible">Show User</button>
             <button @click="hideUsers" v-else>Hide User</button>
@@ -78,7 +118,7 @@ export default {
 
     <div class="container">
         <button @click="showDialog">Show Dialog</button>
-    </div>
+    </div> -->
 </template>  
 
 <style>
@@ -139,6 +179,18 @@ button:active {
     animation: slide-fade 0.3s ease-out forwards;
 }
 
+/* Routing transition */
+.route-enter-active,
+.route-enter-from {
+    animation: slide-scale 0.4s ease-out;
+}
+
+.route-enter-to {}
+
+.route-leave-active {
+    animation: slide-scale 0.4s ease-in reverse;
+}
+
 .fade-button-enter-from,
 .fade-button-leave-to {
     opacity: 0;
@@ -165,7 +217,7 @@ button:active {
 .para-enter-active {
     /* transition: all 0.3s ease-out; */
     /* wihout forwards because auto remove */
-    animation: slide-scale 0.3s ease-out;
+    animation: slide-scale 2s ease-out;
 }
 
 .para-leave-to {
