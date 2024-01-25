@@ -2,7 +2,7 @@
    export default {
       computed: {
          counter() {
-            return this.$store.getters.finalCounter
+            return this.$store.getters.normalizedCounter
          },
       },
    }
@@ -10,4 +10,5 @@
 
 <template>
    <h3>{{ counter }}</h3>
+   <p>We do more...</p>
 </template>
