@@ -1,3 +1,4 @@
+//* App part 1
 const app = Vue.createApp({
    data() {
       return {
@@ -47,6 +48,7 @@ setTimeout(function () {
    app.unmount()
 }, 3000)
 
+//* App part 2
 const app2 = Vue.createApp({
    template: `
     <p>{{ favoriteMeal }}</p>

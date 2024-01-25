@@ -92,14 +92,16 @@ button {
   }
 }
 
-#log ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+#log {
+  & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-#log li {
-  margin: 0.5rem 0;
+  & li {
+    margin: 0.5rem 0;
+  }
 }
 
 .log--player {
