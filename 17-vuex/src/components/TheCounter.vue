@@ -1,7 +1,3 @@
-<template>
-   <h3>{{ counter }}</h3>
-</template>
-
 <script>
    export default {
       computed: {
@@ -11,3 +7,7 @@
       },
    }
 </script>
+
+<template>
+   <h3>{{ counter }}</h3>
+</template>
