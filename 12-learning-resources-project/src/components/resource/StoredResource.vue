@@ -1,10 +1,10 @@
 <script>
-import LearningResource from "./LearningResource.vue"
+   import LearningResource from "./LearningResource.vue"
 
-export default {
-   components: { LearningResource },
-   inject: ["storedResources"],
-}
+   export default {
+      components: { LearningResource },
+      inject: ["storedResources"],
+   }
 </script>
 
 <template>
@@ -14,10 +14,10 @@ export default {
 </template>
 
 <style>
-ul {
-   list-style: none;
-   padding: 0;
-   margin: auto;
-   max-width: 40rem;
-}
+   ul {
+      list-style: none;
+      padding: 0;
+      margin: auto;
+      max-width: 40rem;
+   }
 </style>

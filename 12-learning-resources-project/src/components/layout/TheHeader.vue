@@ -1,9 +1,7 @@
 <script>
-export default {
-   props: {
-      title: { type: String, required: true },
-   },
-}
+   export default {
+      props: { title: { type: String, required: true } },
+   }
 </script>
 
 <template>
@@ -13,17 +11,17 @@ export default {
 </template>
 
 <style scoped>
-header {
-   width: 100%;
-   height: 5rem;
-   background-color: #640032;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+   header {
+      width: 100%;
+      height: 5rem;
+      background-color: #640032;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-   & h1 {
-      color: white;
-      margin: 0;
+      & h1 {
+         color: white;
+         margin: 0;
+      }
    }
-}
 </style>
