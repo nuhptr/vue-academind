@@ -144,12 +144,12 @@
       background-color: #810032;
       color: white;
       cursor: pointer;
-   }
 
-   button:hover,
-   button:active {
-      background-color: #a80b48;
-      border-color: #a80b48;
+      &:hover,
+      &:active {
+         background-color: #a80b48;
+         border-color: #a80b48;
+      }
    }
 
    .btn-close {
