@@ -1,9 +1,5 @@
-<script>
-import TheForm from "./components/TheForm.vue"
-
-export default {
-   components: { TheForm },
-}
+<script setup>
+   import TheForm from "./components/TheForm.vue"
 </script>
 
 <template>
@@ -11,13 +7,13 @@ export default {
 </template>
 
 <style scoped>
-* {
-   box-sizing: border-box;
-   font-family: sans-serif;
-}
+   * {
+      box-sizing: border-box;
+      font-family: sans-serif;
+   }
 
-body {
-   margin: 0;
-   background-color: #292929;
-}
+   body {
+      margin: 0;
+      background-color: #292929;
+   }
 </style>
