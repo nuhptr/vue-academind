@@ -1,42 +1,43 @@
 <script>
-import UserItem from "../components/users/UserItem.vue"
+   import UserItem from "../components/users/UserItem.vue"
 
-export default {
-   components: { UserItem },
-   inject: ["users"],
-   data() {
-      return { changesSaved: false }
-   },
-   methods: {
-      confirmInput() {
-         // do something
-         this.$router.push("/teams")
+   export default {
+      components: { UserItem },
+      inject: ["users"],
+      data() {
+         return { changesSaved: false }
       },
-      saveChanges() {
-         this.changesSaved = true
-      }
-   },
-   // navigation guards
-   beforeRouteEnter(to, from, next) {
-      console.log("beforeRouteEnter UsersList")
-      console.log(to, from)
-      next()
-   },
-   // navigation guards
-   beforeRouteLeave(to, from, next) {
-      console.log("beforeRouteLeave UsersList")
-      console.log(to, from)
-      if (this.changesSaved) {
+      methods: {
+         confirmInput() {
+            // do something
+            this.$router.push("/teams")
+         },
+         saveChanges() {
+            this.changesSaved = true
+         },
+      },
+      // navigation guards
+      beforeRouteEnter(to, from, next) {
+         console.log("beforeRouteEnter UsersList")
+         console.log(to, from)
+
          next()
-      } else {
-         const userWantToExit = confirm("Are you sure? You got unsaved changes!")
-         next(userWantToExit)
-      }
-   },
-   unmounted() {
-      console.log("unmounted UsersList")
-   },
-}
+      },
+      // navigation guards
+      beforeRouteLeave(to, from, next) {
+         console.log("beforeRouteLeave UsersList")
+         console.log(to, from)
+
+         if (this.changesSaved) next()
+         else {
+            const userWantToExit = confirm("Are you sure? You got unsaved changes!")
+            next(userWantToExit)
+         }
+      },
+      unmounted() {
+         console.log("unmounted UsersList")
+      },
+   }
 </script>
 
 <template>
@@ -48,10 +49,10 @@ export default {
 </template>
 
 <style>
-ul {
-   list-style: none;
-   margin: 2rem auto;
-   max-width: 20rem;
-   padding: 0;
-}
+   ul {
+      list-style: none;
+      margin: 2rem auto;
+      max-width: 20rem;
+      padding: 0;
+   }
 </style>

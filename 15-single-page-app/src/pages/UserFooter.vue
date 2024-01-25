@@ -1,5 +1,3 @@
-<script></script>
-
 <template>
-    <h2>User Footer</h2>
+   <h2>User Footer</h2>
 </template>

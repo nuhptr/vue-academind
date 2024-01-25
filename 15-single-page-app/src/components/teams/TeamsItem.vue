@@ -1,17 +1,19 @@
 <script>
-export default {
-   props: ["id", "name", "memberCount"],
-   computed: {
-      teamMembersLink() {
-         // return "/teams/" + this.id
-         // return { path: "/teams" + this.id }
-         // using query params (http://localhost:8080/teams/1?sort=asc)
-         return {
-            name: "team-members", params: { teamId: this.id }, query: { sort: "asc" }
-         }
+   export default {
+      props: ["id", "name", "memberCount"],
+      computed: {
+         teamMembersLink() {
+            // return "/teams/" + this.id
+            // return { path: "/teams" + this.id }
+            // using query params (http://localhost:8080/teams/1?sort=asc)
+            return {
+               name: "team-members",
+               params: { teamId: this.id },
+               query: { sort: "asc" },
+            }
+         },
       },
-   },
-}
+   }
 </script>
 
 <template>
@@ -23,32 +25,32 @@ export default {
 </template>
 
 <style scoped>
-li {
-   margin: 1rem 0;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-   border-radius: 12px;
-   padding: 1rem;
+   li {
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      border-radius: 12px;
+      padding: 1rem;
 
-   .team-members {
-      margin: 0.5rem 0;
+      .team-members {
+         margin: 0.5rem 0;
+      }
+
+      & h3 {
+         margin: 0.5rem 0;
+         font-size: 1.25rem;
+      }
    }
 
-   & h3 {
-      margin: 0.5rem 0;
-      font-size: 1.25rem;
-   }
-}
+   a {
+      text-decoration: none;
+      color: white;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background-color: #11005c;
 
-a {
-   text-decoration: none;
-   color: white;
-   display: inline-block;
-   padding: 0.5rem 1.5rem;
-   background-color: #11005c;
-
-   &:hover,
-   &:active {
-      background-color: #220a8d;
+      &:hover,
+      &:active {
+         background-color: #220a8d;
+      }
    }
-}
 </style>
