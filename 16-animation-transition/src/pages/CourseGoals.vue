@@ -1,5 +1,3 @@
-<script></script>
-
 <template>
    <div class="container">
       <h2>Course Goals</h2>

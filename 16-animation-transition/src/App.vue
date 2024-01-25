@@ -31,7 +31,9 @@
          enter(element, done) {
             console.log("enter")
             console.log(element)
+
             let round = 1
+
             this.leaveInterval = setInterval(() => {
                element.style.opacity = 1 - round * 0.01
                round++

@@ -17,6 +17,7 @@ const router = createRouter({
 import App from "./App.vue"
 
 const app = createApp(App)
+
 app.use(router)
 
 router.isReady().then(function () {
