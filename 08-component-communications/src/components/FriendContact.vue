@@ -1,35 +1,33 @@
 <script>
-export default {
-   // define the props that this component expects to receive
-   props: {
-      id: { type: String, required: true },
-      name: { type: String, required: true },
-      phoneNumber: { type: String, required: true },
-      emailAddress: { type: String, required: true },
-      isFavorite: {
-         type: Boolean,
-         required: false,
-         default: false,
-         // validator: (value) => value === "0" || value === "1",
+   export default {
+      // define the props that this component expects to receive
+      props: {
+         id: { type: String, required: true },
+         name: { type: String, required: true },
+         phoneNumber: { type: String, required: true },
+         emailAddress: { type: String, required: true },
+         isFavorite: {
+            type: Boolean,
+            required: false,
+            default: false,
+            // validator: (value) => value === "0" || value === "1",
+         },
       },
-   },
 
-   //* define the events that this component emits
-   emits: ["toogleFavorite", "deleteFriend"],
-   data() {
-      return {
-         detailsAreVisible: false,
-      }
-   },
-   methods: {
-      toogleFavorite() {
-         this.$emit("toogleFavorite", this.id)
+      //* define the events that this component emits
+      emits: ["toogleFavorite", "deleteFriend"],
+      data() {
+         return { detailsAreVisible: false }
       },
-      toggleDetails() {
-         this.detailsAreVisible = !this.detailsAreVisible
+      methods: {
+         toogleFavorite() {
+            this.$emit("toogleFavorite", this.id)
+         },
+         toggleDetails() {
+            this.detailsAreVisible = !this.detailsAreVisible
+         },
       },
-   },
-}
+   }
 </script>
 
 <template>
