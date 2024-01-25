@@ -1,23 +1,21 @@
 <script>
-import ErrorAlert from "./ErrorAlert.vue"
+   import ErrorAlert from "./ErrorAlert.vue"
 
-export default {
-   components: { ErrorAlert },
-   data() {
-      return {
-         inputIsInvalid: false,
-      }
-   },
-   methods: {
-      setGoal() {
-         const enteredValue = this.$refs.goal.value
-         if (enteredValue === "") this.inputIsInvalid = true
+   export default {
+      components: { ErrorAlert },
+      data() {
+         return { inputIsInvalid: false }
       },
-      confirmError() {
-         this.inputIsInvalid = false
+      methods: {
+         setGoal() {
+            const enteredValue = this.$refs.goal.value
+            if (enteredValue === "") this.inputIsInvalid = true
+         },
+         confirmError() {
+            this.inputIsInvalid = false
+         },
       },
-   },
-}
+   }
 </script>
 
 <template>
