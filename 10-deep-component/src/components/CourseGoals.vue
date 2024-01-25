@@ -1,11 +1,9 @@
 <script>
-export default {
-   data() {
-      return {
-         goals: ["Finish the course", "Learn Vue!"],
-      }
-   },
-}
+   export default {
+      data() {
+         return { goals: ["Finish the course", "Learn Vue!"] }
+      },
+   }
 </script>
 
 <template>
@@ -17,9 +15,9 @@ export default {
 </template>
 
 <style>
-ul {
-   list-style: none;
-   margin: 0;
-   padding: 0;
-}
+   ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+   }
 </style>

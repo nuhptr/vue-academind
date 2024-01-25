@@ -28,10 +28,7 @@
 
       // Menyediakan data ke komponen-komponen di bawahnya
       provide() {
-         return {
-            topics: this.topics,
-            selectTopic: this.activateTopic,
-         }
+         return { topics: this.topics, selectTopic: this.activateTopic }
       },
       methods: {
          activateTopic(topicId) {

@@ -1,11 +1,11 @@
 <script>
-import BadgeBase from "./badge/BadgeBase.vue"
-import Card from "./Card.vue"
+   import BadgeBase from "./badge/BadgeBase.vue"
+   import Card from "./Card.vue"
 
-export default {
-   components: { BadgeBase, Card },
-   props: ["fullName", "infoText", "role"],
-}
+   export default {
+      components: { BadgeBase, Card },
+      props: ["fullName", "infoText", "role"],
+   }
 </script>
 
 <template>
@@ -16,6 +16,7 @@ export default {
             <h3>{{ fullName }}</h3>
             <BadgeBase :type="role" :caption="role.toUpperCase()" />
          </template>
+
          <template v-slot:default>
             <p>{{ infoText }}</p>
          </template>

@@ -10,6 +10,4 @@ This is a component communication problem. When you passing props to parent to o
 
 ## Create project
 
-```bash
 pnpm create vue@latest [project-name]
-```
