@@ -1,3 +1,4 @@
+//* 1. Create a new Vue instance
 const app = Vue.createApp({
    data() {
       return {

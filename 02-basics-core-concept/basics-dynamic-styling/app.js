@@ -1,3 +1,4 @@
+//* Dynamic Styling with CSS Classes
 const app = Vue.createApp({
    data() {
       return {

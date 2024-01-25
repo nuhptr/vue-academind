@@ -1,3 +1,4 @@
+//* Data Binding
 const app = Vue.createApp({
    data() {
       return {

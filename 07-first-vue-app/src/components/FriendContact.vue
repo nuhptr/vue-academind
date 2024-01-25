@@ -1,22 +1,17 @@
 <script>
-export default {
-   data() {
-      return {
-         dataAreVisible: false,
-         friend: {
-            id: "manuel",
-            name: "Manuel Lorenz",
-            phone: "01234 5678 991",
-            email: "",
-         },
-      }
-   },
-   methods: {
-      toggleDetails() {
-         this.dataAreVisible = !this.dataAreVisible
+   export default {
+      data() {
+         return {
+            dataAreVisible: false,
+            friend: { id: "manuel", name: "Manuel Lorenz", phone: "01234 5678 991", email: "" },
+         }
       },
-   },
-}
+      methods: {
+         toggleDetails() {
+            this.dataAreVisible = !this.dataAreVisible
+         },
+      },
+   }
 </script>
 
 <template>
