@@ -2,7 +2,8 @@
    export default {
       computed: {
          counter() {
-            return this.$store.getters.normalizedCounter
+            // When use namespaced modules, you need to specify the module name
+            return this.$store.getters["numbers/normalizedCounter"]
          },
       },
    }

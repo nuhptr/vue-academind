@@ -7,7 +7,9 @@
          // this.$store.dispatch("increment")
          // },
          // ...mapActions(["increment", "increase"]),
-         ...mapActions({ inc: "increment", increase: "increase" }),
+
+         // When use namespaced modules, you need to specify the module name
+         ...mapActions("numbers", { inc: "increment", increase: "increase" }),
       },
    }
 </script>

@@ -10,7 +10,9 @@
       methods: {
          addOne() {
             // this.$store.commit("increase", { value: 10 })
-            this.$store.dispatch({ type: "increase", value: 10 })
+
+            // When use namespaced modules, you need to specify the module name
+            this.$store.dispatch({ type: "numbers/increase", value: 10 })
          },
       },
       computed: {
