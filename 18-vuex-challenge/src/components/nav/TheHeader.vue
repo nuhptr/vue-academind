@@ -1,3 +1,17 @@
+<script>
+   import BaseBadge from "../ui/BaseBadge.vue"
+
+   export default {
+      components: { BaseBadge },
+      // inject: ["isLoggedIn", "login", "logout", "cart"],
+      computed: {
+         cartQuantity() {
+            return this.$store.getters["cart/quantity"]
+         },
+      },
+   }
+</script>
+
 <template>
    <header>
       <h1>
@@ -5,10 +19,12 @@
       </h1>
       <nav>
          <ul>
-            <li><RouterLink to="/products">Products</RouterLink></li>
             <li>
-               <router-link to="/cart">Cart</router-link>
-               <base-badge mode="elegant">{{ cart.qty }}</base-badge>
+               <RouterLink to="/products">Products</RouterLink>
+            </li>
+            <li>
+               <RouterLink to="/cart">Cart</RouterLink>
+               <BaseBadge mode="elegant">{{ cartQuantity }}</BaseBadge>
             </li>
             <li v-if="isLoggedIn"><RouterLink to="/admin">Admin</RouterLink></li>
          </ul>
@@ -19,12 +35,6 @@
       </div>
    </header>
 </template>
-
-<script>
-   export default {
-      inject: ["isLoggedIn", "login", "logout", "cart"],
-   }
-</script>
 
 <style scoped>
    header {

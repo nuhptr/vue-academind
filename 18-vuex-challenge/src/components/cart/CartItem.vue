@@ -1,6 +1,6 @@
 <script>
    export default {
-      inject: ["removeProductFromCart"],
+      // inject: ["removeProductFromCart"],
       props: ["prodId", "title", "image", "price", "qty"],
       computed: {
          itemTotal() {
@@ -8,8 +8,9 @@
          },
       },
       methods: {
+         // replace inject provider with global store (vuex)
          remove() {
-            this.removeProductFromCart(this.prodId)
+            this.$store.dispatch("cart/removeFromCart", { productId: this.prodId })
          },
       },
    }

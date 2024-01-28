@@ -2,8 +2,14 @@
    import ProductItem from "../components/products/ProductItem.vue"
 
    export default {
-      inject: ["products"],
+      // inject: ["products"],
       components: { ProductItem },
+      computed: {
+         // replace provide inject
+         allProducts() {
+            return this.$store.getters["prod/products"]
+         },
+      },
    }
 </script>
 
@@ -11,13 +17,13 @@
    <section>
       <ul>
          <ProductItem
-            v-for="prod in products"
-            :key="prod.id"
-            :id="prod.id"
-            :title="prod.title"
-            :image="prod.image"
-            :description="prod.description"
-            :price="prod.price" />
+            v-for="product in allProducts"
+            :key="product.id"
+            :id="product.id"
+            :title="product.title"
+            :image="product.image"
+            :description="product.description"
+            :price="product.price" />
       </ul>
    </section>
 </template>

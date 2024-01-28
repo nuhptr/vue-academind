@@ -5,7 +5,7 @@ import UserCart from "../pages/UserCart.vue"
 import ShopAdmin from "../pages/ShopAdmin.vue"
 
 const router = createRouter({
-   history: createWebHistory,
+   history: createWebHistory(),
    routes: [
       { path: "/", redirect: "/products" },
       { path: "/products", component: ProductList },
