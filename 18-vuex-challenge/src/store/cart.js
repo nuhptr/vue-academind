@@ -49,7 +49,7 @@ export default {
    },
    //* Get custom data
    getters: {
-      cartItems(state) {
+      products(state) {
          return state.items
       },
       cartTotal(state) {
