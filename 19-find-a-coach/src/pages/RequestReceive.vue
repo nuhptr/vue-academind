@@ -1,5 +1,3 @@
 <script></script>
 
-<template>
-    Request
-</template>
+<template>Request</template>
