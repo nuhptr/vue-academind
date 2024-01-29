@@ -32,6 +32,7 @@
          &:hover,
          &.router-link-active {
             border: 1px solid #f391e3;
+            border-radius: 100px;
          }
       }
 
