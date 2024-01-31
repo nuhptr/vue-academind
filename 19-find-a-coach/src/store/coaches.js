@@ -5,8 +5,8 @@ export default {
          coaches: [
             {
                id: "c1",
-               firstName: "Maximilian",
-               lastName: "Schwarzmüller",
+               firstName: "Adi",
+               lastName: "Nugraha Putra",
                areas: ["frontend", "backend", "career"],
                description:
                   "I'm Maximilian and I've worked as a freelance web developer for years. Let me help you become a developer as well!",
@@ -24,14 +24,36 @@ export default {
          ],
       }
    },
-   mutations: {},
-   actions: {},
+   mutations: {
+      registerCoach(state, payload) {
+         state.coaches.push(payload)
+      },
+   },
+   actions: {
+      registerCoach(context, data) {
+         const coachData = {
+            id: context.rootGetters.userId,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            areas: data.areas,
+            description: data.description,
+            hourlyRate: data.hourlyRate,
+         }
+
+         context.commit("registerCoach", coachData)
+      },
+   },
    getters: {
       coaches(state) {
          return state.coaches
       },
       hasCoaches(state) {
          return state.coaches && state.coaches.length > 0
+      },
+      isCoach(_, getters, _2, rootGetters) {
+         const coaches = getters.coaches
+         const userId = rootGetters.userId
+         return coaches.some((coach) => coach.id === userId)
       },
    },
 }
