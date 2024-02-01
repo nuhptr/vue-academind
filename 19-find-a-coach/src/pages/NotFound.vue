@@ -1,6 +1,16 @@
+<script>
+   import BaseCard from "@/components/BaseCard.vue"
+
+   export default {
+      components: { BaseCard },
+   }
+</script>
+
 <template>
-   <div>
-      <h1>Page not found!</h1>
-      <router-link to="/">Back to home</router-link>
-   </div>
+   <section>
+      <BaseCard>
+         <h2>Page not found!</h2>
+         <p>This page could not be found - maybe check out all our<router-link to="/coaches"> coaches </router-link></p>
+      </BaseCard>
+   </section>
 </template>
