@@ -1,10 +1,39 @@
+<script>
+   import BaseButton from "./BaseButton.vue"
+
+   export default {
+      components: { BaseButton },
+      computed: {
+         isLoggedIn() {
+            return this.$store.getters["auth/isAuthenticated"]
+         },
+      },
+      methods: {
+         logout() {
+            this.$store.dispatch("auth/logout")
+            this.$router.replace("/coaches")
+         },
+      },
+   }
+</script>
+
 <template>
    <header>
       <nav>
          <h1><RouterLink to="/">Find a Coach</RouterLink></h1>
          <ul>
-            <li><RouterLink to="/coaches">All Coaches</RouterLink></li>
-            <li><RouterLink to="/request">Requests</RouterLink></li>
+            <li>
+               <RouterLink to="/coaches">All Coaches</RouterLink>
+            </li>
+            <li v-if="isLoggedIn">
+               <RouterLink to="/request">Requests</RouterLink>
+            </li>
+            <li v-else>
+               <RouterLink to="/auth">Login</RouterLink>
+            </li>
+            <li v-if="isLoggedIn">
+               <BaseButton @click="logout">Logout</BaseButton>
+            </li>
          </ul>
       </nav>
    </header>

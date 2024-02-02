@@ -39,7 +39,11 @@ export default {
       },
       async fetchRequest(context) {
          const coachId = context.rootGetters.userId
-         const response = await fetch(`https://vue-http-demo-85e9e.firebaseio.com/requests/${coachId}.json`)
+         const token = context.rootGetters.token
+
+         const response = await fetch(
+            `https://vue-http-demo-85e9e.firebaseio.com/requests/${coachId}.json?auth=` + token
+         )
          const responseData = await response.json()
 
          if (!response.ok) {

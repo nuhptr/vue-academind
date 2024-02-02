@@ -25,6 +25,28 @@ export default {
          ],
       }
    },
+   getters: {
+      coaches(state) {
+         return state.coaches
+      },
+      hasCoaches(state) {
+         return state.coaches && state.coaches.length > 0
+      },
+      isCoach(_, getters, _2, rootGetters) {
+         const coaches = getters.coaches
+         const userId = rootGetters.userId
+         return coaches.some((coach) => coach.id === userId)
+      },
+      shouldUpdate(state) {
+         const lastFetch = state.lastFetch
+
+         if (!lastFetch) {
+            return true
+         }
+         const currentTimeStamp = new Date().getTime()
+         return (currentTimeStamp - lastFetch) / 1000 > 60 // this means 1 minute
+      },
+   },
    mutations: {
       registerCoach(state, payload) {
          state.coaches.push(payload)
@@ -47,10 +69,12 @@ export default {
             hourlyRate: data.hourlyRate,
          }
 
-         const response = await fetch(`https://vue-http-demo-85e9e.firebaseio.com/coaches/${userId}.json`, {
-            method: "PUT",
-            body: JSON.stringify(coachData),
-         })
+         const token = context.rootGetters.token
+
+         const response = await fetch(
+            `https://vue-http-demo-85e9e.firebaseio.com/coaches/${userId}.json?auth=` + token,
+            { method: "PUT", body: JSON.stringify(coachData) }
+         )
          // const responseData = await response.json()
          if (!response.ok) {
             // error ...
@@ -86,28 +110,6 @@ export default {
 
          context.commit("setCoaches", coaches)
          context.commit("setFetchTimestamp")
-      },
-   },
-   getters: {
-      coaches(state) {
-         return state.coaches
-      },
-      hasCoaches(state) {
-         return state.coaches && state.coaches.length > 0
-      },
-      isCoach(_, getters, _2, rootGetters) {
-         const coaches = getters.coaches
-         const userId = rootGetters.userId
-         return coaches.some((coach) => coach.id === userId)
-      },
-      shouldUpdate(state) {
-         const lastFetch = state.lastFetch
-
-         if (!lastFetch) {
-            return true
-         }
-         const currentTimeStamp = new Date().getTime()
-         return (currentTimeStamp - lastFetch) / 1000 > 60 // this means 1 minute
       },
    },
 }

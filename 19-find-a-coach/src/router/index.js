@@ -7,6 +7,8 @@ import CoachRegister from "@/pages/CoachRegister.vue"
 import ContactCoach from "@/pages/ContactCoach.vue"
 import RequestReceive from "@/pages/RequestReceive.vue"
 
+import store from "@/store"
+
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
    routes: [
@@ -30,16 +32,34 @@ const router = createRouter({
       {
          path: "/register",
          component: CoachRegister,
+         meta: { requiresAuth: true }, // navigation guard
+      },
+      {
+         path: "/auth",
+         component: () => import("@/pages/UserAuth.vue"), // Lazy loading
+         meta: { requiresUnauth: true }, // navigation guard
       },
       {
          path: "/request",
          component: RequestReceive,
+         meta: { requiresAuth: true }, // navigation guards
       },
       {
          path: "/:notFound(.*)",
          component: NotFound,
       },
    ],
+})
+
+// Navigation guards
+router.beforeEach((to, _, next) => {
+   if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+      next("/auth")
+   } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
+      next("/coaches")
+   } else {
+      next()
+   }
 })
 
 export default router
