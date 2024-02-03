@@ -1,85 +1,60 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+   <main>
+      <user-list :users="activeUsers" @list-projects="selectUser" />
+      <projects-list :user="selectedUser" />
+   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script setup>
+   import { ref } from "vue"
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+   import UserList from "@/components/UserList.vue"
+   import ProjectsList from "@/components/ProjectsList.vue"
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+   import USER_DATA from "./dummy-data"
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+   let selectedUser = ref(null)
+   let activeUsers = ref(USER_DATA)
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+   // function to select a user
+   function selectUser(uid) {
+      selectedUser.value = activeUsers.value.find((user) => user.id === uid)
+   }
+</script>
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+<style>
+   * {
+      box-sizing: border-box;
+   }
+   html {
+      font-family: sans-serif;
+   }
+   body {
+      margin: 0;
+   }
 
-nav a:first-of-type {
-  border: 0;
-}
+   main {
+      display: flex;
+      justify-content: space-around;
+   }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+   button {
+      font: inherit;
+      border: 1px solid #00006b;
+      background-color: transparent;
+      color: #00006b;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      margin: 0.5rem 0.5rem 0.5rem 0;
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+      &:hover,
+      &:active {
+         background-color: #efefff;
+      }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+      &.selected {
+         background-color: #00006b;
+         color: white;
+      }
+   }
 </style>
