@@ -6,6 +6,16 @@
       created() {
          this.$store.dispatch("tryLogin")
       },
+      computed: {
+         didAutoLogout() {
+            return this.$store.getters["auth/didAutoLogout"]
+         },
+      },
+      watch: {
+         didAutoLogout(curValue, oldValue) {
+            if (curValue && curValue !== oldValue) this.$router.replace("/auth")
+         },
+      },
    }
 </script>
 
