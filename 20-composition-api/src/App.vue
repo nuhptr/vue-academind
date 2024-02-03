@@ -1,21 +1,28 @@
 <template>
    <section class="container">
+      <!-- 
       <h2>{{ userName }}</h2>
       <h3>{{ age }}</h3>
       <p>{{ bio.name }}</p>
-      <p>{{ bio.age }}</p>
+      <p>{{ bio.age }}</p> 
+      -->
+
+      <UserData :first-name="firstName" :last-name="lastName" :age="age" />
       <button @click="changeAge">Change Age</button>
 
       <div>
          <input type="text" placeholder="First Name" v-model="firstName" />
-         <input type="text" placeholder="Last Name" v-model="lastName" />
+         <input type="text" placeholder="Last Name" ref="lastNameInput" />
+         <button @click="setLastName">Set Last Name</button>
       </div>
       <p>{{ fullName }}</p>
    </section>
 </template>
 
 <script setup>
-   import { ref, reactive, isReactive, isRef, computed, watch } from "vue"
+   import { ref, reactive, isReactive, isRef, computed, watch, provide } from "vue"
+
+   import UserData from "./components/UserData.vue"
 
    const userName = ref("Maximilian")
    const age = ref(31)
@@ -23,6 +30,11 @@
 
    const firstName = ref("")
    const lastName = ref("")
+   const lastNameInput = ref(null)
+   const uAge = ref(23)
+
+   // to provide the value to the child component
+   provide("userAge", uAge)
 
    console.log(isRef(userName))
    console.log(isRef(age))
@@ -39,6 +51,10 @@
 
    const changeAge = () => {
       age.value += 1
+   }
+
+   const setLastName = () => {
+      lastName.value = this.$refs.lastNameInput.value
    }
 
    watch([age, userName], (newValue, oldValue) => {
