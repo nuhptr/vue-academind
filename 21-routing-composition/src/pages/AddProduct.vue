@@ -21,6 +21,9 @@
 
 <script setup>
    import { ref, inject } from "vue"
+   import { useRouter } from "vue-router"
+
+   const router = useRouter()
 
    const addProduct = inject("addProduct")
 
@@ -34,6 +37,8 @@
          description: enteredDescription.value,
          price: enteredPrice.value,
       })
+
+      router.push("/products")
    }
 </script>
 
