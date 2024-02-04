@@ -16,8 +16,6 @@
 </template>
 
 <script setup>
-   import { defineProps, defineEmits } from "vue"
-
    const props = defineProps(["title"])
    const emits = defineEmits(["close"])
 
@@ -50,6 +48,10 @@
       background-color: white;
       z-index: 100;
       overflow: hidden;
+
+      & div {
+         padding: 1rem;
+      }
    }
 
    header {
@@ -57,10 +59,6 @@
       padding: 1rem;
       background-color: #310131;
       color: white;
-   }
-
-   dialog div {
-      padding: 1rem;
    }
 
    menu {

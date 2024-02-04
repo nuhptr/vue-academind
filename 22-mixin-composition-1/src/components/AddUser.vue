@@ -9,16 +9,8 @@
 </template>
 
 <script setup>
-   import { ref } from "vue"
-
    import UserAlert from "./UserAlert.vue"
+   import useAlert from "@/composable/useAlert.js"
 
-   const alertIsVisible = ref(false)
-
-   const showAlert = () => {
-      alertIsVisible.value = true
-   }
-   const hideAlert = () => {
-      alertIsVisible.value = false
-   }
+   const { alertIsVisible, hideAlert, showAlert } = useAlert()
 </script>
