@@ -1,29 +1,13 @@
-<script>
-   import Theheader from "./components/layout/TheHeader.vue"
-   import TheResources from "./components/resource/TheResources.vue"
-
-   export default {
-      components: { Theheader, TheResources },
-   }
+<script setup>
+import Theheader from "./components/layout/TheHeader.vue"
+import TheResources from "./components/resource/TheResources.vue"
 </script>
 
+<style>
+/* Style goes here */
+</style>
+
 <template>
-   <Theheader title="RememberMe" />
+   <Theheader title="Learning Resources Project" />
    <TheResources />
 </template>
-
-<style>
-   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
-   * {
-      box-sizing: border-box;
-   }
-
-   html {
-      font-family: "Roboto", sans-serif;
-   }
-
-   body {
-      margin: 0;
-   }
-</style>

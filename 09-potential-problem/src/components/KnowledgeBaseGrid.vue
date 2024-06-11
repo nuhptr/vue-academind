@@ -1,19 +1,19 @@
-<script>
-   import KnowledgeElement from "./KnowledgeElement.vue"
+<script setup>
+import { inject } from "vue"
 
-   export default {
-      components: { KnowledgeElement },
-      inject: ["topics"],
-   }
+import KnowledgeElement from "./KnowledgeElement.vue"
+
+const topics = inject("topics")
 </script>
 
 <template>
-   <ul>
+   <ul class="ul">
       <KnowledgeElement
          v-for="topic in topics"
          :key="topic.id"
          :id="topic.id"
          :topicName="topic.title"
-         :description="topic.description" />
+         :description="topic.description"
+      />
    </ul>
 </template>

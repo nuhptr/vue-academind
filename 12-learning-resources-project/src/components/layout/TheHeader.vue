@@ -1,27 +1,15 @@
-<script>
-   export default {
-      props: { title: { type: String, required: true } },
-   }
+<script setup>
+defineProps({
+   title: { type: String, required: true },
+})
 </script>
 
+<style>
+/* Style goes here */
+</style>
+
 <template>
-   <header>
-      <h1>{{ title }}</h1>
+   <header class="w-full h-[5rem] bg-[#3a0061] flex justify-center items-center">
+      <h1 class="m-0 text-white">{{ title }}</h1>
    </header>
 </template>
-
-<style scoped>
-   header {
-      width: 100%;
-      height: 5rem;
-      background-color: #640032;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      & h1 {
-         color: white;
-         margin: 0;
-      }
-   }
-</style>

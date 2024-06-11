@@ -1,23 +1,17 @@
-<script>
-   import LearningResource from "./LearningResource.vue"
+<script setup>
+import { inject } from "vue"
 
-   export default {
-      components: { LearningResource },
-      inject: ["storedResources"],
-   }
+import LearningResource from "./LearningResource.vue"
+
+const storedResources = inject("storedResources")
 </script>
 
+<style>
+/* Style goes here */
+</style>
+
 <template>
-   <ul v-for="data in storedResources">
-      <LearningResource :key="data.id" :data="data" />
+   <ul class="list-none p-0 m-auto max-w-[40rem]" v-for="dataResource in storedResources">
+      <LearningResource :key="dataResource.id" :data="dataResource" />
    </ul>
 </template>
-
-<style>
-   ul {
-      list-style: none;
-      padding: 0;
-      margin: auto;
-      max-width: 40rem;
-   }
-</style>

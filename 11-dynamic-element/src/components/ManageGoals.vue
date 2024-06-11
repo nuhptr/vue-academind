@@ -1,27 +1,45 @@
-<script>
-   import ErrorAlert from "./ErrorAlert.vue"
+<script setup>
+import { ref } from "vue"
 
-   export default {
-      components: { ErrorAlert },
-      data() {
-         return { inputIsInvalid: false }
-      },
-      methods: {
-         setGoal() {
-            const enteredValue = this.$refs.goal.value
-            if (enteredValue === "") this.inputIsInvalid = true
-         },
-         confirmError() {
-            this.inputIsInvalid = false
-         },
-      },
-   }
+import ErrorAlert from "./ErrorAlert.vue"
+
+const inputIsInvalid = ref(false)
+const goal = ref()
+const enteredValue = ref("")
+
+const setGoal = () => {
+   enteredValue.value = goal.value
+   if (enteredValue.value === "") inputIsInvalid.value = true
+}
+
+const confirmError = () => {
+   inputIsInvalid.value = false
+}
 </script>
 
+<style>
+/* Style goes here */
+</style>
+
 <template>
-   <h2>Manage Goals</h2>
-   <input type="text" ref="goal" />
-   <button @click="setGoal">Set Goal</button>
+   <div class="flex items-center max-w-2xl mx-auto gap-4">
+      <div class="flex flex-col gap-y-1">
+         <h2>Manage Goals</h2>
+         <p>{{ enteredValue.toUpperCase() }}</p>
+      </div>
+      <input
+         class="px-2 py-2 border rounded-md border-sky-500 bg-sky-100"
+         type="text"
+         v-model="goal"
+      />
+      <button
+         class="px-2 py-2 text-white bg-green-500 rounded-md hover:bg-green-600"
+         @click="setGoal"
+      >
+         Set Goal
+      </button>
+   </div>
+
    <!-- * Teleport component to another tree -->
    <Teleport to="body">
       <ErrorAlert v-if="inputIsInvalid">

@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Data Binding</title>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="./css/globals.css" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/vue@next" defer></script>
-  <script src="app.js" defer></script>
-</head>
+      <title>Data Binding</title>
+   </head>
 
-<body>
-  <header>
-    <h1>Vue Course Goals</h1>
-  </header>
+   <body>
+      <div id="app">
+         <header>
+            <h1>Vue Course Goals</h1>
+         </header>
 
-  <section id="user-goal">
-    <h2>My Course Goal</h2>
-    <p>{{ outputGoal() }}</p>
-    <p>Learn more <a v-bind:href="vueLink">about vue</a></p>
-  </section>
-</body>
+         <section id="user-goal">
+            <h2>My Course Goal</h2>
 
+            <p>{{ outputGoal() }}</p>
+            <p>Learn more <a v-bind:href="vueLink">about vue</a></p>
+         </section>
+      </div>
+
+      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+      <script>
+         const { createApp, ref } = Vue
+
+         createApp({
+            setup() {
+               const courseGoalA = ref("Finish the course and learn Vue!")
+               const courseGoalB = ref("Master Vue and build amazing apps!")
+               const vueLink = ref("https://vuejs.org")
+
+               const outputGoal = () => {
+                  const randomNumber = Math.random()
+
+                  if (randomNumber < 0.5) return courseGoalA.value
+                  else return courseGoalB.value
+               }
+
+               return { vueLink, outputGoal }
+            },
+         }).mount("#app")
+      </script>
+   </body>
 </html>

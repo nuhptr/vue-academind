@@ -1,71 +1,60 @@
-<script>
-   export default {
-      props: ["modelValue"],
-      emits: ["update:modelValue"],
-      methods: {
-         activate(option) {
-            // this.activeOption = option
-            this.$emit("update:modelValue", option)
-         },
-      },
-      // data() {
-      //   return {
-      //      activeOption: this.modelValue,
-      //   }
-      // },
-      // computed: {
-      //   activeOption() {
-      //      return this.modelValue
-      //   },
-      // },
+<script setup>
+const props = defineProps(["modelValue"])
+const emit = defineEmits(["update:modelValue"])
+
+const activate = (value) => {
+   console.log(value)
+   emit("update:modelValue", value)
+}
+
+const computedClasses = (value) => {
+   switch (value) {
+      case "poor":
+         return { "border-[#a00078]": props.modelValue === value }
+      case "average":
+         return { "border-[#a00078]": props.modelValue === value }
+      case "great":
+         return { "border-[#a00078]": props.modelValue === value }
    }
+}
 </script>
 
+<style scoped>
+button {
+   font: inherit;
+}
+</style>
+
 <template>
-   <ul>
-      <li :class="{ active: modelValue === 'poor' }">
-         <button type="button" @click="activate('poor')">Poor</button>
+   <ul class="flex list-none my-[0.5rem] mx-0 p-0 gap-x-4 items-center justify-start">
+      <li class="p-4 m-0 border" :class="computedClasses('poor')">
+         <button
+            class="text-[#a00078] border-none bg-transparent cursor-pointer"
+            type="button"
+            @click="activate('poor')"
+         >
+            Poor
+         </button>
       </li>
 
-      <li :class="{ active: modelValue === 'average' }">
-         <button type="button" @click="activate('average')">Average</button>
+      <li class="p-4 m-0 border" :class="computedClasses('average')">
+         <button
+            class="text-[#a00078] border-none bg-transparent cursor-pointer"
+            type="button"
+            @click="activate('average')"
+         >
+            Average
+         </button>
       </li>
 
-      <li :class="{ active: modelValue === 'great' }">
-         <button type="button" @click="activate('great')">Great</button>
+      <li class="p-4 m-0 border" :class="computedClasses('great')">
+         <button
+            class="text-[#a00078] border-none bg-transparent cursor-pointer"
+            type="button"
+            @click="activate('great')"
+         >
+            Great
+         </button>
       </li>
    </ul>
 </template>
-
-<style scoped>
-   .active {
-      border-color: #a00078;
-
-      & button {
-         color: #a00078;
-      }
-   }
-
-   ul {
-      display: flex;
-      list-style: none;
-      margin: 0.5rem 0;
-      padding: 0;
-      gap: 1rem;
-      justify-content: start;
-      align-items: center;
-   }
-
-   li {
-      margin: 0;
-      border: 1px solid #ccc;
-      padding: 1rem;
-   }
-
-   button {
-      font: inherit;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-   }
-</style>

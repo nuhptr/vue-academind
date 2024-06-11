@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="./css/globals.css" />
 
-  <title>Vue Basics</title>
+      <title>Vue Behind Scenes</title>
+   </head>
 
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/vue@next" defer></script>
-  <script src="app.js" defer></script>
-</head>
+   <body>
+      <header>
+         <h1>Vue Behind The Scenes</h1>
+      </header>
 
-<body>
-  <header>
-    <h1>Vue Behind The Scenes</h1>
-  </header>
-  <section id="app">
-    <h2>How Vue Works</h2>
-    <input type="text" ref="userText">
-    <button @click="setText">Set Text</button>
-    <p>{{ message }}</p>
-  </section>
-  <section id="app2">
-    <!-- DOES NOT WORK: <p>{{ message }}</p> -->
+      <section id="app1">
+         <h2>How Vue Works</h2>
 
-  </section>
-</body>
+         <input type="text" ref="userText" />
+         <button @click="setText">Set Text</button>
+         <p>{{ message }}</p>
+      </section>
 
+      <section id="app2">
+         <!-- DOES NOT WORK: <p>{{ message }}</p> -->
+      </section>
+
+      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+      <script type="module">
+         const { createApp } = Vue
+
+         import App1 from "./App1.js"
+         import App2 from "./App2.js"
+
+         const app1 = createApp(App1)
+         const app2 = createApp(App2)
+
+         app1.mount("#app1")
+         app2.mount("#app2")
+
+         setTimeout(() => {
+            app1.unmount()
+         }, 3000)
+      </script>
+   </body>
 </html>

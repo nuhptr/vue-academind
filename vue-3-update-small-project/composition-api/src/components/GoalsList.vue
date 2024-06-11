@@ -8,18 +8,18 @@
 </template>
 
 <script setup>
-   defineProps(["goals"])
+defineProps(["goals"])
 </script>
 
 <style scoped>
-   ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-   }
+ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
 
-   li {
-      margin: 1rem 0;
-      border: 1px solid #ccc;
-   }
+li {
+   margin: 1rem 0;
+   border: 1px solid #ccc;
+}
 </style>

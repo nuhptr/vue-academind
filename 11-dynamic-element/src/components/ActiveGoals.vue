@@ -1,11 +1,9 @@
-<script>
-   export default {
-      data() {
-         return {}
-      },
-   }
-</script>
+<script setup></script>
+
+<style>
+/* Style goes here */
+</style>
 
 <template>
-   <h2>Active Goals</h2>
+   <h2 class="max-w-2xl mx-auto">Active Goals</h2>
 </template>

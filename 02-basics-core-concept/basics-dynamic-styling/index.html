@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynamic Styling</title>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/vue@next" defer></script>
-  <script src="app.js" defer></script>
-</head>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="./css/globals.css" />
 
-<body>
-  <header>
-    <h1>Vue Dynamic Styling</h1>
-  </header>
+      <title>Dynamic Styling</title>
+   </head>
 
-  <section id="styling">
-    <div class="demo" :class="boxAClasses" @click="boxSelected('A')"></div>
-    <div class="demo" :class="boxBClasses" @click="boxSelected('B')"></div>
-    <div class="demo" :class="boxCClasses" @click="boxSelected('C')"></div>
-  </section>
-</body>
+   <body>
+      <div id="app">
+         <header>
+            <h1>Vue Dynamic Styling</h1>
+         </header>
 
+         <section id="styling">
+            <div class="demo" :class="boxAClassesComputed" @click="boxSelected('A')"></div>
+            <div class="demo" :class="boxBClassesComputed" @click="boxSelected('B')"></div>
+            <div class="demo" :class="boxCClassesComputed" @click="boxSelected('C')"></div>
+         </section>
+      </div>
+
+      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+      <script type="module">
+         const { createApp } = Vue
+
+         import App from "./App.js"
+
+         createApp(App).mount("#app")
+      </script>
+   </body>
 </html>

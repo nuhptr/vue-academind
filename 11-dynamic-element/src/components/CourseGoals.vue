@@ -1,9 +1,9 @@
-<script>
-   export default {
-      data() {
-         return {}
-      },
-   }
-</script>
+<script setup></script>
 
-<template></template>
+<style>
+/* Style goes here */
+</style>
+
+<template>
+   <h2>Course Goals</h2>
+</template>

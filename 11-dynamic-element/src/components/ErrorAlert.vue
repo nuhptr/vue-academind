@@ -1,18 +1,10 @@
+<style>
+/* Style goes here */
+</style>
+
 <template>
-   <dialog open>
-      <slot />
+   <dialog open class="m-0 fixed top-[20dvh] left-[30%] w-[40%] bg-white shadow-md p-4">
+      <!-- children -->
+      <slot></slot>
    </dialog>
 </template>
-
-<style scoped>
-   dialog {
-      margin: 0;
-      position: fixed;
-      top: 20svh;
-      left: 30%;
-      width: 40%;
-      background-color: white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-      padding: 1rem;
-   }
-</style>

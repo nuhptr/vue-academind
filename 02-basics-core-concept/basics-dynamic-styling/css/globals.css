@@ -1,0 +1,35 @@
+* {
+   font-family: "Jost", sans-serif;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+header {
+   margin: 3rem;
+   padding: 1rem;
+   border-radius: 10px;
+   text-align: center;
+   background-color: #8b5cf6;
+   color: white;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+#styling {
+   margin: 3rem;
+   padding: 1rem;
+   border-radius: 10px;
+   text-align: center;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.demo {
+   width: calc(100% - 32px);
+   height: 100px;
+   margin: 16px;
+   border: 2px dashed #ccc;
+}
+
+.active {
+   border-color: #a78bfa;
+   background-color: #8b5cf6;
+}

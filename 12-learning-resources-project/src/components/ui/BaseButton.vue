@@ -1,39 +1,30 @@
-<script>
-   export default {
-      props: ["mode"],
+<script setup>
+import { computed } from "vue"
+
+const props = defineProps(["mode"])
+
+const flatComputedClasses = computed(() => {
+   return {
+      "bg-transparent border-none text-[#3a0061] hover:bg-[#edd2ff] active:bg-[#edd2ff]":
+         props.mode === "flat",
+      "text-white": props.mode !== "flat",
    }
+})
 </script>
 
+<style scoped>
+/* Style goes here */
+button {
+   font-family: inherit;
+}
+</style>
+
 <template>
-   <button :class="mode">
-      <slot />
+   <button
+      class="py-[0.75rem] px-[1.5rem] bg-[#3a0061] border border-[#3a0061] cursor-pointer hover:bg-[#5a189a] hover:border-[#5a189a]"
+      :class="flatComputedClasses"
+   >
+      <!-- Children -->
+      <slot></slot>
    </button>
 </template>
-
-<style scoped>
-   button {
-      padding: 0.75rem 1.5rem;
-      font-family: inherit;
-      background-color: #3a0061;
-      border: 1px solid #3a0061;
-      color: white;
-      cursor: pointer;
-
-      &:hover,
-      &:active {
-         background-color: #5a189a;
-         border-color: #5a189a;
-      }
-   }
-
-   .flat {
-      background-color: transparent;
-      border: none;
-      color: #3a0061;
-
-      &:hover,
-      &:active {
-         background-color: #edd2ff;
-      }
-   }
-</style>

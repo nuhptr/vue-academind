@@ -1,25 +1,15 @@
-Vue.createApp({
-   data() {
-      return { goals: [], enteredValue: "" }
+const { ref } = Vue
+
+export default {
+   setup() {
+      const enteredValue = ref("")
+      const goals = ref([])
+
+      const addGoal = () => {
+         goals.value.push(enteredValue.value)
+         enteredValue.value = ""
+      }
+
+      return { enteredValue, goals, addGoal }
    },
-   methods: {
-      addGoal() {
-         this.goals.push(this.enteredValue)
-         this.enteredValue = ""
-      },
-   },
-}).mount("#app")
-
-// const buttonEl = document.querySelector('button');
-// const inputEl = document.querySelector('input');
-// const listEl = document.querySelector('ul');
-
-// function addGoal() {
-//   const enteredValue = inputEl.value;
-//   const listItemEl = document.createElement('li');
-//   listItemEl.textContent = enteredValue;
-//   listEl.appendChild(listItemEl);
-//   inputEl.value = '';
-// }
-
-// buttonEl.addEventListener('click', addGoal);
+}

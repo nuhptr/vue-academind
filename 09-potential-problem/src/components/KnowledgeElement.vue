@@ -1,22 +1,19 @@
-<script>
-   export default {
-      data() {
-         return {}
-      },
+<script setup>
+import { inject } from "vue"
 
-      // For inject data from parent component
-      inject: ["selectTopic"],
-      props: ["id", "topicName", "description"],
+const props = defineProps(["id", "topicName", "description"])
 
-      // For emit data to parent component
-      emits: ["selectTopic"],
-   }
+// for inject data from parent component
+const selectTopic = inject("selectTopic")
+
+// Emit event to parent component
+const emits = defineEmits(["selectTopic"])
 </script>
 
 <template>
-   <li>
-      <h3>{{ topicName }}</h3>
-      <p>{{ description }}</p>
-      <button @click="selectTopic(id)">Learn More</button>
+   <li class="w-full li">
+      <h3 class="mb-2 text-xl font-bold">{{ props.topicName }}</h3>
+      <p class="mb-4 line-clamp-2">{{ props.description }}</p>
+      <button @click="selectTopic(props.id)" class="button">Learn More</button>
    </li>
 </template>

@@ -1,21 +1,9 @@
+<style>
+/* Style goes here */
+</style>
+
 <template>
-   <header>
-      <h1>More on Vue Components</h1>
+   <header class="w-full h-[5rem] flex justify-center items-center bg-blue-600">
+      <h1 class="m-0 text-white">More on Vue Components</h1>
    </header>
 </template>
-
-<style scoped>
-   header {
-      width: 100%;
-      height: 5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #14005e;
-
-      & h1 {
-         color: white;
-         margin: 0;
-      }
-   }
-</style>

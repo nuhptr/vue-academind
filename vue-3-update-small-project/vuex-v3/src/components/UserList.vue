@@ -1,3 +1,14 @@
+<script setup>
+import { computed } from "vue"
+import { useStore } from "vuex"
+
+const store = useStore()
+
+const loadedUsers = computed(() => {
+   return store.getters.users
+})
+</script>
+
 <template>
    <div class="container">
       <ul>
@@ -6,27 +17,16 @@
    </div>
 </template>
 
-<script setup>
-   import { computed } from "vue"
-   import { useStore } from "vuex"
-
-   const store = useStore()
-
-   const loadedUsers = computed(() => {
-      return store.getters.users
-   })
-</script>
-
 <style scoped>
-   ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-   }
+ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
 
-   li {
-      margin: 1rem 0;
-      border: 1px solid #ccc;
-      padding: 1rem;
-   }
+li {
+   margin: 1rem 0;
+   border: 1px solid #ccc;
+   padding: 1rem;
+}
 </style>

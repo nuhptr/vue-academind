@@ -1,28 +1,38 @@
-<script>
-   import BaseButton from "./BaseButton.vue"
+<script setup>
+import BaseButton from "./BaseButton.vue"
 
-   export default {
-      components: { BaseButton },
-      emits: ["close"],
-      props: { title: { type: String, required: true } },
-   }
+defineProps({ title: { type: String, required: true } })
+
+const emit = defineEmits(["close"])
+
+const closeDialog = () => {
+   emit("close")
+}
 </script>
+
+<style scoped>
+/* Style goes here */
+</style>
 
 <template>
    <Teleport to="body">
-      <div @click="$emit('close')"></div>
-      <dialog open>
-         <header>
+      <div class="fixed top-0 left-0 z-10 w-full h-dvh bg-black/75" @click="closeDialog"></div>
+      <dialog
+         open
+         class="p-0 m-0 overflow-hidden border-none fixed top-[20dvh] left-[20%] w-[80%] z-[100] rounded-md shadow-md md:left-[calc(50%-20rem)] md:w-[40rem]"
+      >
+         <header class="bg-[#3a0061] text-white w-full p-4">
             <slot name="header">
-               <h2>{{ title }}</h2>
+               <h2 class="m-0">{{ title }}</h2>
             </slot>
          </header>
 
-         <section>
+         <section class="p-4">
+            <!-- Default slot -->
             <slot></slot>
          </section>
 
-         <menu>
+         <menu class="flex justify-end p-4 m-0">
             <slot name="action">
                <BaseButton @click="$emit('close')">Close</BaseButton>
             </slot>
@@ -30,56 +40,3 @@
       </dialog>
    </Teleport>
 </template>
-
-<style scoped>
-   div {
-      z-index: 10;
-      height: 100vh;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.75);
-   }
-
-   dialog {
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      border: none;
-      position: fixed;
-      top: 20vh;
-      left: 10%;
-      width: 80%;
-      z-index: 100;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
-      @media (min-width: 768px) {
-         left: calc(50% - 20rem);
-         width: 40rem;
-      }
-   }
-
-   header {
-      background-color: #3a0061;
-      color: white;
-      width: 100%;
-      padding: 1rem;
-
-      & h2 {
-         margin: 0;
-      }
-   }
-
-   section {
-      padding: 1rem;
-   }
-
-   menu {
-      display: flex;
-      justify-content: flex-end;
-      padding: 1rem;
-      margin: 0;
-   }
-</style>

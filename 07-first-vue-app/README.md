@@ -1,10 +1,10 @@
 # first-vue-app
 
-This template should help get you started developing with Vue 3 in Vite.
+This project was bootstrapped with [Vite](https://vitejs.dev/).
 
-## Customize configuration
+## Dependencies
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+-  [tailwindcss](https://tailwindcss.com/)
 
 ## Project Setup
 

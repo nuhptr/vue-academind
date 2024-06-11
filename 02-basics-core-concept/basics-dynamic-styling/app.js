@@ -1,30 +1,33 @@
-//* Dynamic Styling with CSS Classes
-const app = Vue.createApp({
-   data() {
-      return {
-         boxASelected: false,
-         boxBSelected: false,
-         boxCSelected: false,
-      }
-   },
-   computed: {
-      boxAClasses() {
-         return { active: this.boxASelected }
-      },
-      boxBClasses() {
-         return { active: this.boxBSelected }
-      },
-      boxCClasses() {
-         return { active: this.boxCSelected }
-      },
-   },
-   methods: {
-      boxSelected(box) {
-         if (box === "A") this.boxASelected = !this.boxASelected
-         else if (box === "B") this.boxBSelected = !this.boxBSelected
-         else if (box === "C") this.boxCSelected = !this.boxCSelected
-      },
-   },
-})
+const { ref, computed } = Vue
 
-app.mount("#styling")
+export default {
+   setup() {
+      const boxASelected = ref(false)
+      const boxBSelected = ref(false)
+      const boxCSelected = ref(false)
+
+      const boxAClassesComputed = computed(() => {
+         return boxASelected.value ? "active" : ""
+      })
+
+      const boxBClassesComputed = computed(() => {
+         return boxBSelected.value ? "active" : ""
+      })
+
+      const boxCClassesComputed = computed(() => {
+         return boxCSelected.value ? "active" : ""
+      })
+
+      const boxSelected = (box) => {
+         if (box === "A") {
+            boxASelected.value = !boxASelected.value
+         } else if (box === "B") {
+            boxBSelected.value = !boxBSelected.value
+         } else if (box === "C") {
+            boxCSelected.value = !boxCSelected.value
+         }
+      }
+
+      return { boxAClassesComputed, boxBClassesComputed, boxCClassesComputed, boxSelected }
+   },
+}

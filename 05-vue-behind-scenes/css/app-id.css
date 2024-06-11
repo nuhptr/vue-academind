@@ -1,0 +1,55 @@
+#app,
+#app2 {
+   max-width: 40rem;
+   width: 90%;
+   margin: 3rem auto;
+   padding: 1rem;
+   text-align: center;
+   border-radius: 10px;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+   & h2 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      color: #4fc08d;
+      border-bottom: 4px solid #ccc;
+   }
+
+   & p {
+      padding: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border: 1px solid #4fc08d;
+      border-radius: 25px;
+      color: white;
+      background-color: #4fc08d;
+   }
+
+   & input {
+      font: inherit;
+      border: 1px solid #ccc;
+   }
+}
+
+#app input:focus {
+   outline: none;
+   border-color: #1b995e;
+   background-color: #d7fdeb;
+}
+
+#app button {
+   padding: 0.05rem 1rem;
+   font: inherit;
+   cursor: pointer;
+   color: white;
+   border: 1px solid #ff0077;
+   background-color: #ff0077;
+   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+
+   &:hover,
+   &:active {
+      background-color: #ec3169;
+      border-color: #ec3169;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+   }
+}

@@ -1,12 +1,10 @@
-<script>
-   export default {
-      props: ["topicTitle", "text"],
-   }
+<script setup>
+defineProps({ topicTitle: String, text: String })
 </script>
 
 <template>
-   <section>
-      <h2>{{ topicTitle }}</h2>
-      <p>{{ text }}</p>
+   <section class="section">
+      <h2 class="h2">{{ topicTitle }}</h2>
+      <p class="leading-[160%]">{{ text }}</p>
    </section>
 </template>

@@ -1,31 +1,22 @@
 # 08-components-communication
 
-Taking note of how to communicate between components.
+## Dependencies
 
-## Methods of Communication
-
--  [x] Using props
--  [x] Using $emit("event-name", payload)
-
-## Form
-
--  [x] Define variable in data and use v-model
-
-## Project Setup
+-  [tailwindcss](https://tailwindcss.com/)
 
 ```sh
-pnpm create vue@latest [project-name]
-pnpm install
+bun create vue@latest [project-name]
+bun install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-pnpm dev
+bun dev
 ```
 
 ### Compile and Minify for Production
 
 ```sh
-pnpm build
+bun build
 ```
