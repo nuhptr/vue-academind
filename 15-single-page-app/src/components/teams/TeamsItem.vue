@@ -1,56 +1,26 @@
-<script>
-   export default {
-      props: ["id", "name", "memberCount"],
-      computed: {
-         teamMembersLink() {
-            // return "/teams/" + this.id
-            // return { path: "/teams" + this.id }
-            // using query params (http://localhost:8080/teams/1?sort=asc)
-            return {
-               name: "team-members",
-               params: { teamId: this.id },
-               query: { sort: "asc" },
-            }
-         },
-      },
-   }
+<script setup>
+import { computed } from "vue"
+
+const props = defineProps(["id", "name", "memberCount"])
+
+const teamMembersLink = computed(() => {
+   return { name: "team-members", params: { teamId: props.id }, query: { sort: "asc" } }
+})
 </script>
 
+<style scoped>
+/* Add your styles here */
+</style>
+
 <template>
-   <li>
-      <h3>{{ name }}</h3>
-      <div class="team-members">{{ memberCount }} members</div>
-      <RouterLink :to="teamMembersLink">View Details</RouterLink>
+   <li class="p-4 mx-0 my-4 rounded-md shadow-md">
+      <h3 class="mx-0 my-2 text-xl">{{ name }}</h3>
+      <div class="mx-0 my-2">{{ memberCount }} members</div>
+      <RouterLink
+         class="inline-block px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-700"
+         :to="teamMembersLink"
+      >
+         View Details
+      </RouterLink>
    </li>
 </template>
-
-<style scoped>
-   li {
-      margin: 1rem 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-      border-radius: 12px;
-      padding: 1rem;
-
-      .team-members {
-         margin: 0.5rem 0;
-      }
-
-      & h3 {
-         margin: 0.5rem 0;
-         font-size: 1.25rem;
-      }
-   }
-
-   a {
-      text-decoration: none;
-      color: white;
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background-color: #11005c;
-
-      &:hover,
-      &:active {
-         background-color: #220a8d;
-      }
-   }
-</style>

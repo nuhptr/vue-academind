@@ -1,44 +1,47 @@
-<script>
-   import BaseButton from "../UI/BaseButton.vue"
-   import BaseCard from "../UI/BaseCard.vue"
+<script setup>
+import axios from "axios"
+import { ref } from "vue"
 
-   import axios from "axios"
+import BaseButton from "../ui/BaseButton.vue"
+import BaseCard from "../ui/BaseCard.vue"
 
-   export default {
-      components: { BaseCard, BaseButton },
-      data() {
-         return { enteredName: "", chosenRating: null, invalidInput: false, error: null }
-      },
-      // emits: ["surveySubmit"],
-      methods: {
-         async submitSurvey() {
-            if (this.enteredName === "" || !this.chosenRating) {
-               this.invalidInput = true
-               return
-            }
-            this.invalidInput = false
+const enteredName = ref("")
+const chosenRating = ref(null)
+const invalidInput = ref(false)
+const errors = ref(null)
 
-            // this.$emit("surveySubmit", {
-            //    userName: this.enteredName,
-            //    rating: this.chosenRating,
-            // })
-
-            try {
-               await axios.post(
-                  "https://vue-http-e7d2b-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json",
-                  { name: this.enteredName, rating: this.chosenRating }
-               )
-            } catch (error) {
-               console.error(error)
-               this.error = "Error getting data - please try again later."
-            }
-
-            this.enteredName = ""
-            this.chosenRating = null
-         },
-      },
+const submitSurvey = async () => {
+   if (enteredName.value === "" || !chosenRating.value) {
+      invalidInput.value = true
+      return
    }
+
+   invalidInput.value = false
+
+   try {
+      await axios.post(
+         "https://vue-http-e7d2b-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json",
+         { name: enteredName.value, rating: chosenRating.value }
+      )
+   } catch (error) {
+      console.error(error)
+      errors.value = "Error getting data - please try again later."
+   }
+
+   enteredName.value = ""
+   chosenRating.value = null
+}
 </script>
+
+<style scoped>
+.form-control {
+   @apply mx-0 my-2;
+}
+
+input[type="text"] {
+   @apply block w-[20rem] mt-2;
+}
+</style>
 
 <template>
    <section>
@@ -53,21 +56,42 @@
             <h3>My learning experience was ...</h3>
 
             <div class="form-control">
-               <input type="radio" id="rating-poor" value="poor" name="rating" v-model="chosenRating" />
+               <input
+                  type="radio"
+                  id="rating-poor"
+                  value="poor"
+                  name="rating"
+                  v-model="chosenRating"
+               />
                <label for="rating-poor">Poor</label>
             </div>
 
             <div class="form-control">
-               <input type="radio" id="rating-average" value="average" name="rating" v-model="chosenRating" />
+               <input
+                  type="radio"
+                  id="rating-average"
+                  value="average"
+                  name="rating"
+                  v-model="chosenRating"
+               />
                <label for="rating-average">Average</label>
             </div>
 
             <div class="form-control">
-               <input type="radio" id="rating-great" value="great" name="rating" v-model="chosenRating" />
+               <input
+                  type="radio"
+                  id="rating-great"
+                  value="great"
+                  name="rating"
+                  v-model="chosenRating"
+               />
                <label for="rating-great">Great</label>
             </div>
 
-            <p v-if="invalidInput">One or more input fields are invalid. Please check your provided data.</p>
+            <p v-if="invalidInput">
+               One or more input fields are invalid. Please check your provided data.
+            </p>
+
             <div>
                <BaseButton>Submit</BaseButton>
             </div>
@@ -75,15 +99,3 @@
       </BaseCard>
    </section>
 </template>
-
-<style scoped>
-   .form-control {
-      margin: 0.5rem 0;
-   }
-
-   input[type="text"] {
-      display: block;
-      width: 20rem;
-      margin-top: 0.5rem;
-   }
-</style>

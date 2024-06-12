@@ -1,48 +1,31 @@
 <script setup>
-   import { defineProps, computed } from "vue"
+import { defineProps, computed } from "vue"
 
-   defineProps({ name: String, rating: Number })
+defineProps({ name: String, rating: String })
 
-   const ratingClass = computed(() => {
-      return "highlight rating--" + this.rating
-   })
+const ratingClass = computed(() => {
+   switch (rating) {
+      case "poor":
+         return "text-red-600"
+      case "average":
+         return "text-indigo-600"
+      case "great":
+         return "text-green-600"
+      default:
+         return ""
+   }
+})
 </script>
 
+<style scoped>
+/* Style goes here */
+</style>
+
 <template>
-   <li>
-      <p>
-         <span class="highlight">{{ name }}</span> rated the learning experience
-         <span :class="ratingClass">{{ rating }} </span>.
+   <li class="p-4 mx-0 my-4 border border-zinc-100">
+      <p class="text-base mx-0 my-[0.5rem]">
+         <span class="font-bold">{{ name }}</span> rated the learning experience
+         <span class="font-bold" :class="ratingClass">{{ rating }} </span>.
       </p>
    </li>
 </template>
-
-<style scoped>
-   li {
-      margin: 1rem 0;
-      border: 1px solid #ccc;
-      padding: 1rem;
-   }
-
-   h3,
-   p {
-      font-size: 1rem;
-      margin: 0.5rem 0;
-   }
-
-   .highlight {
-      font-weight: bold;
-   }
-
-   .rating--poor {
-      color: #b80056;
-   }
-
-   .rating--average {
-      color: #330075;
-   }
-
-   .rating--great {
-      color: #008327;
-   }
-</style>

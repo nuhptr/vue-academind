@@ -4,24 +4,17 @@ import TeamsList from "@/pages/TeamsList.vue"
 import UserList from "@/pages/UserList.vue"
 import TeamMembers from "@/components/teams/TeamMembers.vue"
 import NotFound from "@/pages/NotFound.vue"
-// import TeamsFooter from "@/pages/TeamsFooter.vue"
-// import UserFooter from "@/pages/UserFooter.vue"
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
    routes: [
-      // redirecting to a route
-      // alias can be used to redirect to the same component
       { path: "/", redirect: "/teams" },
       {
-         //* our-domain.com/teams => TeamsList
          name: "teams",
          path: "/teams",
+         component: TeamsList,
          //* meta is used to add meta data to a route
          meta: { needsAuth: true },
-         //* error if you use like this
-         // component: { default: TeamsList, footer: TeamsFooter },
-         component: TeamsList,
          children: [
             //* Nested routes => our-domain.com/teams/t1
             // passing data and props is the way to pass data to a component
@@ -42,7 +35,7 @@ const router = createRouter({
       // catch all route (404)
       { path: "/:notFound(.*)", component: NotFound },
    ],
-   linkActiveClass: "active",
+   // linkActiveClass: "active",
    // scroll behavior is used to scroll to the top of the page when we navigate to a new page
    scrollBehavior(_, _2, savedPosition) {
       // console.log(to, from, savedPosition)
@@ -53,7 +46,7 @@ const router = createRouter({
    },
 })
 
-router.beforeEach(function (to, from, next) {
+router.beforeEach((to, from, next) => {
    console.log("Global route beforeEach")
    console.log(to, from)
    if (to.meta.needsAuth) {
@@ -62,12 +55,14 @@ router.beforeEach(function (to, from, next) {
    } else {
       next()
    }
+
    // if (to.name === "team-members") {
    //    next()
    // } else {
    //    next({ name: "team-members", params: { teamId: "t2" } })
    // }
-   next()
+
+   // next()
 })
 
 router.afterEach(function (to, from) {

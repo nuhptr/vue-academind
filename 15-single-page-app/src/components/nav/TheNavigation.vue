@@ -9,68 +9,40 @@
    }
 </script> -->
 
-<script></script>
+<style scoped>
+a {
+   text-decoration: none;
+   font: inherit;
+}
+</style>
 
 <template>
-   <header>
-      <nav>
-         <ul>
-            <li>
+   <header class="w-full h-[5rem] bg-[#11005c]">
+      <nav class="h-full">
+         <ul class="flex items-center justify-center h-full p-0 mx-auto my-0 list-none">
+            <li class="mx-[2rem] my-0">
                <!-- <button @click="setActivePage('teamsList')">Teams</button> -->
                <!-- RouterLink same as a tag -->
-               <RouterLink to="/teams">Teams</RouterLink>
+               <RouterLink
+                  class="inline-block px-6 py-2 text-white bg-transparent border border-transparent cursor-pointer hover:text-amber-500 hover:border-amber-500 active:text-amber-500 active:border-amber-500"
+                  to="/teams"
+                  active-class="text-amber-500 border-amber-500"
+               >
+                  Teams
+               </RouterLink>
             </li>
-            <li>
+            <li class="mx-[2rem] my-0">
                <!-- <button @click="setActivePage('usersList')">Users</button> -->
                <!-- RouterLink same as a tag -->
-               <RouterLink to="/users">Users</RouterLink>
+               <RouterLink
+                  class="inline-block px-6 py-2 text-white bg-transparent border border-transparent cursor-pointer hover:text-amber-500 hover:border-amber-500 active:text-amber-500 active:border-amber-500"
+                  to="/users"
+                  active-class="text-amber-500 border-amber-500"
+               >
+                  Users
+               </RouterLink>
             </li>
          </ul>
       </nav>
    </header>
 </template>
-
-<style scoped>
-   header {
-      width: 100%;
-      height: 5rem;
-      background-color: #11005c;
-   }
-
-   nav {
-      height: 100%;
-   }
-
-   ul {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      list-style: none;
-      margin: 0 auto;
-      padding: 0;
-   }
-
-   li {
-      margin: 0 2rem;
-   }
-
-   a {
-      text-decoration: none;
-      font: inherit;
-      background: transparent;
-      border: 1px solid transparent;
-      cursor: pointer;
-      color: white;
-      padding: 0.5rem 1.5rem;
-      display: inline-block;
-
-      &:hover,
-      &:active,
-      &.active {
-         color: #f1a80a;
-         border-color: #f1a80a;
-         background-color: #1a037e;
-      }
-   }
-</style>

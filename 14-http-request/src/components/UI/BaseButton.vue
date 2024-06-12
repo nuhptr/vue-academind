@@ -1,22 +1,13 @@
-<template>
-   <button>
-      <slot />
-   </button>
-</template>
+<script setup></script>
 
 <style scoped>
-   button {
-      font: inherit;
-      border: 1px solid #360032;
-      background-color: #360032;
-      color: white;
-      padding: 0.5rem 2rem;
-      cursor: pointer;
-
-      &:hover,
-      &:active {
-         background-color: #5c0556;
-         border-color: #5c0556;
-      }
-   }
+/* Style goes here */
 </style>
+
+<template>
+   <button
+      class="px-8 py-2 text-white cursor-pointer bg-violet-600 hover:bg-violet-700 active:bg-violet-700"
+   >
+      <slot></slot>
+   </button>
+</template>
