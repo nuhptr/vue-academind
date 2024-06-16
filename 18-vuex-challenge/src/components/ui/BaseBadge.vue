@@ -1,36 +1,23 @@
-<script>
-   export default {
-      props: ["mode", "noMarginLeft"],
-   }
+<script setup>
+const props = defineProps(["mode", "noMarginLeft"])
 </script>
 
+<style scoped>
+.badge--highlight {
+   @apply bg-amber-50 border border-amber-200 text-amber-700;
+}
+
+.badge--elegant {
+   @apply bg-violet-50 border border-violet-200 text-violet-700;
+}
+</style>
+
 <template>
-   <span class="badge" :class="['badge--' + mode, { nml: noMarginLeft }]">
+   <span
+      class="inline-block py-[0.15rem] px-5 bg-gray-200 text-gray-600 my-0 mx-3 rounded-3xl"
+      :class="['badge--' + props.mode, { 'ml-0': props.noMarginLeft }]"
+   >
+      <!-- Children -->
       <slot></slot>
    </span>
 </template>
-
-<style scoped>
-   .badge {
-      display: inline-block;
-      padding: 0.15rem 1.25rem;
-      background-color: #ccc;
-      color: #292929;
-      margin: 0 0.75rem;
-      border-radius: 30px;
-   }
-
-   .nml {
-      margin-left: 0;
-   }
-
-   .badge--highlight {
-      background-color: #f0b800;
-      color: black;
-   }
-
-   .badge--elegant {
-      background-color: #45006d;
-      color: white;
-   }
-</style>

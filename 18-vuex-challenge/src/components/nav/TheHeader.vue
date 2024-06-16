@@ -1,102 +1,87 @@
-<script>
-   import BaseBadge from "../ui/BaseBadge.vue"
+<script setup>
+import { inject, computed } from "vue"
+import { useStore } from "vuex"
+import { RouterLink } from "vue-router"
 
-   export default {
-      components: { BaseBadge },
-      // inject: ["isLoggedIn", "login", "logout", "cart"],
-      computed: {
-         cartQuantity() {
-            return this.$store.getters["cart/quantity"]
-         },
-         isLoggedIn() {
-            return this.$store.getters.isAuthenticated
-         },
-      },
-      methods: {
-         login() {
-            this.$store.dispatch("login")
-         },
-         logout() {
-            this.$store.dispatch("logout")
-         },
-      },
-   }
+import BaseBadge from "../ui/BaseBadge.vue"
+
+// const cart = inject("cart")
+// const isLoggedIn = inject("isLoggedIn")
+// const login = inject("login")
+// const logout = inject("logout")
+
+const store = useStore()
+
+const cartQuantity = computed(() => store.getters["cart/quantity"])
+const isLoggedIn = computed(() => store.getters.isAuthenticated)
+
+const login = () => {
+   store.dispatch("login")
+}
+
+const logout = () => {
+   store.dispatch("logout")
+}
 </script>
 
+<style scoped>
+/* Style goes here */
+</style>
+
 <template>
-   <header>
+   <header class="h-[5rem] bg-white my-0 mx-[10%] flex justify-between items-center">
       <h1>
          <RouterLink to="/">VueShop</RouterLink>
       </h1>
+
       <nav>
-         <ul>
-            <li>
-               <RouterLink to="/products">Products</RouterLink>
+         <ul class="flex items-center p-0 m-0 list-none justify-self-center">
+            <li class="mx-4 my-0">
+               <RouterLink
+                  class="pb-1 font-bold text-gray-600 border-b hover:text-violet-600 hover:border-violet-600 border-b-transparent"
+                  active-class="text-violet-600 border-violet-600"
+                  to="/products"
+               >
+                  Products
+               </RouterLink>
             </li>
-            <li>
-               <RouterLink to="/cart">Cart</RouterLink>
+            <li class="mx-4 my-0">
+               <RouterLink
+                  class="pb-1 font-bold text-gray-600 border-b hover:text-violet-600 hover:border-violet-600 border-b-transparent"
+                  active-class="text-violet-600 border-violet-600"
+                  to="/cart"
+               >
+                  Cart
+               </RouterLink>
                <BaseBadge mode="elegant">{{ cartQuantity }}</BaseBadge>
             </li>
-            <li v-if="isLoggedIn"><RouterLink to="/admin">Admin</RouterLink></li>
+            <li class="mx-4 my-0" v-if="isLoggedIn">
+               <RouterLink
+                  class="pb-1 font-bold text-gray-600 border-b hover:text-violet-600 hover:border-violet-600 border-b-transparent"
+                  active-class="text-violet-600 border-violet-600"
+                  to="/admin"
+               >
+                  Admin
+               </RouterLink>
+            </li>
          </ul>
       </nav>
+
       <div>
-         <button v-if="!isLoggedIn" @click="login">Login</button>
-         <button v-if="isLoggedIn" @click="logout">Logout</button>
+         <button
+            class="px-6 py-2 bg-transparent cursor-pointer text-violet-600 rounded-3xl hover:bg-violet-300 active:bg-violet-300"
+            v-if="!isLoggedIn"
+            @click="login"
+         >
+            Login
+         </button>
+         <button
+            class="px-6 py-2 bg-transparent cursor-pointer text-violet-600 rounded-3xl hover:bg-violet-300 active:bg-violet-300"
+            v-if="isLoggedIn"
+            @click="logout"
+         >
+            Logout
+         </button>
       </div>
    </header>
 </template>
-
-<style scoped>
-   header {
-      height: 5rem;
-      background-color: white;
-      margin: 0 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-   }
-
-   ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-self: center;
-      align-items: center;
-   }
-
-   li {
-      margin: 0 1rem;
-   }
-
-   a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 0.25rem;
-
-      &:hover,
-      &:active,
-      &.router-link-active {
-         color: #45006d;
-         border-color: #45006d;
-      }
-   }
-
-   button {
-      font: inherit;
-      cursor: pointer;
-      padding: 0.5rem 1.5rem;
-      border: 1px solid #45006d;
-      background-color: transparent;
-      color: #45006d;
-      border-radius: 30px;
-
-      &:hover,
-      &:active {
-         background-color: #f0d5ff;
-      }
-   }
-</style>

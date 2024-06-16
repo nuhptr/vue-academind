@@ -28,6 +28,7 @@ export default {
          ],
       }
    },
+
    //* get custom data
    getters: {
       products(state) {

@@ -10,6 +10,7 @@ const store = createStore({
          isLoggedIn: false,
       }
    },
+
    mutations: {
       login(state) {
          state.isLoggedIn = true
@@ -18,6 +19,7 @@ const store = createStore({
          state.isLoggedIn = false
       },
    },
+
    actions: {
       login(context) {
          context.commit("login")
@@ -26,6 +28,7 @@ const store = createStore({
          context.commit("logout")
       },
    },
+
    getters: {
       isAuthenticated(state) {
          return state.isLoggedIn

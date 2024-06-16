@@ -2,13 +2,20 @@ export default {
    namespaced: true,
    //* Data variabel
    state() {
-      return { items: [], total: 0, qty: 0 }
+      return {
+         qty: 0,
+         total: 0,
+         items: [],
+      }
    },
+
    //* Logic Business
    mutations: {
       addProductToCart(state, payload) {
          const productData = payload
-         const productInCartIndex = state.items.findIndex((cartItem) => cartItem.productId === productData.id)
+         const productInCartIndex = state.items.findIndex(
+            (cartItem) => cartItem.productId === productData.id
+         )
 
          if (productInCartIndex >= 0) {
             state.items[productInCartIndex].qty++
@@ -20,6 +27,7 @@ export default {
                price: productData.price,
                qty: 1,
             }
+
             state.items.push(newItem)
          }
 
@@ -29,7 +37,9 @@ export default {
 
       removeProductFromCart(state, payload) {
          const prodId = payload.productId
-         const productInCartIndex = state.items.findIndex((cartItem) => cartItem.productId === prodId)
+         const productInCartIndex = state.items.findIndex(
+            (cartItem) => cartItem.productId === prodId
+         )
 
          const prodData = state.items[productInCartIndex]
 
@@ -38,6 +48,7 @@ export default {
          state.total -= prodData.price * prodData.qty
       },
    },
+
    //* Action based on mutations
    actions: {
       addToCart(context, payload) {
@@ -47,6 +58,7 @@ export default {
          context.commit("removeProductFromCart", payload)
       },
    },
+
    //* Get custom data
    getters: {
       products(state) {

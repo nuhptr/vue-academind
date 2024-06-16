@@ -1,55 +1,39 @@
-<script>
+<script setup>
+import { computed, inject } from "vue"
+import { useStore } from "vuex"
+
 import CartItem from "../components/cart/CartItem.vue"
 import BaseBadge from "../components/ui/BaseBadge.vue"
 
-export default {
-    // inject: ["cart"],
-    components: { CartItem, BaseBadge },
-    computed: {
-        // replace inject provide to global store (vuex)
-        cartTotal() {
-            return this.$store.getters["cart/cartTotal"]
-        },
-        cartItems() {
-            return this.$store.getters["cart/products"]
-        },
-    },
-}
+// const cart = inject("cart")
+
+const store = useStore()
+
+const cartTotal = computed(() => store.getters["cart/cartTotal"])
+const cartItems = computed(() => store.getters["cart/products"])
 </script>
 
-<template>
-    <section>
-        <h2>Your Cart</h2>
-        <h3>
-            Total Amount: <BaseBadge mode="elegant">${{ cartTotal }}</BaseBadge>
-        </h3>
-        <ul>
-            <CartItem v-for="item in cartItems" :key="item.productId" :prod-id="item.productId" :title="item.title"
-                :image="item.image" :price="item.price" :qty="item.qty" />
-        </ul>
-    </section>
-</template>
-
 <style scoped>
-section {
-    margin: 2rem auto;
-    max-width: 40rem;
-}
-
-h2 {
-    color: #292929;
-    text-align: center;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 1rem;
-}
-
-h3 {
-    text-align: center;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+/* Style goes here */
 </style>
+
+<template>
+   <section class="mx-auto my-8">
+      <h2 class="text-[#292929] text-center pb-4 border-b border-[#ccc] font-bold">Your Cart</h2>
+      <h3 class="my-10 text-center">
+         Total Amount: <BaseBadge mode="elegant">${{ cartTotal }}</BaseBadge>
+      </h3>
+
+      <ul class="grid grid-cols-1 gap-8 mx-10 list-none md:grid-cols-12">
+         <CartItem
+            v-for="item in cartItems"
+            :key="item.productId"
+            :prod-id="item.productId"
+            :title="item.title"
+            :image="item.image"
+            :price="item.price"
+            :qty="item.qty"
+         />
+      </ul>
+   </section>
+</template>
