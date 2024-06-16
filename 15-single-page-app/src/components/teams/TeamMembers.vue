@@ -1,29 +1,37 @@
 <script setup>
 import { ref, inject, onMounted, watch } from "vue"
-import { useRoute } from "vue-router"
+import { useRouter } from "vue-router"
 
 import UserItem from "@/components/users/UserItem.vue"
 
 const teamName = ref("")
 const members = ref([])
 
+const router = useRouter()
+
 const users = inject("users")
 const teams = inject("teams")
-const route = useRoute()
 
 const loadTeamMembers = () => {
-   const teamId = route.params.teamId
+   const teamId = router.currentRoute.value.params.teamId
+
    const selectedTeam = teams.value.find((team) => team.id === teamId)
-   const members = selectedTeam.members
+   const selectedMembers = selectedTeam.members
+   console.log("members", selectedMembers)
 
-   const selectedMembers = []
-   for (const member of members) {
+   const teamMembers = []
+   for (const member of selectedMembers) {
       const user = users.value.find((user) => user.id === member)
-      selectedMembers.push(user)
+      teamMembers.push(user)
    }
+   console.log("teamMembers deep", teamMembers)
 
-   members.value = selectedMembers
-   console.log(members.value)
+   const mappingUserTeam = teamMembers.map((member) => {
+      return { id: member.id, fullName: member.fullName, role: member.role }
+   })
+   console.log("mappingUserTeam", mappingUserTeam)
+
+   members.value = mappingUserTeam
    teamName.value = selectedTeam.name
 }
 
@@ -32,19 +40,11 @@ onMounted(() => {
 })
 
 watch(
-   () => route.params.teamId,
+   () => router.currentRoute.value.params,
    () => {
       loadTeamMembers()
    }
 )
-
-// // Navigation Guards
-// onBeforeRouteUpdate((to, from, next) => {
-//    console.log("beforeRouteUpdate TeamMembers")
-//    console.log(to, from)
-//    // this.loadTeamMembers(to.params.teamId)
-//    // next()
-// })
 </script>
 
 <style scoped>

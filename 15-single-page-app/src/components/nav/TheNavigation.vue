@@ -1,13 +1,26 @@
-<!-- <script>
-   export default {
-      emits: ["setPage"],
-      methods: {
-         setActivePage(page) {
-            this.$emit("setPage", page)
-         },
-      },
-   }
-</script> -->
+<script setup>
+import { useRouter } from "vue-router"
+import { computed, ref } from "vue"
+// const emits = defineEmits(["setPage"])
+
+// const setActivePage = (page) => {
+//    emit("setPage", page)
+// }
+
+const router = useRouter()
+
+const teamActiveClass = computed(() => {
+   return router.currentRoute.value.name === "teams"
+      ? "text-amber-500 bg-amber-500 hover:text-white"
+      : ""
+})
+
+const userActiveClass = computed(() => {
+   return router.currentRoute.value.name === "users"
+      ? "text-amber-500 bg-amber-500 hover:text-white"
+      : ""
+})
+</script>
 
 <style scoped>
 a {
@@ -17,7 +30,7 @@ a {
 </style>
 
 <template>
-   <header class="w-full h-[5rem] bg-[#11005c]">
+   <header class="w-full h-[5rem] bg-blue-600">
       <nav class="h-full">
          <ul class="flex items-center justify-center h-full p-0 mx-auto my-0 list-none">
             <li class="mx-[2rem] my-0">
@@ -26,7 +39,7 @@ a {
                <RouterLink
                   class="inline-block px-6 py-2 text-white bg-transparent border border-transparent cursor-pointer hover:text-amber-500 hover:border-amber-500 active:text-amber-500 active:border-amber-500"
                   to="/teams"
-                  active-class="text-amber-500 border-amber-500"
+                  :class="teamActiveClass"
                >
                   Teams
                </RouterLink>
@@ -37,7 +50,7 @@ a {
                <RouterLink
                   class="inline-block px-6 py-2 text-white bg-transparent border border-transparent cursor-pointer hover:text-amber-500 hover:border-amber-500 active:text-amber-500 active:border-amber-500"
                   to="/users"
-                  active-class="text-amber-500 border-amber-500"
+                  :class="userActiveClass"
                >
                   Users
                </RouterLink>

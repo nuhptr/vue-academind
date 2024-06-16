@@ -8,7 +8,10 @@ import NotFound from "@/pages/NotFound.vue"
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
    routes: [
-      { path: "/", redirect: "/teams" },
+      {
+         path: "/",
+         redirect: "/teams",
+      },
       {
          name: "teams",
          path: "/teams",
@@ -22,10 +25,10 @@ const router = createRouter({
          ],
       },
       {
-         path: "/users",
          name: "users",
+         path: "/users",
          // component: { default: UserList, footer: UserFooter },
-         components: UserList,
+         component: UserList,
          beforeEnter(to, from, next) {
             console.log("users route scope beforeEnter")
             console.log(to, from)

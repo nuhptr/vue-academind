@@ -15,8 +15,8 @@ const teams = inject("teams")
    <ul class="mx-auto my-8 list-none max-w-[40rem] p-0">
       <TeamsItem
          v-for="team in teams"
-         :id="team.id"
          :key="team.id"
+         :id="team.id"
          :name="team.name"
          :memberCount="team.members.length"
       />

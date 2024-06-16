@@ -1,9 +1,10 @@
 <script setup>
 import { ref, provide } from "vue"
 import { RouterView } from "vue-router"
+
 import TheNavigation from "./components/nav/TheNavigation.vue"
 
-const activePage = ref("teamsList") // not used here
+// const activePage = ref("teamsList") // not used here
 const teams = ref([
    { id: "t1", name: "Frontend Engineers", members: ["u1", "u2"] },
    { id: "t2", name: "Backend Engineers", members: ["u1", "u2", "u3"] },
