@@ -1,51 +1,46 @@
-<script>
-   import BaseContainer from "@/components/BaseContainer.vue"
-   import TheCounter from "./components/TheCounter.vue"
-   import ChangeCounter from "./components/ChangeCounter.vue"
-   import FavoriteValue from "./components/FavoriteValue.vue"
-   import UserAuth from "./components/UserAuth.vue"
+<script setup>
+import { useStore } from "vuex"
+import { computed } from "vue"
 
-   export default {
-      components: { UserAuth, BaseContainer, TheCounter, ChangeCounter, FavoriteValue },
-      methods: {
-         addOne() {
-            // this.$store.commit("increase", { value: 10 })
+import BaseContainer from "@/components/BaseContainer.vue"
+import TheCounter from "@/components/TheCounter.vue"
+import ChangeCounter from "@/components/ChangeCounter.vue"
+import FavoriteValue from "@/components/FavoriteValue.vue"
+import UserAuth from "@/components/UserAuth.vue"
 
-            // When use namespaced modules, you need to specify the module name
-            this.$store.dispatch({ type: "numbers/increase", value: 10 })
-         },
-      },
-      computed: {
-         isAuth() {
-            return this.$store.getters.userIsAuthenticated
-         },
-      },
-   }
+const store = useStore() // how to use store
+
+const addOne = () => {
+   store.dispatch({ type: "numbers/increase", value: 10 })
+}
+
+const isAuth = computed(() => store.getters.userIsAuthenticated)
 </script>
+
+<style>
+* {
+   box-sizing: border-box;
+   font-family: sans-serif;
+   margin: 0;
+}
+</style>
 
 <template>
    <BaseContainer title="Vuex" v-if="isAuth">
-      <TheCounter />
-      <FavoriteValue />
-      <button @click="addOne">Add 10</button>
-      <ChangeCounter />
+      <div class="flex flex-col">
+         <div class="flex flex-col items-center justify-center gap-4">
+            <TheCounter />
+            <FavoriteValue />
+         </div>
+
+         <div class="flex flex-col items-center gap-4 mt-4">
+            <button @click="addOne">Add 10</button>
+            <ChangeCounter />
+         </div>
+      </div>
    </BaseContainer>
 
    <BaseContainer title="Auth">
       <UserAuth />
    </BaseContainer>
 </template>
-
-<style>
-   * {
-      box-sizing: border-box;
-   }
-
-   html {
-      font-family: sans-serif;
-   }
-
-   body {
-      margin: 0;
-   }
-</style>

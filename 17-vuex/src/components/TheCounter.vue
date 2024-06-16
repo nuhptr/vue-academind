@@ -1,14 +1,11 @@
-<script>
-   import { mapGetters } from "vuex"
+<script setup>
+import { computed } from "vue"
+import { useStore } from "vuex"
+// import { computed } from "vue"
+// import { useStore } from "vuex"
 
-   export default {
-      computed: {
-         // counter() {
-         //    return this.$store.getters.finalCounter
-         // },
-         ...mapGetters("numbers", ["finalCounter"]),
-      },
-   }
+const store = useStore()
+const finalCounter = computed(() => store.getters["numbers/finalCounter"])
 </script>
 
 <template>

@@ -1,23 +1,14 @@
-<script>
-   export default { props: ["title"] }
+<script setup>
+const props = defineProps(["title"])
 </script>
 
+<style scoped>
+/* Style goes here */
+</style>
+
 <template>
-   <section>
-      <h2>{{ title }}</h2>
+   <section class="max-w-[30rem] mx-auto my-8 shadow-md p-4">
+      <h2 class="mb-4 text-xl font-bold text-center">{{ props.title }}</h2>
       <slot></slot>
    </section>
 </template>
-
-<style scoped>
-   section {
-      max-width: 30rem;
-      margin: 2rem auto;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-      padding: 1rem;
-   }
-
-   h2 {
-      text-align: center;
-   }
-</style>
