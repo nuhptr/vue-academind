@@ -25,6 +25,7 @@ export default {
          ],
       }
    },
+
    getters: {
       coaches(state) {
          return state.coaches
@@ -47,6 +48,7 @@ export default {
          return (currentTimeStamp - lastFetch) / 1000 > 60 // this means 1 minute
       },
    },
+
    mutations: {
       registerCoach(state, payload) {
          state.coaches.push(payload)
@@ -58,6 +60,7 @@ export default {
          state.lastFetch = new Date().getTime()
       },
    },
+
    actions: {
       async registerCoach(context, data) {
          const userId = context.rootGetters.userId

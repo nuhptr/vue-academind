@@ -1,63 +1,64 @@
-<script>
-   import CoachItem from "@/components/CoachItem.vue"
-   import BaseCard from "@/components/BaseCard.vue"
-   import BaseButton from "@/components/BaseButton.vue"
-   import CoachFilter from "@/components/CoachFilter.vue"
-   import BaseSpinner from "@/components/BaseSpinner.vue"
-   import BaseDialog from "@/components/BaseDialog.vue"
+<script setup>
+import { ref, computed, onMounted } from "vue"
+import { useStore } from "vuex"
 
-   export default {
-      components: { CoachItem, BaseCard, BaseButton, CoachFilter, BaseSpinner, BaseDialog },
-      data() {
-         return {
-            isError: null,
-            isLoading: false,
-            activeFilters: { frontend: true, backend: true, career: true },
-         }
-      },
-      computed: {
-         isLoggedIn() {
-            return this.$store.getters["auth/isAuthenticated"] // from store
-         },
-         isCoach() {
-            return this.$store.getters["coaches/isCoach"] // from store
-         },
-         filteredCoaches() {
-            const coaches = this.$store.getters["coaches/coaches"]
-            return coaches.filter((coach) => {
-               if (this.activeFilters.frontend && coach.areas.includes("frontend")) return true
-               if (this.activeFilters.backend && coach.areas.includes("backend")) return true
-               if (this.activeFilters.career && coach.areas.includes("career")) return true
+import CoachItem from "@/components/CoachItem.vue"
+import BaseCard from "@/components/BaseCard.vue"
+import BaseButton from "@/components/BaseButton.vue"
+import CoachFilter from "@/components/CoachFilter.vue"
+import BaseSpinner from "@/components/BaseSpinner.vue"
+import BaseDialog from "@/components/BaseDialog.vue"
 
-               return false
-            })
-         },
-         hasCoaches() {
-            return !this.isLoading && this.$store.getters["coaches/hasCoaches"]
-         },
-      },
-      created() {
-         this.loadCoaches()
-      },
-      methods: {
-         setFilter(updatedFilters) {
-            this.activeFilters = updatedFilters
-         },
-         async loadCoaches(refresh = false) {
-            this.isLoading = true
-            try {
-               await this.$store.dispatch("coaches/loadCoaches", { forceRefresh: refresh })
-            } catch (error) {
-               this.error = error.message || "Failed to fetch coaches."
-            }
-            this.isLoading = false
-         },
-         handleError() {
-            this.error = null
-         },
-      },
+const store = useStore()
+
+const isError = ref(null)
+const isLoading = ref(false)
+const activeFilters = ref({ frontend: true, backend: true, career: true })
+
+onMounted(() => {
+   loadCoaches()
+})
+
+const isLoggedIn = computed(() => {
+   return store.getters["auth/isAuthenticated"]
+})
+const isCoach = computed(() => {
+   return store.getters["coaches/isCoach"]
+})
+const filteredCoaches = computed(() => {
+   const coaches = store.getters["coaches/coaches"]
+   return coaches.filter((coach) => {
+      if (activeFilters.value.frontend && coach.areas.includes("frontend")) return true
+      if (activeFilters.value.backend && coach.areas.includes("backend")) return true
+      if (activeFilters.value.career && coach.areas.includes("career")) return true
+
+      return false
+   })
+})
+const hasCoaches = computed(() => {
+   return !isLoading && store.getters["coaches/hasCoaches"]
+})
+
+const setFilter = (updatedFilters) => {
+   activeFilters.value = updatedFilters
+}
+const loadCoaches = async (refresh = false) => {
+   isLoading.value = true
+   try {
+      await store.dispatch("coaches/loadCoaches", { forceRefresh: refresh })
+   } catch (error) {
+      isError.value = error.message || "Failed to fetch coaches."
    }
+   isLoading.value = false
+}
+const handleError = () => {
+   isError.value = null
+}
 </script>
+
+<style scoped>
+/* Add your styles here */
+</style>
 
 <template>
    <div>
@@ -69,9 +70,11 @@
       </section>
       <section>
          <BaseCard>
-            <div class="controls">
+            <div class="flex justify-between">
                <BaseButton mode="outline" @click="loadCoaches(true)">Refresh</BaseButton>
-               <BaseButton link to="/auth?redirect=register" v-if="!isLoggedIn">Login to register as coach</BaseButton>
+               <BaseButton link to="/auth?redirect=register" v-if="!isLoggedIn"
+                  >Login to register as coach</BaseButton
+               >
                <BaseButton v-if="isLoggedIn && !isCoach && !isLoading" to="/register" link>
                   Register as Coach
                </BaseButton>
@@ -79,7 +82,7 @@
             <div v-if="isLoading">
                <BaseSpinner />
             </div>
-            <ul v-if="hasCoaches">
+            <ul class="list-none" v-if="hasCoaches">
                <CoachItem
                   v-for="coach in filteredCoaches"
                   :key="coach.id"
@@ -87,23 +90,11 @@
                   :firstName="coach.firstName"
                   :lastName="coach.lastName"
                   :rate="coach.hourlyRate"
-                  :areas="coach.areas" />
+                  :areas="coach.areas"
+               />
             </ul>
             <h3 v-else>No coaches found.</h3>
          </BaseCard>
       </section>
    </div>
 </template>
-
-<style scoped>
-   ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-   }
-
-   .controls {
-      display: flex;
-      justify-content: space-between;
-   }
-</style>

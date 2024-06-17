@@ -1,42 +1,30 @@
-<script>
-   export default {
-      props: ["type", "title"],
-      computed: {
-         text() {
-            return this.title.toUpperCase()
-         },
-      },
-   }
+<script setup>
+import { computed } from "vue"
+
+const props = defineProps(["type", "title"])
+
+const text = computed(() => props.title.toUpperCase())
 </script>
 
+<style scoped>
+.frontend {
+   @apply bg-[#3d008d] text-white;
+}
+
+.backend {
+   @apply bg-[#71008d] text-white;
+}
+
+.career {
+   @apply bg-[#8d006e] text-white;
+}
+</style>
+
 <template>
-   <span class="badge" :class="type">
+   <span
+      class="inline-block px-6 py-2 mr-2 bg-zinc-300 text-zinc-600 rounded-3xl"
+      :class="props.type"
+   >
       {{ text }}
    </span>
 </template>
-
-<style scoped>
-   .badge {
-      background-color: #ccc;
-      color: #252525;
-      border-radius: 30px;
-      padding: 0.5rem 1.5rem;
-      display: inline-block;
-      margin-right: 0.5rem;
-   }
-
-   .frontend {
-      background-color: #3d008d;
-      color: white;
-   }
-
-   .backend {
-      background-color: #71008d;
-      color: white;
-   }
-
-   .career {
-      background-color: #8d006e;
-      color: white;
-   }
-</style>

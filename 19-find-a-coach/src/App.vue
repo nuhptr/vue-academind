@@ -1,22 +1,27 @@
-<script>
-   import TheHeader from "@/components/TheHeader.vue"
+<script setup>
+import TheHeader from "@/components/TheHeader.vue"
 
-   export default {
-      components: { TheHeader },
-      created() {
-         this.$store.dispatch("tryLogin")
-      },
-      computed: {
-         didAutoLogout() {
-            return this.$store.getters["auth/didAutoLogout"]
-         },
-      },
-      watch: {
-         didAutoLogout(curValue, oldValue) {
-            if (curValue && curValue !== oldValue) this.$router.replace("/auth")
-         },
-      },
+import { RouterView, useRouter } from "vue-router"
+import { Transition, onMounted, computed, watch } from "vue"
+import { useStore } from "vuex"
+
+const store = useStore()
+const router = useRouter()
+
+onMounted(() => {
+   store.dispatch("tryLogin")
+})
+
+const didAutoLogout = computed(() => store.getters["auth/didAutoLogout"])
+
+watch(
+   () => store.getters["auth/didAutoLogout"],
+   (curValue, oldValue) => {
+      if (curValue && curValue !== oldValue) {
+         router.replace("/auth")
+      }
    }
+)
 </script>
 
 <template>
@@ -29,41 +34,24 @@
 </template>
 
 <style>
-   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+.route-enter-from {
+   @apply opacity-0 translate-x-[-30px];
+}
 
-   * {
-      box-sizing: border-box;
-   }
+.route-leave-to {
+   @apply opacity-0 translate-x-[30px];
+}
 
-   html {
-      font-family: "Roboto", sans-serif;
-   }
+.route-enter-active {
+   @apply transition-all duration-300 ease-out;
+}
 
-   body {
-      margin: 0;
-   }
+.route-leave-active {
+   @apply transition-all duration-300 ease-in;
+}
 
-   .route-enter-from {
-      opacity: 0;
-      transform: translateX(-30px);
-   }
-
-   .route-leave-to {
-      opacity: 0;
-      transform: translateX(30px);
-   }
-
-   .route-enter-active {
-      transition: all 0.3s ease-out;
-   }
-
-   .route-leave-active {
-      transition: all 0.3s ease-in;
-   }
-
-   .route-enter-to,
-   .route-leave-from {
-      opacity: 1;
-      transform: translateY(0);
-   }
+.route-enter-to,
+.route-leave-from {
+   @apply opacity-100 translate-y-0;
+}
 </style>

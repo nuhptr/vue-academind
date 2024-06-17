@@ -1,87 +1,70 @@
-<script>
-   import BaseButton from "@/components/BaseButton.vue"
+<script setup>
+import { ref } from "vue"
+import { useStore } from "vuex"
+import { useRouter } from "vue-router"
 
-   export default {
-      components: { BaseButton },
-      data() {
-         return { email: "", message: "", formIsValid: true }
-      },
-      methods: {
-         submitForm() {
-            this.formIsValid = true
-            if (this.email === "" || !this.email.includes("@") || this.message === "") {
-               this.formIsValid = false
-            }
+import BaseButton from "@/components/BaseButton.vue"
 
-            this.$store.dispatch("requests/contactCoach", {
-               coachId: this.$route.params.id,
-               email: this.email,
-               message: this.message,
-            })
-            // console.log(this.$route.params.id)
-            this.$router.replace("/coaches")
-         },
-      },
+const store = useStore()
+const router = useRouter()
+
+const email = ref("")
+const message = ref("")
+const formIsValid = ref(true)
+
+const submitForm = () => {
+   formIsValid.value = true
+   if (email.value === "" || !email.value.includes("@") || message.value === "") {
+      formIsValid.value = false
    }
+
+   store.dispatch("requests/contactCoach", {
+      coachId: router.currentRoute.value.params.id,
+      email: email.value,
+      message: message.value,
+   })
+   router.replace("/coaches")
+}
 </script>
 
+<style scoped>
+.form-control {
+   @apply my-2;
+}
+
+label {
+   @apply font-bold block mb-2;
+}
+
+input,
+textarea {
+   @apply block w-full border border-[#ccc] rounded p-2;
+}
+
+input:focus,
+textarea:focus {
+   @apply border-[#3d008d] outline-none bg-[#faf6ff];
+}
+</style>
+
 <template>
-   <form @submit.prevent="submitForm">
+   <form @submit.prevent="submitForm" class="m-4 border border-[#ccc] rounded-xl p-4">
       <div>
          <label for="email">Your E-Mail</label>
          <input type="email" id="email" v-model.trim="email" />
       </div>
+
       <div>
          <label for="message">Message</label>
          <textarea name="message" id="message" cols="5" v-model.trim="message" />
       </div>
-      <p class="errors" v-if="!formIsValid">Please enter a valid email & non-empty message.</p>
-      <div class="actions">
+
+      <p class="font-bold text-rose-600" v-if="!formIsValid">
+         Please enter a valid email & non-empty message.
+      </p>
+
+      <div class="text-center">
          <BaseButton>Send Message</BaseButton>
       </div>
    </form>
 </template>
-
-<style scoped>
-   form {
-      margin: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      padding: 1rem;
-   }
-
-   .form-control {
-      margin: 0.5rem 0;
-   }
-
-   label {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      display: block;
-   }
-
-   input,
-   textarea {
-      display: block;
-      width: 100%;
-      font: inherit;
-      border: 1px solid #ccc;
-      padding: 0.15rem;
-   }
-
-   input:focus,
-   textarea:focus {
-      border-color: #3d008d;
-      background-color: #faf6ff;
-      outline: none;
-   }
-
-   .errors {
-      font-weight: bold;
-      color: red;
-   }
-
-   .actions {
-      text-align: center;
-   }
-</style>

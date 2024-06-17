@@ -1,17 +1,18 @@
-<script>
-   import BaseCard from "@/components/BaseCard.vue"
-   import CoachForm from "@/components/CoachForm.vue"
+<script setup>
+import { useStore } from "vuex"
+import { useRouter } from "vue-router"
 
-   export default {
-      components: { CoachForm, BaseCard },
-      methods: {
-         saveData(data) {
-            console.log(data)
-            this.$store.dispatch("coaches/registerCoach", data)
-            this.$router.replace("/coaches")
-         },
-      },
-   }
+import BaseCard from "@/components/BaseCard.vue"
+import CoachForm from "@/components/CoachForm.vue"
+
+const store = useStore()
+const router = useRouter()
+
+const saveData = (data) => {
+   console.log(data)
+   store.dispatch("coaches/registerCoach", data)
+   router.replace("/coaches")
+}
 </script>
 
 <template>

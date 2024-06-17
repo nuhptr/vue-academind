@@ -1,37 +1,35 @@
-<script>
-   import BaseBadge from "@/components/BaseBadge.vue"
-   import BaseButton from "@/components/BaseButton.vue"
-   import BaseCard from "@/components/BaseCard.vue"
+<script setup>
+import { computed, onMounted, ref } from "vue"
+import { useStore } from "vuex"
 
-   export default {
-      components: { BaseCard, BaseButton, BaseBadge },
-      props: ["id"],
-      data() {
-         return {
-            selectedCoach: null,
-         }
-      },
-      computed: {
-         fullName() {
-            return this.selectedCoach.firstName + " " + this.selectedCoach.lastName
-         },
-         contactLink() {
-            return "/coaches/" + this.id + "/contact"
-         },
-         areas() {
-            return this.selectedCoach.areas
-         },
-         rate() {
-            return this.selectedCoach.hourlyRate
-         },
-         description() {
-            return this.selectedCoach.description
-         },
-      },
-      created() {
-         this.selectedCoach = this.$store.getters["coaches/coaches"].find((coach) => coach.id === this.id)
-      },
-   }
+import BaseBadge from "@/components/BaseBadge.vue"
+import BaseButton from "@/components/BaseButton.vue"
+import BaseCard from "@/components/BaseCard.vue"
+
+const store = useStore()
+const selectedCoach = ref(null)
+
+const props = defineProps(["id"])
+
+onMounted(() => {
+   selectedCoach.value = store.getters["coaches/coaches"].find((coach) => coach.id === props.id)
+})
+
+const fullName = computed(() => {
+   return selectedCoach.value.firstName + " " + selectedCoach.value.lastName
+})
+const contactLink = computed(() => {
+   return "/coaches/" + props.id + "/contact"
+})
+const areas = computed(() => {
+   return selectedCoach.value.areas
+})
+const rate = computed(() => {
+   return selectedCoach.value.hourlyRate
+})
+const description = computed(() => {
+   return selectedCoach.value.description
+})
 </script>
 
 <template>

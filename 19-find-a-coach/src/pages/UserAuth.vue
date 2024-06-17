@@ -1,76 +1,102 @@
-<script>
-   import BaseButton from "@/components/BaseButton.vue"
-   import BaseCard from "@/components/BaseCard.vue"
-   import BaseDialog from "@/components/BaseDialog.vue"
-   import BaseSpinner from "@/components/BaseSpinner.vue"
+<script setup>
+import { useStore } from "vuex"
+import { useRouter } from "vue-router"
+import { ref } from "vue"
 
-   export default {
-      components: { BaseButton, BaseCard, BaseDialog, BaseSpinner },
-      data() {
-         return {
-            email: "",
-            password: "",
-            formIsValid: false,
-            mode: "login",
-            isLoading: false,
-            error: null,
-         }
-      },
-      computed: {
-         submitButtonCaption() {
-            if (this.mode === "login") return "Login"
-            else return "Signup"
-         },
-         switchModeButtonCaption() {
-            if (this.mode === "login") return "Signup instead"
-            else return "Login instead"
-         },
-      },
-      methods: {
-         async submitForm() {
-            this.formIsValid = true
-            if (this.email === "" || !this.email.includes("@") || this.password < 6) {
-               this.formIsValid = false
-               return
-            }
+import BaseButton from "@/components/BaseButton.vue"
+import BaseCard from "@/components/BaseCard.vue"
+import BaseDialog from "@/components/BaseDialog.vue"
+import BaseSpinner from "@/components/BaseSpinner.vue"
 
-            this.isLoading = true
-            const actionPayload = { email: this.email, password: this.password }
+const store = useStore()
+const router = useRouter()
 
-            try {
-               if (this.mode === "login") {
-                  await this.$store.dispatch("auth/login", actionPayload)
-               } else {
-                  await this.$store.dispatch("auth/signUp", actionPayload)
-               }
+const email = ref("")
+const password = ref("")
+const formIsValid = ref(false)
+const mode = ref("login")
+const isLoading = ref(false)
+const error = ref(null)
 
-               const redirectUrl = "/" + (this.$route.query.redirect || "/coaches")
-               this.$router.replace(redirectUrl) // redirect to query.redirect or /coaches
-            } catch (error) {
-               this.error = error.message || "Failed to authenticate. Please try again."
-               this.isLoading = false
-            }
-            this.isLoading = false
-         },
-         switchMode() {
-            if (this.mode === "login") this.mode = "signup"
-            else this.mode = "login"
-         },
-         handleError() {
-            this.error = null
-         },
-      },
+const submitButtonCaption = computed(() => {
+   if (mode.value === "login") return "Login"
+   else return "Signup"
+})
+const switchModeButtonCaption = computed(() => {
+   if (mode.value === "login") return "Signup instead"
+   else return "Login instead"
+})
+
+const submitForm = async () => {
+   formIsValid.value = true
+   if (email.value === "" || !email.value.includes("@") || password.value < 6) {
+      formIsValid.value = false
+      return
    }
+
+   isLoading.value = true
+   const actionPayload = { email: email.value, password: password.value }
+
+   try {
+      if (mode.value === "login") {
+         await store.dispatch("auth/login", actionPayload)
+      } else {
+         await store.dispatch("auth/signUp", actionPayload)
+      }
+
+      const redirectUrl = "/" + (router.currentRoute.value.query.redirect || "/coaches")
+      router.replace(redirectUrl) // redirect to query.redirect or /coaches
+   } catch (error) {
+      error.value = error.message || "Failed to authenticate. Please try again."
+      isLoading.value = false
+   }
+   isLoading.value = false
+}
+
+const switchMode = () => {
+   if (mode.value === "login") mode.value = "signup"
+   else mode.value = "login"
+}
+
+const handleError = () => {
+   error.value = null
+}
 </script>
+
+<style scoped>
+form {
+   @apply m-4 p-4;
+}
+
+.form-control {
+   @apply my-2;
+}
+
+label {
+   @apply font-bold block mb-2;
+}
+
+input,
+textarea {
+   @apply block w-full p-1 border border-gray-300 rounded;
+}
+
+input:focus,
+textarea:focus {
+   @apply border-[#3d008d] bg-[#faf6ff] outline-none;
+}
+</style>
 
 <template>
    <div>
       <BaseDialog :show="!!error" title="An error occurred!" @close="handleError">
          {{ error }}
       </BaseDialog>
+
       <BaseDialog fixed :show="isLoading" title="Authenticating...">
          <BaseSpinner />
       </BaseDialog>
+
       <form @submit.prevent="submitForm">
          <BaseCard>
             <div class="form-control">
@@ -81,43 +107,14 @@
                <label for="password">Password</label>
                <input type="password" id="password" v-model.trim="password" />
             </div>
-            <p v-if="!formIsValid">Please enter a valid email and password (must be at least 6 characters)</p>
+            <p v-if="!formIsValid">
+               Please enter a valid email and password (must be at least 6 characters)
+            </p>
             <BaseButton>{{ submitButtonCaption }}</BaseButton>
-            <BaseButton type="button" mode="flat" @click="switchMode"> {{ switchModeButtonCaption }}</BaseButton>
+            <BaseButton type="button" mode="flat" @click="switchMode">
+               {{ switchModeButtonCaption }}</BaseButton
+            >
          </BaseCard>
       </form>
    </div>
 </template>
-
-<style scoped>
-   form {
-      margin: 1rem;
-      padding: 1rem;
-   }
-
-   .form-control {
-      margin: 0.5rem 0;
-   }
-
-   label {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      display: block;
-   }
-
-   input,
-   textarea {
-      display: block;
-      width: 100%;
-      font: inherit;
-      border: 1px solid #ccc;
-      padding: 0.15rem;
-   }
-
-   input:focus,
-   textarea:focus {
-      border-color: #3d008d;
-      background-color: #faf6ff;
-      outline: none;
-   }
-</style>

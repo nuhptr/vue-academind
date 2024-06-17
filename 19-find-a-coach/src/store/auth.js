@@ -10,6 +10,7 @@ export default {
          didAutoLogout: false,
       }
    },
+
    getters: {
       userId(state) {
          return state.userId
@@ -24,6 +25,7 @@ export default {
          return state.didAutoLogout
       },
    },
+
    actions: {
       async login(context, payload) {
          context.dispatch("auth", { ...payload, mode: "login" })
@@ -53,7 +55,9 @@ export default {
          const responseData = await response.json()
 
          if (!response.ok) {
-            const error = new Error(responseData.message || "Failed to authenticate. Check your login data.")
+            const error = new Error(
+               responseData.message || "Failed to authenticate. Check your login data."
+            )
             throw error
          }
 
@@ -111,6 +115,7 @@ export default {
          context.commit("setAutoLogout")
       },
    },
+
    mutations: {
       setUser(state, payload) {
          state.token = payload.token

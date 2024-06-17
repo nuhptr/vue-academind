@@ -5,6 +5,7 @@ export default {
          requests: [],
       }
    },
+
    mutations: {
       addRequest(state, payload) {
          state.requests.push(payload)
@@ -13,6 +14,7 @@ export default {
          state.requests = payload
       },
    },
+
    actions: {
       async contactCoach(context, payload) {
          const newRequest = {
@@ -21,10 +23,13 @@ export default {
             userEmail: payload.email,
             message: payload.message,
          }
-         const response = fetch(`https://vue-http-demo-85e9e.firebaseio.com/requests/${payload.coachId}.json`, {
-            method: "POST",
-            body: JSON.stringify(newRequest),
-         })
+         const response = fetch(
+            `https://vue-http-demo-85e9e.firebaseio.com/requests/${payload.coachId}.json`,
+            {
+               method: "POST",
+               body: JSON.stringify(newRequest),
+            }
+         )
          const responseData = await response.json()
 
          if (!response.ok) {
@@ -66,6 +71,7 @@ export default {
          context.commit("setRequests", requests)
       },
    },
+
    getters: {
       requests(state, getters, rootState, rootGetters) {
          const coachId = rootGetters.userId
