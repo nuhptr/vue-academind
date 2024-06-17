@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+   @apply box-border;
+}
+
+html {
+   font-family: sans-serif;
+}
+
+body {
+   @apply m-0;
+}
+
+main {
+   @apply w-[40rem] mx-auto my-12;
+}

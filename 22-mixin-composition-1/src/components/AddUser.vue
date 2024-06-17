@@ -1,3 +1,10 @@
+<script setup>
+import UserAlert from "./UserAlert.vue"
+import useAlert from "@/composable/useAlert.js"
+
+const { alertIsVisible, hideAlert, showAlert } = useAlert()
+</script>
+
 <template>
    <user-alert v-if="alertIsVisible" title="Add a User?" @close="hideAlert">
       <p>Do you want to continue with adding a user?</p>
@@ -7,10 +14,3 @@
       <button @click="showAlert">Add User</button>
    </section>
 </template>
-
-<script setup>
-   import UserAlert from "./UserAlert.vue"
-   import useAlert from "@/composable/useAlert.js"
-
-   const { alertIsVisible, hideAlert, showAlert } = useAlert()
-</script>

@@ -3,6 +3,8 @@ import { createStore } from "vuex"
 
 import App from "./App.vue"
 
+import "./globals.css"
+
 const store = createStore({
    state() {
       return {

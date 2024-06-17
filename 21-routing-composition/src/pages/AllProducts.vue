@@ -1,3 +1,28 @@
+<script setup>
+import { inject } from "vue"
+
+const loadedProducts = inject("products")
+</script>
+
+<style scoped>
+section {
+   @apply mx-auto my-[3rem] max-w-[40rem] rounded-[12px] shadow-md p-4;
+}
+
+ul {
+   @apply list-none p-0 m-0;
+}
+
+li {
+   @apply my-4 border border-[#ccc] p-4;
+}
+
+h3,
+h4 {
+   @apply my-2;
+}
+</style>
+
 <template>
    <section>
       <h2>All products</h2>
@@ -11,36 +36,3 @@
       </ul>
    </section>
 </template>
-
-<script setup>
-   import { inject } from "vue"
-
-   const loadedProducts = inject("products")
-</script>
-
-<style scoped>
-   section {
-      margin: 3rem auto;
-      max-width: 40rem;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-   }
-
-   ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-   }
-
-   li {
-      margin: 1rem 0;
-      border: 1px solid #ccc;
-      padding: 1rem;
-   }
-
-   h3,
-   h4 {
-      margin: 0.5rem 0;
-   }
-</style>

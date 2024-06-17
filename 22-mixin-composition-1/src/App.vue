@@ -1,53 +1,21 @@
+<script setup>
+import AddUser from "@/components/AddUser.vue"
+import DeleteUser from "@/components/DeleteUser.vue"
+</script>
+
+<style>
+section {
+   @apply mx-auto my-[2rem] border border-[#ccc] rounded-[12px] p-4;
+}
+
+button {
+   @apply bg-[#310131] border border-[#310131] rounded-[8px] text-white px-6 py-2 cursor-pointer hover:bg-[#770e77] hover:border-[#770e77] transition-all duration-300 ease-in-out;
+}
+</style>
+
 <template>
    <main>
       <add-user></add-user>
       <delete-user></delete-user>
    </main>
 </template>
-
-<script setup>
-   import AddUser from "@/components/AddUser.vue"
-   import DeleteUser from "@/components/DeleteUser.vue"
-</script>
-
-<style>
-   * {
-      box-sizing: border-box;
-   }
-
-   html {
-      font-family: sans-serif;
-   }
-
-   body {
-      margin: 0;
-   }
-
-   main {
-      width: 40rem;
-      margin: 3rem auto;
-   }
-
-   section {
-      margin: 2rem auto;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      padding: 1rem;
-   }
-
-   button {
-      font: inherit;
-      background-color: #310131;
-      border: 1px solid #310131;
-      border-radius: 8px;
-      color: white;
-      padding: 0.5rem 1.5rem;
-      cursor: pointer;
-
-      &:hover,
-      &:active {
-         background-color: #770e77;
-         border-color: #770e77;
-      }
-   }
-</style>

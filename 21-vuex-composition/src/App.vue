@@ -1,33 +1,15 @@
+<script setup>
+import ControlCenter from "@/components/ControlCenter.vue"
+import TheCounter from "@/components/TheCounter.vue"
+</script>
+
+<style>
+.container {
+   @apply mx-auto my-[3rem] max-w-[30rem] rounded-[12px] shadow-md p-4 text-center;
+}
+</style>
+
 <template>
    <the-counter></the-counter>
    <control-center></control-center>
 </template>
-
-<script setup>
-   import ControlCenter from "@/components/ControlCenter.vue"
-   import TheCounter from "@/components/TheCounter.vue"
-</script>
-
-<style>
-   * {
-      box-sizing: border-box;
-   }
-
-   html {
-      font-family: sans-serif;
-   }
-
-   body {
-      margin: 0;
-      text-align: center;
-   }
-
-   .container {
-      margin: 3rem auto;
-      max-width: 30rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-      padding: 1rem;
-      text-align: center;
-   }
-</style>

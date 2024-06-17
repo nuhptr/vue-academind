@@ -1,3 +1,30 @@
+<script setup>
+const props = defineProps(["title"])
+const emits = defineEmits(["close"])
+
+const closeDialog = () => {
+   emits("close")
+}
+</script>
+
+<style scoped>
+.backdrop {
+   @apply fixed top-0 left-0 w-full h-screen bg-black bg-opacity-75 z-10;
+}
+
+dialog {
+   @apply m-0 p-0 border-none rounded-[12px] shadow-md fixed top-[30vh] w-[30rem] bg-white z-[100] overflow-hidden left-[calc(50% - 15rem)];
+}
+
+header {
+   @apply w-full p-4 bg-[#310131] text-white;
+}
+
+menu {
+   @apply p-4 flex justify-end items-center;
+}
+</style>
+
 <template>
    <div class="backdrop" @click="closeDialog"></div>
    <dialog open>
@@ -5,7 +32,8 @@
          <h2>{{ props.title }}</h2>
       </header>
 
-      <div>
+      <div class="p-4">
+         <!-- children -->
          <slot></slot>
       </div>
 
@@ -14,57 +42,3 @@
       </menu>
    </dialog>
 </template>
-
-<script setup>
-   const props = defineProps(["title"])
-   const emits = defineEmits(["close"])
-
-   const closeDialog = () => {
-      emits("close")
-   }
-</script>
-
-<style scoped>
-   .backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.75);
-      z-index: 10;
-   }
-
-   dialog {
-      margin: 0;
-      padding: 0;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-      position: fixed;
-      top: 30vh;
-      left: calc(50% - 15rem);
-      width: 30rem;
-      background-color: white;
-      z-index: 100;
-      overflow: hidden;
-
-      & div {
-         padding: 1rem;
-      }
-   }
-
-   header {
-      width: 100%;
-      padding: 1rem;
-      background-color: #310131;
-      color: white;
-   }
-
-   menu {
-      padding: 1rem;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-   }
-</style>

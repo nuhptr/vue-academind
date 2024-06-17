@@ -6,6 +6,8 @@ import AllProducts from "@/pages/AllProducts.vue"
 import ProductDetails from "@/pages/ProductDetails.vue"
 import AddProduct from "@/pages/AddProduct.vue"
 
+import "./globals.css"
+
 const router = createRouter({
    history: createWebHistory(),
    routes: [
@@ -18,5 +20,6 @@ const router = createRouter({
 })
 
 const app = createApp(App)
+
 app.use(router)
 app.mount("#app")

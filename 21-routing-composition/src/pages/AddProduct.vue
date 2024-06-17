@@ -1,3 +1,51 @@
+<script setup>
+import { ref, inject } from "vue"
+import { useRouter } from "vue-router"
+
+const router = useRouter()
+
+const addProduct = inject("addProduct")
+
+const enteredTitle = ref("")
+const enteredPrice = ref(null)
+const enteredDescription = ref("")
+
+const submitForm = () => {
+   addProduct({
+      title: enteredTitle.value,
+      description: enteredDescription.value,
+      price: enteredPrice.value,
+   })
+
+   router.push("/products")
+}
+</script>
+
+<style scoped>
+section {
+   @apply mx-auto my-[3rem] max-w-[40rem] rounded-[12px] shadow-md p-4;
+}
+
+input,
+label,
+textarea {
+   @apply w-full block;
+}
+
+label {
+   @apply font-bold;
+}
+
+input,
+textarea {
+   @apply mb-2;
+}
+
+button {
+   @apply bg-[#570080] border border-[#570080] text-white px-6 py-2 cursor-pointer hover:bg-[#220031] hover:border-[#220031];
+}
+</style>
+
 <template>
    <section>
       <h2>Add a products</h2>
@@ -18,68 +66,3 @@
       </form>
    </section>
 </template>
-
-<script setup>
-   import { ref, inject } from "vue"
-   import { useRouter } from "vue-router"
-
-   const router = useRouter()
-
-   const addProduct = inject("addProduct")
-
-   const enteredTitle = ref("")
-   const enteredPrice = ref(null)
-   const enteredDescription = ref("")
-
-   const submitForm = () => {
-      addProduct({
-         title: enteredTitle.value,
-         description: enteredDescription.value,
-         price: enteredPrice.value,
-      })
-
-      router.push("/products")
-   }
-</script>
-
-<style scoped>
-   section {
-      margin: 3rem auto;
-      max-width: 40rem;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-   }
-
-   input,
-   label,
-   textarea {
-      display: block;
-      width: 100%;
-   }
-
-   label {
-      font-weight: bold;
-   }
-
-   input,
-   textarea {
-      font: inherit;
-      margin-bottom: 0.5rem;
-   }
-
-   button {
-      font: inherit;
-      background-color: #570080;
-      border: 1px solid #570080;
-      color: white;
-      padding: 0.5rem 1.5rem;
-      cursor: pointer;
-
-      &:hover,
-      &:active {
-         background-color: #220031;
-         border-color: #220031;
-      }
-   }
-</style>
