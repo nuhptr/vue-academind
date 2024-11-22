@@ -2,12 +2,12 @@
 const { ref } = Vue
 
 export default {
-   template: `
+    template: `
       <p>{{ favoriteMeal }}</p>
     `,
-   setup() {
-      const favoriteMeal = ref("Pizza")
+    setup() {
+        const favoriteMeal = ref("Pizza")
 
-      return { favoriteMeal }
-   },
+        return { favoriteMeal }
+    },
 }

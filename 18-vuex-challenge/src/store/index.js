@@ -4,36 +4,36 @@ import productModules from "./product"
 import cartModules from "./cart"
 
 const store = createStore({
-   modules: { prod: productModules, cart: cartModules },
-   state() {
-      return {
-         isLoggedIn: false,
-      }
-   },
+    modules: { prod: productModules, cart: cartModules },
+    state() {
+        return {
+            isLoggedIn: false,
+        }
+    },
 
-   mutations: {
-      login(state) {
-         state.isLoggedIn = true
-      },
-      logout(state) {
-         state.isLoggedIn = false
-      },
-   },
+    mutations: {
+        login(state) {
+            state.isLoggedIn = true
+        },
+        logout(state) {
+            state.isLoggedIn = false
+        },
+    },
 
-   actions: {
-      login(context) {
-         context.commit("login")
-      },
-      logout(context) {
-         context.commit("logout")
-      },
-   },
+    actions: {
+        login(context) {
+            context.commit("login")
+        },
+        logout(context) {
+            context.commit("logout")
+        },
+    },
 
-   getters: {
-      isAuthenticated(state) {
-         return state.isLoggedIn
-      },
-   },
+    getters: {
+        isAuthenticated(state) {
+            return state.isLoggedIn
+        },
+    },
 })
 
 export default store

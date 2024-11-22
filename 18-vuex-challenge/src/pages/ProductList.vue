@@ -15,17 +15,17 @@ const allProducts = computed(() => store.getters["prod/products"])
 </style>
 
 <template>
-   <section>
-      <ul class="list-none mx-auto my-8 p-0 max-w-[40rem]">
-         <ProductItem
-            v-for="product in allProducts"
-            :key="product.id"
-            :id="product.id"
-            :title="product.title"
-            :image="product.image"
-            :description="product.description"
-            :price="product.price"
-         />
-      </ul>
-   </section>
+    <section>
+        <ul class="list-none mx-auto my-8 p-0 max-w-[40rem]">
+            <ProductItem
+                v-for="product in allProducts"
+                :key="product.id"
+                :id="product.id"
+                :title="product.title"
+                :image="product.image"
+                :description="product.description"
+                :price="product.price"
+            />
+        </ul>
+    </section>
 </template>

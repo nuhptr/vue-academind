@@ -1,22 +1,22 @@
 @import url("./user-goal.css");
 
 * {
-   box-sizing: border-box;
-   font-family: "Jost", sans-serif;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
 }
 
 body {
-   margin: 0;
+    margin: 0;
 }
 
 header {
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-   margin: 3rem auto;
-   border-radius: 10px;
-   padding: 1rem;
-   background-color: #4fc08d;
-   color: white;
-   text-align: center;
-   width: 90%;
-   max-width: 40rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 3rem auto;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #4fc08d;
+    color: white;
+    text-align: center;
+    width: 90%;
+    max-width: 40rem;
 }

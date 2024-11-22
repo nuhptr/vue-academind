@@ -7,13 +7,13 @@ const topics = inject("topics")
 </script>
 
 <template>
-   <ul class="ul">
-      <KnowledgeElement
-         v-for="topic in topics"
-         :key="topic.id"
-         :id="topic.id"
-         :topicName="topic.title"
-         :description="topic.description"
-      />
-   </ul>
+    <ul class="ul">
+        <KnowledgeElement
+            v-for="topic in topics"
+            :key="topic.id"
+            :id="topic.id"
+            :topicName="topic.title"
+            :description="topic.description"
+        />
+    </ul>
 </template>

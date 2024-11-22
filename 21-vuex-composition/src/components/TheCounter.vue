@@ -8,5 +8,5 @@ const counter = computed(() => store.state.counter)
 </script>
 
 <template>
-   <h2>{{ counter }}</h2>
+    <h2>{{ counter }}</h2>
 </template>

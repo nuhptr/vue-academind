@@ -5,11 +5,11 @@ import requestsModules from "./requests"
 import authModules from "./auth"
 
 const store = createStore({
-   modules: {
-      coaches: coachesModules,
-      requests: requestsModules,
-      auth: authModules,
-   },
+    modules: {
+        coaches: coachesModules,
+        requests: requestsModules,
+        auth: authModules,
+    },
 })
 
 export default store

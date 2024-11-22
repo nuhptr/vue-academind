@@ -4,7 +4,7 @@ This project was bootstrapped with [Vite](https://vitejs.dev/).
 
 ## Dependencies
 
--  [tailwindcss](https://tailwindcss.com/)
+-   [tailwindcss](https://tailwindcss.com/)
 
 ## Project Setup
 

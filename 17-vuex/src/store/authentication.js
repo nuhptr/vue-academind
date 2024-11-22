@@ -1,28 +1,28 @@
 export const authModule = {
-   state() {
-      return {
-         isLoggedIn: false,
-      }
-   },
+    state() {
+        return {
+            isLoggedIn: false,
+        }
+    },
 
-   mutations: {
-      setAuth(state, payload) {
-         state.isLoggedIn = payload.isAuth
-      },
-   },
+    mutations: {
+        setAuth(state, payload) {
+            state.isLoggedIn = payload.isAuth
+        },
+    },
 
-   actions: {
-      login(context) {
-         context.commit("setAuth", { isAuth: true })
-      },
-      logout(context) {
-         context.commit("setAuth", { isAuth: false })
-      },
-   },
+    actions: {
+        login(context) {
+            context.commit("setAuth", { isAuth: true })
+        },
+        logout(context) {
+            context.commit("setAuth", { isAuth: false })
+        },
+    },
 
-   getters: {
-      userIsAuthenticated(state) {
-         return state.isLoggedIn
-      },
-   },
+    getters: {
+        userIsAuthenticated(state) {
+            return state.isLoggedIn
+        },
+    },
 }

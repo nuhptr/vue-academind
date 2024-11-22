@@ -4,10 +4,10 @@ import { useStore } from "vuex"
 const store = useStore()
 
 const inc = () => {
-   store.dispatch("increment")
+    store.dispatch("increment")
 }
 </script>
 
 <template>
-   <button @click="inc">Increment</button>
+    <button @click="inc">Increment</button>
 </template>

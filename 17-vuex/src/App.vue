@@ -11,7 +11,7 @@ import UserAuth from "@/components/UserAuth.vue"
 const store = useStore() // how to use store
 
 const addOne = () => {
-   store.dispatch({ type: "numbers/increase", value: 10 })
+    store.dispatch({ type: "numbers/increase", value: 10 })
 }
 
 const isAuth = computed(() => store.getters.userIsAuthenticated)
@@ -19,28 +19,28 @@ const isAuth = computed(() => store.getters.userIsAuthenticated)
 
 <style>
 * {
-   box-sizing: border-box;
-   font-family: sans-serif;
-   margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
 }
 </style>
 
 <template>
-   <BaseContainer title="Vuex" v-if="isAuth">
-      <div class="flex flex-col">
-         <div class="flex flex-col items-center justify-center gap-4">
-            <TheCounter />
-            <FavoriteValue />
-         </div>
+    <BaseContainer title="Vuex" v-if="isAuth">
+        <div class="flex flex-col">
+            <div class="flex flex-col items-center justify-center gap-4">
+                <TheCounter />
+                <FavoriteValue />
+            </div>
 
-         <div class="flex flex-col items-center gap-4 mt-4">
-            <button @click="addOne">Add 10</button>
-            <ChangeCounter />
-         </div>
-      </div>
-   </BaseContainer>
+            <div class="flex flex-col items-center gap-4 mt-4">
+                <button @click="addOne">Add 10</button>
+                <ChangeCounter />
+            </div>
+        </div>
+    </BaseContainer>
 
-   <BaseContainer title="Auth">
-      <UserAuth />
-   </BaseContainer>
+    <BaseContainer title="Auth">
+        <UserAuth />
+    </BaseContainer>
 </template>

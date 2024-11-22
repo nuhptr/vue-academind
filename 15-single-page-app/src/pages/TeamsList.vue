@@ -11,14 +11,14 @@ const teams = inject("teams")
 </style>
 
 <template>
-   <RouterView />
-   <ul class="mx-auto my-8 list-none max-w-[40rem] p-0">
-      <TeamsItem
-         v-for="team in teams"
-         :key="team.id"
-         :id="team.id"
-         :name="team.name"
-         :memberCount="team.members.length"
-      />
-   </ul>
+    <RouterView />
+    <ul class="mx-auto my-8 list-none max-w-[40rem] p-0">
+        <TeamsItem
+            v-for="team in teams"
+            :key="team.id"
+            :id="team.id"
+            :name="team.name"
+            :memberCount="team.members.length"
+        />
+    </ul>
 </template>

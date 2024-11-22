@@ -8,6 +8,6 @@ import UserExperiences from "./components/survey/UserExperiences.vue"
 </style>
 
 <template>
-   <LearningSurvey />
-   <UserExperiences />
+    <LearningSurvey />
+    <UserExperiences />
 </template>

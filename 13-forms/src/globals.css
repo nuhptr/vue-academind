@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-   * {
-      font-family: sans-serif;
-   }
+    * {
+        font-family: sans-serif;
+    }
 
-   body {
-      @apply m-0 bg-[#fafafa];
-   }
+    body {
+        @apply m-0 bg-[#fafafa];
+    }
 }

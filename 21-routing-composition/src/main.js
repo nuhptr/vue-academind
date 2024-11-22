@@ -9,14 +9,14 @@ import AddProduct from "@/pages/AddProduct.vue"
 import "./globals.css"
 
 const router = createRouter({
-   history: createWebHistory(),
-   routes: [
-      { path: "/", redirect: "/products" },
-      { path: "/products", component: AllProducts },
-      // using props to pass the route parameter to the component
-      { path: "/products/:pid", component: ProductDetails, props: true },
-      { path: "/products/add", component: AddProduct },
-   ],
+    history: createWebHistory(),
+    routes: [
+        { path: "/", redirect: "/products" },
+        { path: "/products", component: AllProducts },
+        // using props to pass the route parameter to the component
+        { path: "/products/:pid", component: ProductDetails, props: true },
+        { path: "/products/add", component: AddProduct },
+    ],
 })
 
 const app = createApp(App)

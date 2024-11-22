@@ -1,54 +1,54 @@
 #events {
-   max-width: 40rem;
-   width: 90%;
-   margin: 3rem auto;
-   padding: 1rem;
-   border-radius: 10px;
-   text-align: center;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    max-width: 40rem;
+    width: 90%;
+    margin: 3rem auto;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
-   & h2 {
-      margin: 0 0 1rem 0;
-      font-size: 2rem;
-      color: #8b5cf6;
-      border-bottom: 4px solid #ccc;
-   }
+    & h2 {
+        margin: 0 0 1rem 0;
+        font-size: 2rem;
+        color: #8b5cf6;
+        border-bottom: 4px solid #ccc;
+    }
 
-   & p {
-      padding: 0.5rem;
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: white;
-      border-radius: 25px;
-      background-color: #8b5cf6;
-   }
+    & p {
+        padding: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: white;
+        border-radius: 25px;
+        background-color: #8b5cf6;
+    }
 
-   & input {
-      font: inherit;
-      border: 1px solid #ccc;
+    & input {
+        font: inherit;
+        border: 1px solid #ccc;
 
-      &:focus {
-         outline: none;
-         border-color: #8b5cf6;
-         background-color: #8b5cf630;
-      }
-   }
+        &:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            background-color: #8b5cf630;
+        }
+    }
 
-   & button {
-      margin: 0 1rem;
-      padding: 1rem 1.5rem;
-      font: inherit;
-      cursor: pointer;
-      border: 1px solid #ff0077;
-      border-radius: 10px;
-      color: white;
-      background-color: #ff0077;
+    & button {
+        margin: 0 1rem;
+        padding: 1rem 1.5rem;
+        font: inherit;
+        cursor: pointer;
+        border: 1px solid #ff0077;
+        border-radius: 10px;
+        color: white;
+        background-color: #ff0077;
 
-      &:hover,
-      &:active {
-         background-color: #ec3169;
-         border-color: #ec3169;
-         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
-      }
-   }
+        &:hover,
+        &:active {
+            background-color: #ec3169;
+            border-color: #ec3169;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+        }
+    }
 }

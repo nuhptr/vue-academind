@@ -1,5 +1,5 @@
 <script setup></script>
 
 <template>
-   <h2>Team Footer</h2>
+    <h2>Team Footer</h2>
 </template>

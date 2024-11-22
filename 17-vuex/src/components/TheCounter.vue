@@ -9,5 +9,5 @@ const finalCounter = computed(() => store.getters["numbers/finalCounter"])
 </script>
 
 <template>
-   <h3>{{ finalCounter }}</h3>
+    <h3>{{ finalCounter }}</h3>
 </template>

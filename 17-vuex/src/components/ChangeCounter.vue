@@ -13,16 +13,16 @@ const store = useStore()
 const actions = mapActions("numbers", { increment: "increment", increase: "increase" })
 
 const inc = () => {
-   store.dispatch({ type: "numbers/increase", value: 2 })
+    store.dispatch({ type: "numbers/increase", value: 2 })
 }
 const increase = (payload) => {
-   store.dispatch({ type: "numbers/increase", value: payload.value })
+    store.dispatch({ type: "numbers/increase", value: payload.value })
 }
 </script>
 
 <template>
-   <div class="flex items-center gap-4">
-      <button @click="inc">Add 2</button>
-      <button @click="increase({ value: 10 })">Add 10</button>
-   </div>
+    <div class="flex items-center gap-4">
+        <button @click="inc">Add 2</button>
+        <button @click="increase({ value: 10 })">Add 10</button>
+    </div>
 </template>

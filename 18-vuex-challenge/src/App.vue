@@ -53,13 +53,13 @@ import TheHeader from "./components/nav/TheHeader.vue"
 
 <style>
 * {
-   font-family: sans-serif;
-   margin: 0;
-   box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
+    box-sizing: border-box;
 }
 </style>
 
 <template>
-   <TheHeader />
-   <RouterView />
+    <TheHeader />
+    <RouterView />
 </template>

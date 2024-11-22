@@ -5,11 +5,11 @@ import TheCounter from "@/components/TheCounter.vue"
 
 <style>
 .container {
-   @apply mx-auto my-[3rem] max-w-[30rem] rounded-[12px] shadow-md p-4 text-center;
+    @apply mx-auto my-[3rem] max-w-[30rem] rounded-[12px] shadow-md p-4 text-center;
 }
 </style>
 
 <template>
-   <the-counter></the-counter>
-   <control-center></control-center>
+    <the-counter></the-counter>
+    <control-center></control-center>
 </template>

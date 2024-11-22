@@ -5,5 +5,5 @@
 </style>
 
 <template>
-   <h2 class="max-w-2xl mx-auto">Active Goals</h2>
+    <h2 class="max-w-2xl mx-auto">Active Goals</h2>
 </template>

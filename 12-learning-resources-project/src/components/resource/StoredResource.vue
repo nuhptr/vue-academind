@@ -11,7 +11,7 @@ const storedResources = inject("storedResources")
 </style>
 
 <template>
-   <ul class="list-none p-0 m-auto max-w-[40rem]" v-for="dataResource in storedResources">
-      <LearningResource :key="dataResource.id" :data="dataResource" />
-   </ul>
+    <ul class="list-none p-0 m-auto max-w-[40rem]" v-for="dataResource in storedResources">
+        <LearningResource :key="dataResource.id" :data="dataResource" />
+    </ul>
 </template>

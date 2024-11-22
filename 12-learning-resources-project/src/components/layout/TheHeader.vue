@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-   title: { type: String, required: true },
+    title: { type: String, required: true },
 })
 </script>
 
@@ -9,7 +9,7 @@ defineProps({
 </style>
 
 <template>
-   <header class="w-full h-[5rem] bg-[#3a0061] flex justify-center items-center">
-      <h1 class="m-0 text-white">{{ title }}</h1>
-   </header>
+    <header class="w-full h-[5rem] bg-[#3a0061] flex justify-center items-center">
+        <h1 class="m-0 text-white">{{ title }}</h1>
+    </header>
 </template>

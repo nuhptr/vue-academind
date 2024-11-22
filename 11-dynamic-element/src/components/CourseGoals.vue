@@ -5,5 +5,5 @@
 </style>
 
 <template>
-   <h2>Course Goals</h2>
+    <h2>Course Goals</h2>
 </template>

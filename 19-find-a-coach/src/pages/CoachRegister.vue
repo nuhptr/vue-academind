@@ -9,17 +9,17 @@ const store = useStore()
 const router = useRouter()
 
 const saveData = (data) => {
-   console.log(data)
-   store.dispatch("coaches/registerCoach", data)
-   router.replace("/coaches")
+    console.log(data)
+    store.dispatch("coaches/registerCoach", data)
+    router.replace("/coaches")
 }
 </script>
 
 <template>
-   <section>
-      <BaseCard>
-         <h2>Register as a coach now!</h2>
-         <CoachForm @save-data="saveData" />
-      </BaseCard>
-   </section>
+    <section>
+        <BaseCard>
+            <h2>Register as a coach now!</h2>
+            <CoachForm @save-data="saveData" />
+        </BaseCard>
+    </section>
 </template>

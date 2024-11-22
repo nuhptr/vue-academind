@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <link
-         href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
-         rel="stylesheet"
-      />
-      <link rel="stylesheet" href="globals.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="globals.css" />
 
-      <title>Vue Component Intro</title>
-   </head>
+        <title>Vue Component Intro</title>
+    </head>
 
-   <body>
-      <div id="app">
-         <header>
-            <h1>FriendList</h1>
-         </header>
-         <friend-contact></friend-contact>
-         <section>
-            <ul>
-               <friend-contact></friend-contact>
-               <friend-contact></friend-contact>
-            </ul>
-         </section>
-      </div>
+    <body>
+        <div id="app">
+            <header>
+                <h1>FriendList</h1>
+            </header>
+            <friend-contact></friend-contact>
+            <section>
+                <ul>
+                    <friend-contact></friend-contact>
+                    <friend-contact></friend-contact>
+                </ul>
+            </section>
+        </div>
 
-      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-      <script type="module">
-         const { createApp, ref } = Vue
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="module">
+            const { createApp, ref } = Vue
 
-         import App from "./App.js"
+            import App from "./App.js"
 
-         const app = createApp(App)
+            const app = createApp(App)
 
-         app.component("friend-contact", {
-            template: ` 
+            app.component("friend-contact", {
+                template: `
             <li>
                <h2>{{ friend.name }}</h2>
                <button @click="toggleDetails()">
                   {{ detailsAreVisible ? 'Hide' : 'Show' }} Details
                </button>
-            
+
                <ul v-if="detailsAreVisible">
                   <li>
                      <strong>Phone:</strong> {{ friend.phone }}
@@ -52,24 +52,24 @@
                   </li>
                </ul>
             </li>`,
-            setup() {
-               const detailsAreVisible = ref(false)
-               const friend = ref({
-                  id: "manuel",
-                  name: "Manuel Lorenzo",
-                  phone: "01234 5678 991",
-                  email: "manuel@localhost.com",
-               })
+                setup() {
+                    const detailsAreVisible = ref(false)
+                    const friend = ref({
+                        id: "manuel",
+                        name: "Manuel Lorenzo",
+                        phone: "01234 5678 991",
+                        email: "manuel@localhost.com",
+                    })
 
-               const toggleDetails = () => {
-                  detailsAreVisible.value = !detailsAreVisible.value
-               }
+                    const toggleDetails = () => {
+                        detailsAreVisible.value = !detailsAreVisible.value
+                    }
 
-               return { friend, toggleDetails, detailsAreVisible }
-            },
-         })
+                    return { friend, toggleDetails, detailsAreVisible }
+                },
+            })
 
-         app.mount("#app")
-      </script>
-   </body>
+            app.mount("#app")
+        </script>
+    </body>
 </html>

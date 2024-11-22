@@ -5,5 +5,5 @@ import TheForm from "./components/TheForm.vue"
 <style scoped></style>
 
 <template>
-   <TheForm />
+    <TheForm />
 </template>

@@ -1,19 +1,19 @@
 @import url("./app.css");
 
 * {
-   font-family: "Jost", sans-serif;
-   margin: 0;
-   box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 header {
-   max-width: 40rem;
-   width: 90%;
-   margin: 3rem auto;
-   padding: 1rem;
-   border-radius: 10px;
-   text-align: center;
-   color: white;
-   background-color: #58004d;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    max-width: 40rem;
+    width: 90%;
+    margin: 3rem auto;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background-color: #58004d;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }

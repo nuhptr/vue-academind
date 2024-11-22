@@ -3,73 +3,73 @@
 @import url("./log.css");
 
 * {
-   font-family: "Jost", sans-serif;
-   margin: 0;
-   box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 header {
-   width: 100%;
-   margin: auto;
-   margin-bottom: 4rem;
-   padding: 1.5rem 0;
-   text-align: center;
-   color: white;
-   background-color: #4f46e5;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    width: 100%;
+    margin: auto;
+    margin-bottom: 4rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    color: white;
+    background-color: #4f46e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
 section {
-   width: 90%;
-   max-width: 40rem;
-   margin: auto;
+    width: 90%;
+    max-width: 40rem;
+    margin: auto;
 }
 
 .container {
-   margin: 1rem auto;
-   padding: 0.5rem;
-   text-align: center;
-   border-radius: 12px;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 1rem auto;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
 #monster h2,
 #player h2 {
-   margin: 0.25rem;
+    margin: 0.25rem;
 }
 
 #controls {
-   position: relative;
-   width: 100%;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: space-between;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
-   @media screen and (max-width: 600px) {
-      flex-direction: column;
-   }
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
 
-   button {
-      width: 100%;
+    button {
+        width: 100%;
 
-      &:nth-child(1) {
-         width: fit-content;
+        &:nth-child(1) {
+            width: fit-content;
 
-         @media screen and (max-width: 600px) {
-            width: 100%;
-         }
-      }
-   }
+            @media screen and (max-width: 600px) {
+                width: 100%;
+            }
+        }
+    }
 }
 
 #game {
-   display: flex;
-   gap: 2rem;
-   margin: 0 1.5rem;
+    display: flex;
+    gap: 2rem;
+    margin: 0 1.5rem;
 }
 
 .core-game {
-   position: sticky;
-   flex: 1;
+    position: sticky;
+    flex: 1;
 }

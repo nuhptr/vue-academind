@@ -11,7 +11,7 @@ const products = inject("products")
 // Find the product with the id that matches the pid prop
 // using .value because products is a ref
 const selectedProduct = computed(() => {
-   products.value.find((product) => product.id === route.params.pid)
+    products.value.find((product) => product.id === route.params.pid)
 })
 // makes the selectedProduct reactive to the changes in the products array
 const title = computed(() => selectedProduct.value.title)
@@ -21,16 +21,16 @@ const description = computed(() => selectedProduct.value.description)
 
 <style scoped>
 section {
-   @apply mx-auto my-[3rem] max-w-[40rem] rounded-[12px] shadow-md p-4;
+    @apply mx-auto my-[3rem] max-w-[40rem] rounded-[12px] shadow-md p-4;
 }
 </style>
 
 <template>
-   <section>
-      <h2>{{ title.value }}</h2>
-      <h3>${{ price }}</h3>
-      <p>{{ description }}</p>
+    <section>
+        <h2>{{ title.value }}</h2>
+        <h3>${{ price }}</h3>
+        <p>{{ description }}</p>
 
-      <RouterLink to="/products/p2">Product 2</RouterLink>
-   </section>
+        <RouterLink to="/products/p2">Product 2</RouterLink>
+    </section>
 </template>

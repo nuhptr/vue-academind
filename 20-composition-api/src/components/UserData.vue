@@ -7,7 +7,7 @@ const props = defineProps({ firstName: String, lastName: String })
 const age = inject("userAge")
 
 const userName = computed(() => {
-   return this.props.firstName + "" + this.props.lastName
+    return this.props.firstName + "" + this.props.lastName
 })
 
 //    context.emit("changeAge", () => {
@@ -16,6 +16,6 @@ const userName = computed(() => {
 </script>
 
 <template>
-   <h2>{{ userName }}</h2>
-   <h3>{{ age }}</h3>
+    <h2>{{ userName }}</h2>
+    <h3>{{ age }}</h3>
 </template>
